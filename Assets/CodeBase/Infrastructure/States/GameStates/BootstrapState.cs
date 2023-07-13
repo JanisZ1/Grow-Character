@@ -1,4 +1,5 @@
 ﻿using Assets.CodeBase.Infrastructure.Services;
+using Assets.CodeBase.Infrastructure.Services.AssetProvider;
 
 namespace Assets.CodeBase.Infrastructure.States.GameStates
 {
@@ -28,8 +29,11 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
         {
         }
 
-        private void RegisterServices() =>
+        private void RegisterServices()
+        {
+            _services.Register<IAssets>(new AssetProvider());
             _services.Register<IInputService>(new InputService(_coroutineRunner));
+        }
 
         private void OnLoaded() =>
             _stateMachine.Enter<LoadLevelState, string>(_sceneName);
