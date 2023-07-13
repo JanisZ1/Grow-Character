@@ -1,3 +1,4 @@
+using Assets.CodeBase.Infrastructure.States.GameStates;
 using UnityEngine;
 
 namespace Assets.CodeBase.Infrastructure
@@ -6,7 +7,12 @@ namespace Assets.CodeBase.Infrastructure
     {
         private Game _game;
 
-        private void Awake() =>
+        private void Awake()
+        {
             _game = new Game(this);
+            _game.StateMachine.Enter<BootstrapState>();
+
+            DontDestroyOnLoad(gameObject);
+        }
     }
 }

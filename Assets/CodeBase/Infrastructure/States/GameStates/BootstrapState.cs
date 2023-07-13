@@ -14,15 +14,11 @@
             _sceneLoader = sceneLoader;
         }
 
-        public void Enter()
-        {
+        public void Enter() =>
             _sceneLoader.Load(_sceneName, OnLoaded);
-        }
 
-        private void OnLoaded()
-        {
-            _stateMachine.Enter<LoadLevelState>();
-        }
+        private void OnLoaded() =>
+            _stateMachine.Enter<LoadLevelState, string>(_sceneName);
 
         public void Exit()
         {

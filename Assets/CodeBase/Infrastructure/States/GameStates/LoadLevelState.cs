@@ -1,8 +1,13 @@
 ﻿namespace Assets.CodeBase.Infrastructure.States.GameStates
 {
-    public class LoadLevelState : IState
+    public class LoadLevelState : IPayloadedState<string>
     {
-        public void Enter()
+        private GameStateMachine _stateMachine;
+
+        public LoadLevelState(GameStateMachine gameStateMachine) =>
+            _stateMachine = gameStateMachine;
+
+        public void Enter(string sceneName)
         {
         }
 
