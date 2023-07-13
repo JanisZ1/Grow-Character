@@ -2,6 +2,6 @@
 {
     public class AssetPath
     {
-        public const string HeroPath = "";
+        public const string HeroPath = "Prefabs/Hero";
     }
 }

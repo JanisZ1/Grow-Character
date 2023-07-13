@@ -34,7 +34,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
         {
             _services.Register<IAssets>(new AssetProvider());
             _services.Register<IInputService>(new InputService(_coroutineRunner));
-            _services.Register<IHeroFactory>(new HeroFactory(_services.Single<IAssets>()));
+            _services.Register<IHeroFactory>(new HeroFactory(_services.Single<IAssets>(), _services.Single<IInputService>()));
         }
 
         private void OnLoaded() =>

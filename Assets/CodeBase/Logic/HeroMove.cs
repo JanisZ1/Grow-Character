@@ -12,10 +12,10 @@ namespace Assets.CodeBase.Logic
         public void Construct(IInputService inputService) =>
             _inputService = inputService;
 
-        private void OnEnable() =>
+        private void Start() =>
             _inputService.SpaceDown += Jump;
 
-        private void OnDisable() =>
+        private void OnDestroy() =>
             _inputService.SpaceDown -= Jump;
 
         private void Update()
