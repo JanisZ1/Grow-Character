@@ -2,8 +2,9 @@
 {
     public class Game
     {
-        public Game()
-        {
-        }
+        public GameStateMachine StateMachine;
+
+        public Game(ICoroutineRunner coroutineRunner) =>
+            StateMachine = new GameStateMachine(coroutineRunner, new SceneLoader(coroutineRunner));
     }
 }

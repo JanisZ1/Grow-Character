@@ -6,9 +6,7 @@ namespace Assets.CodeBase.Infrastructure
     {
         private Game _game;
 
-        private void Awake()
-        {
-            _game = new Game();
-        }
+        private void Awake() =>
+            _game = new Game(this);
     }
 }
