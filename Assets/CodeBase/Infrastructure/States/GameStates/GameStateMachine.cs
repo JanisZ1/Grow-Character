@@ -14,7 +14,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
         {
             _states = new Dictionary<Type, IExitableState>()
             {
-                [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, services),
+                [typeof(BootstrapState)] = new BootstrapState(this, coroutineRunner, sceneLoader, services),
                 [typeof(LoadLevelState)] = new LoadLevelState(this, services.Single<IInputService>()),
             };
         }

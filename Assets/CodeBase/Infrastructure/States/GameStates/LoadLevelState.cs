@@ -11,9 +11,8 @@
             _inputService = inputService;
         }
 
-        public void Enter(string sceneName)
-        {
-        }
+        public void Enter(string sceneName) => 
+            _inputService.StartUpdate();
 
         public void Exit()
         {

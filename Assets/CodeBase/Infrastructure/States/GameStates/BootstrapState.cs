@@ -9,10 +9,12 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
         private string _sceneName = "Main";
 
         private GameStateMachine _stateMachine;
+        private readonly ICoroutineRunner _coroutineRunner;
 
-        public BootstrapState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, AllServices services)
+        public BootstrapState(GameStateMachine gameStateMachine, ICoroutineRunner coroutineRunner, SceneLoader sceneLoader, AllServices services)
         {
             _stateMachine = gameStateMachine;
+            _coroutineRunner = coroutineRunner;
             _sceneLoader = sceneLoader;
             _services = services;
 
@@ -27,12 +29,9 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
         }
 
         private void RegisterServices() =>
-            _services.Register(InputService());
+            _services.Register<IInputService>(new InputService(_coroutineRunner));
 
         private void OnLoaded() =>
             _stateMachine.Enter<LoadLevelState, string>(_sceneName);
-
-        private IInputService InputService() =>
-            new PersonalComputerInputService();
     }
 }
