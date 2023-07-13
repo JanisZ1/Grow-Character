@@ -1,4 +1,6 @@
-﻿namespace Assets.CodeBase.Infrastructure
+﻿using Assets.CodeBase.Infrastructure.States.GameStates;
+
+namespace Assets.CodeBase.Infrastructure
 {
     public class Game
     {
