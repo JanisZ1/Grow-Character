@@ -11,7 +11,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
         private readonly ICoroutineRunner _coroutineRunner;
         private Coroutine _coroutine;
 
-        public event Action SpaceDown;
+        public event Action SpaceKeyDown;
 
         public Vector3 Axis => GetAxis();
 
@@ -29,7 +29,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
             yield return null;
 
             if (Input.GetKeyDown(KeyCode.Space))
-                SpaceDown?.Invoke();
+                SpaceKeyDown?.Invoke();
 
             _coroutine = _coroutineRunner.StartCoroutine(Update());
         }

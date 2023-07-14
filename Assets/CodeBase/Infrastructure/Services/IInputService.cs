@@ -7,7 +7,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
     public interface IInputService : IService
     {
         void StartUpdate();
-        event Action SpaceDown;
+        event Action SpaceKeyDown;
         Vector3 Axis { get; }
     }
 }
