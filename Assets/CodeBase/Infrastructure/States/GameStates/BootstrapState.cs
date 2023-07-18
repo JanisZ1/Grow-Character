@@ -35,6 +35,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
             _services.Register<IAssets>(new AssetProvider());
             _services.Register<IInputService>(new InputService(_coroutineRunner));
             _services.Register<IHeroFactory>(new HeroFactory(_services.Single<IAssets>(), _services.Single<IInputService>()));
+            _services.Register<ICinemachineFactory>(new CinemachineFactory(_services.Single<IAssets>()));
         }
 
         private void OnLoaded() =>
