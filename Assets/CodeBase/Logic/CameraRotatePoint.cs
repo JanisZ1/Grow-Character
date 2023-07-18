@@ -10,7 +10,7 @@ namespace Assets.CodeBase.Logic
         public void Construct(IHeroHandler heroHandler) =>
             _heroHandler = heroHandler;
 
-        private void Update() =>
+        private void LateUpdate() =>
             transform.position = _heroHandler.HeroGameObject.transform.position;
     }
 }

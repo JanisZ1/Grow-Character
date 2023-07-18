@@ -29,9 +29,9 @@ namespace Assets.CodeBase.Logic
         private void FixedUpdate()
         {
             Vector3 axis = _inputService.Axis;
-            Vector3 direction = new Vector3(-axis.z, 0, -axis.x).normalized;
+            Vector3 direction = new Vector3(axis.z, 0, axis.x).normalized;
 
-            _rigidbody.velocity += transform.InverseTransformDirection(direction * _speed);
+            _rigidbody.velocity += (direction.x * transform.right + direction.z * transform.forward) * _speed;
 
             if (_rigidbody.velocity != Vector3.zero)
             {
