@@ -1,4 +1,5 @@
 ﻿using Assets.CodeBase.Infrastructure.Services.AssetProvider;
+using Assets.CodeBase.Logic;
 using UnityEngine;
 using CinemachineVirtualCamera = Cinemachine.CinemachineVirtualCamera;
 
@@ -14,7 +15,9 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory
         public GameObject CreateVirtualCamera(Transform heroTransform)
         {
             GameObject gameObject = _assets.Instantiate(AssetPath.CineMachineVirtualCameraPath);
-            gameObject.GetComponent<CinemachineVirtualCamera>().Follow = heroTransform;
+            Transform rotationPoint = heroTransform.GetComponentInChildren<CameraRotatePoint>().transform;
+            gameObject.GetComponent<CinemachineVirtualCamera>().Follow = rotationPoint;
+            gameObject.GetComponent<CameraRotate>().Construct(rotationPoint);
             return gameObject;
         }
     }
