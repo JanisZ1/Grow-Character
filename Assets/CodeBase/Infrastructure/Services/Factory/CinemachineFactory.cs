@@ -1,5 +1,5 @@
 ﻿using Assets.CodeBase.Infrastructure.Services.AssetProvider;
-using Assets.CodeBase.Infrastructure.States.GameStates;
+using Assets.CodeBase.Infrastructure.Services.HeroHandler;
 using Assets.CodeBase.Logic;
 using UnityEngine;
 using CinemachineVirtualCamera = Cinemachine.CinemachineVirtualCamera;

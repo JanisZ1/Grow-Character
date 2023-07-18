@@ -18,12 +18,14 @@ namespace Assets.CodeBase.Logic
             float mouseXInput = Input.GetAxis("Mouse X");
 
             _mouseYInput -= mouseYInput * _rotationSpeed;
-            _mouseXInput -= mouseXInput * _rotationSpeed;
+            _mouseXInput += mouseXInput * _rotationSpeed;
 
             _mouseYInput = ClampValue(_mouseYInput, -20f, 40f);
-
-            _rotateTransform.localRotation = Quaternion.Euler(_mouseYInput, _mouseXInput, 0f);
+            RotateCameraFollowPoint();
         }
+
+        private void RotateCameraFollowPoint() =>
+            _rotateTransform.localRotation = Quaternion.Euler(_mouseYInput, _mouseXInput, 0f);
 
         private float ClampValue(float value, float min, float max) =>
             Mathf.Clamp(value, min, max);

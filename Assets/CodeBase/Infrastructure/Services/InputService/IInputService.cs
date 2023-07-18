@@ -1,8 +1,7 @@
-﻿using Assets.CodeBase.Infrastructure.Services;
-using System;
+﻿using System;
 using UnityEngine;
 
-namespace Assets.CodeBase.Infrastructure.States.GameStates
+namespace Assets.CodeBase.Infrastructure.Services.InputService
 {
     public interface IInputService : IService
     {

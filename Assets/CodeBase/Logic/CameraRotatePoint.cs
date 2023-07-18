@@ -1,4 +1,4 @@
-﻿using Assets.CodeBase.Infrastructure.States.GameStates;
+﻿using Assets.CodeBase.Infrastructure.Services.HeroHandler;
 using UnityEngine;
 
 namespace Assets.CodeBase.Logic

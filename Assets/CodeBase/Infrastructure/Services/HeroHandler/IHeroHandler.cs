@@ -1,7 +1,6 @@
-﻿using Assets.CodeBase.Infrastructure.Services;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets.CodeBase.Infrastructure.States.GameStates
+namespace Assets.CodeBase.Infrastructure.Services.HeroHandler
 {
     public interface IHeroHandler : IService
     {

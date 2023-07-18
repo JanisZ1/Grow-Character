@@ -1,4 +1,7 @@
 ﻿using Assets.CodeBase.Infrastructure.Services.Factory;
+using Assets.CodeBase.Infrastructure.Services.HeroHandler;
+using Assets.CodeBase.Infrastructure.Services.InputService;
+using System;
 using UnityEngine;
 
 namespace Assets.CodeBase.Infrastructure.States.GameStates
@@ -26,8 +29,18 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
         private void InitializeLevel()
         {
             _inputService.StartUpdate();
+            InitializeHero();
+            InitializeCinemachine();
+        }
+
+        private void InitializeHero()
+        {
             GameObject hero = _heroFactory.CreateHero(Vector3.zero);
             _heroHandler.Handle(hero);
+        }
+
+        private void InitializeCinemachine()
+        {
             GameObject cameraRotatePoint = _cinemachineFactory.CreateCameraRotatePoint();
             _cinemachineFactory.CreateVirtualCamera(cameraRotatePoint.transform);
         }

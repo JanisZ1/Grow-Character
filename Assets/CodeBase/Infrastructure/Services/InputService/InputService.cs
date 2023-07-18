@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Assets.CodeBase.Infrastructure.States.GameStates
+namespace Assets.CodeBase.Infrastructure.Services.InputService
 {
     public class InputService : IInputService
     {
