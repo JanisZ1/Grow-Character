@@ -7,13 +7,15 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
     {
         private GameStateMachine _stateMachine;
         private readonly IHeroFactory _heroFactory;
+        private readonly IHeroHandler _heroHandler;
         private readonly ICinemachineFactory _cinemachineFactory;
         private readonly IInputService _inputService;
 
-        public LoadLevelState(GameStateMachine gameStateMachine, IHeroFactory heroFactory, ICinemachineFactory cinemachineFactory, IInputService inputService)
+        public LoadLevelState(GameStateMachine gameStateMachine, IHeroFactory heroFactory, IHeroHandler heroHandler, ICinemachineFactory cinemachineFactory, IInputService inputService)
         {
             _stateMachine = gameStateMachine;
             _heroFactory = heroFactory;
+            _heroHandler = heroHandler;
             _cinemachineFactory = cinemachineFactory;
             _inputService = inputService;
         }
@@ -25,7 +27,9 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
         {
             _inputService.StartUpdate();
             GameObject hero = _heroFactory.CreateHero(Vector3.zero);
-            _cinemachineFactory.CreateVirtualCamera(hero.transform);
+            _heroHandler.Handle(hero);
+            GameObject cameraRotatePoint = _cinemachineFactory.CreateCameraRotatePoint();
+            _cinemachineFactory.CreateVirtualCamera(cameraRotatePoint.transform);
         }
 
         public void Exit()

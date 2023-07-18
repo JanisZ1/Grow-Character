@@ -29,8 +29,17 @@ namespace Assets.CodeBase.Logic
         private void FixedUpdate()
         {
             Vector3 axis = _inputService.Axis;
-            Debug.DrawRay(transform.position, Vector3.down, Color.green, transform.localScale.y / 2 + 0.2f);
-            _rigidbody.velocity += new Vector3(axis.z, 0, axis.x).normalized * _speed;
+            Vector3 direction = new Vector3(-axis.z, 0, -axis.x).normalized;
+
+            _rigidbody.velocity += transform.InverseTransformDirection(direction * _speed);
+
+            if (_rigidbody.velocity != Vector3.zero)
+            {
+                Transform cameraTransform = Camera.main.transform;
+                Vector3 rotation = new Vector3(transform.eulerAngles.x, cameraTransform.eulerAngles.y, transform.eulerAngles.z);
+
+                transform.eulerAngles = rotation;
+            }
 
             if (IsGrounded())
                 _rigidbody.drag = _groundedDrag;
