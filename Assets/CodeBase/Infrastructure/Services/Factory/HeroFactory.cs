@@ -16,11 +16,11 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory
             _inputService = inputService;
         }
 
-
-        public GameObject CreateHero(Vector3 at)
+        public GameObject CreateHero()
         {
-            GameObject gameObject = _assets.Instantiate(AssetPath.HeroPath, at);
+            GameObject gameObject = _assets.Instantiate(AssetPath.HeroPath);
             gameObject.GetComponent<HeroMove>().Construct(_inputService);
+            gameObject.GetComponent<HeroScale>().Construct(_inputService);
             return gameObject;
         }
     }
