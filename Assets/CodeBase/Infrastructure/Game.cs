@@ -1,4 +1,5 @@
-﻿using Assets.CodeBase.Infrastructure.States.GameStates;
+﻿using Assets.CodeBase.Infrastructure.Services;
+using Assets.CodeBase.Infrastructure.States.GameStates;
 
 namespace Assets.CodeBase.Infrastructure
 {
@@ -7,6 +8,6 @@ namespace Assets.CodeBase.Infrastructure
         public GameStateMachine StateMachine;
 
         public Game(ICoroutineRunner coroutineRunner) =>
-            StateMachine = new GameStateMachine(coroutineRunner, new SceneLoader(coroutineRunner));
+            StateMachine = new GameStateMachine(coroutineRunner, new SceneLoader(coroutineRunner), new AllServices());
     }
 }

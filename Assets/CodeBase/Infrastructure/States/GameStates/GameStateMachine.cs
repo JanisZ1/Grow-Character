@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Assets.CodeBase.Infrastructure.Services;
+using Assets.CodeBase.Infrastructure.Services.Factory;
+using Assets.CodeBase.Infrastructure.Services.HeroHandler;
+using Assets.CodeBase.Infrastructure.Services.InputService;
+using System;
 using System.Collections.Generic;
 
 namespace Assets.CodeBase.Infrastructure.States.GameStates
@@ -9,12 +13,12 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
 
         private Dictionary<Type, IExitableState> _states;
 
-        public GameStateMachine(ICoroutineRunner coroutineRunner, SceneLoader sceneLoader)
+        public GameStateMachine(ICoroutineRunner coroutineRunner, SceneLoader sceneLoader, AllServices services)
         {
             _states = new Dictionary<Type, IExitableState>()
             {
-                [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader),
-                [typeof(LoadLevelState)] = new LoadLevelState(this),
+                [typeof(BootstrapState)] = new BootstrapState(this, coroutineRunner, sceneLoader, services),
+                [typeof(LoadLevelState)] = new LoadLevelState(this, services.Single<IHeroFactory>(), services.Single<IHeroHandler>(), services.Single<ICinemachineFactory>(), services.Single<IInputService>()),
             };
         }
 
