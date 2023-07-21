@@ -93,7 +93,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1349670710905306374}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 03c936a040691624aa511f2ca6839eac, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -123,11 +123,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 6587193617485090198}
   _speed: 1
-  _jumpSpeed: 300
-  _groundLayer:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  _drag: 7
 --- !u!54 &6587193617485090198
 Rigidbody:
   m_ObjectHideFlags: 0
