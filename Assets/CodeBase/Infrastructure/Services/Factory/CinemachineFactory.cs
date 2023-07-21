@@ -1,6 +1,7 @@
 ﻿using Assets.CodeBase.Infrastructure.Services.AssetProvider;
 using Assets.CodeBase.Infrastructure.Services.HeroHandler;
 using Assets.CodeBase.Logic;
+using Cinemachine;
 using UnityEngine;
 using CinemachineVirtualCamera = Cinemachine.CinemachineVirtualCamera;
 
@@ -29,7 +30,10 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory
         {
             GameObject gameObject = _assets.Instantiate(AssetPath.CineMachineVirtualCameraPath);
             gameObject.GetComponent<CinemachineVirtualCamera>().Follow = cameraRotatePoint;
+
+            Cinemachine3rdPersonFollow thirdPersonFollow = gameObject.GetComponentInChildren<Cinemachine3rdPersonFollow>();
             gameObject.GetComponent<CameraRotate>().Construct(cameraRotatePoint);
+            gameObject.GetComponent<CameraDistanceChange>().Construct(cameraRotatePoint, thirdPersonFollow);
             return gameObject;
         }
     }

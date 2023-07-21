@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5369187369168797819}
   - component: {fileID: 8035284431051489992}
   - component: {fileID: 6138122948725410578}
+  - component: {fileID: 2141601927324228969}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -86,6 +87,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rotationSpeed: 8
+--- !u!114 &2141601927324228969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2708605726128461826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56c7ec77301660b45aadc553056b11f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cameraDistanceMultiplier: 2.67
 --- !u!1 &4828110607629942540
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,8 +186,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damping: {x: 0, y: 0, z: 0}
-  ShoulderOffset: {x: 0.73, y: 0.11, z: 0}
-  VerticalArmLength: 0.4
+  ShoulderOffset: {x: 0, y: 0, z: 0}
+  VerticalArmLength: 0.22
   CameraSide: 1
   CameraDistance: 2.67
   CameraCollisionFilter:

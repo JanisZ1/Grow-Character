@@ -5,7 +5,9 @@ namespace Assets.CodeBase.Logic
     public class CameraRotate : MonoBehaviour
     {
         [SerializeField] private float _rotationSpeed;
+
         private Transform _rotateTransform;
+
         private float _mouseYInput;
         private float _mouseXInput;
 
