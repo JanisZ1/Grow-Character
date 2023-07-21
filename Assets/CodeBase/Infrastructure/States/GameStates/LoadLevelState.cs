@@ -35,7 +35,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
 
         private void InitializeHero()
         {
-            GameObject hero = _heroFactory.CreateHero(Vector3.zero);
+            GameObject hero = _heroFactory.CreateHero();
             _heroHandler.Handle(hero);
         }
 
