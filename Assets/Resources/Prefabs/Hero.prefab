@@ -127,8 +127,7 @@ MonoBehaviour:
   _groundLayer:
     serializedVersion: 2
     m_Bits: 4294967295
-  _groundedDrag: 7
-  _jumpDrag: 2
+  _drag: 7
 --- !u!54 &6587193617485090198
 Rigidbody:
   m_ObjectHideFlags: 0

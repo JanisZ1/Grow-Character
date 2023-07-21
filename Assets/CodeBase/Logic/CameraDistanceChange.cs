@@ -16,8 +16,14 @@ namespace Assets.CodeBase.Logic
             _cinemachine3rdPersonFollow = thirdPersonFollow;
         }
 
-        private void LateUpdate() =>
+        private void LateUpdate()
+        {
             SetCameraDistance();
+            SetVerticalArmLength();
+        }
+
+        private void SetVerticalArmLength() =>
+            _cinemachine3rdPersonFollow.VerticalArmLength = _scaleTransform.localScale.x / 2;
 
         private void SetCameraDistance() =>
             _cinemachine3rdPersonFollow.CameraDistance = _scaleTransform.localScale.x * _cameraDistanceMultiplier;

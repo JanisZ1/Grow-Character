@@ -7,10 +7,7 @@ namespace Assets.CodeBase.Logic
     {
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private float _speed;
-        [SerializeField] private float _jumpSpeed;
-        [SerializeField] private LayerMask _groundLayer;
-        [SerializeField] private float _groundedDrag;
-        [SerializeField] private float _jumpDrag;
+
         private IInputService _inputService;
         private Transform _cameraTransform;
 
@@ -21,13 +18,8 @@ namespace Assets.CodeBase.Logic
         {
             _cameraTransform = Camera.main.transform;
 
-            _inputService.SpaceKeyDown += Jump;
-
             transform.position = AddY();
         }
-
-        private void OnDestroy() =>
-            _inputService.SpaceKeyDown -= Jump;
 
         private void FixedUpdate()
         {
@@ -37,11 +29,6 @@ namespace Assets.CodeBase.Logic
 
             if (Moving())
                 SetRotationLikeCamera();
-
-            if (IsGrounded())
-                SetRigidbodyDrag(_groundedDrag);
-            else
-                SetRigidbodyDrag(_jumpDrag);
         }
 
         private void AddVelocity(Vector3 to) =>
@@ -56,22 +43,10 @@ namespace Assets.CodeBase.Logic
             transform.eulerAngles = rotation;
         }
 
-        private void Jump()
-        {
-            if (IsGrounded())
-                _rigidbody.AddForce(Vector3.up * _jumpSpeed);
-        }
-
         private Vector3 AddY() =>
             new Vector3(transform.position.x, transform.position.y + transform.localScale.y, transform.position.z);
 
-        private void SetRigidbodyDrag(float drag) =>
-            _rigidbody.drag = drag;
-
         private bool Moving() =>
             _rigidbody.velocity != Vector3.zero;
-
-        private bool IsGrounded() =>
-            Physics.Raycast(transform.position, Vector3.down, transform.localScale.y + 0.1f, _groundLayer);
     }
 }
