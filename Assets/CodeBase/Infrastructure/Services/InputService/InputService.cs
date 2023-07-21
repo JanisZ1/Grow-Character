@@ -12,6 +12,7 @@ namespace Assets.CodeBase.Infrastructure.Services.InputService
         private Coroutine _coroutine;
 
         public event Action SpaceKeyDown;
+        public event Action MouseButtonDown;
 
         public Vector3 Axis => GetAxis();
 
@@ -30,6 +31,9 @@ namespace Assets.CodeBase.Infrastructure.Services.InputService
 
             if (Input.GetKeyDown(KeyCode.Space))
                 SpaceKeyDown?.Invoke();
+
+            if (Input.GetMouseButtonDown(0))
+                MouseButtonDown?.Invoke();
 
             _coroutine = _coroutineRunner.StartCoroutine(Update());
         }

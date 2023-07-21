@@ -7,6 +7,7 @@ namespace Assets.CodeBase.Infrastructure.Services.InputService
     {
         void StartUpdate();
         event Action SpaceKeyDown;
+        event Action MouseButtonDown;
         Vector3 Axis { get; }
     }
 }

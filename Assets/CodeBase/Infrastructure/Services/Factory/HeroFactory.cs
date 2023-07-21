@@ -20,6 +20,7 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory
         {
             GameObject gameObject = _assets.Instantiate(AssetPath.HeroPath);
             gameObject.GetComponent<HeroMove>().Construct(_inputService);
+            gameObject.GetComponent<HeroScale>().Construct(_inputService);
             return gameObject;
         }
     }
