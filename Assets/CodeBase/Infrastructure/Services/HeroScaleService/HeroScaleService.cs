@@ -1,4 +1,4 @@
-﻿namespace Assets.CodeBase.Infrastructure.Services.HeroScale
+﻿namespace Assets.CodeBase.Infrastructure.Services.HeroScaleService
 {
     public class HeroScaleService : IHeroScaleService
     {
