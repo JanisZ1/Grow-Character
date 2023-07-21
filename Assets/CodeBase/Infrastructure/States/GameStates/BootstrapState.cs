@@ -3,6 +3,7 @@ using Assets.CodeBase.Infrastructure.Services.AssetProvider;
 using Assets.CodeBase.Infrastructure.Services.Factory;
 using Assets.CodeBase.Infrastructure.Services.HeroHandler;
 using Assets.CodeBase.Infrastructure.Services.InputService;
+using Assets.CodeBase.Infrastructure.Services.PlayerProgressService;
 
 namespace Assets.CodeBase.Infrastructure.States.GameStates
 {
@@ -35,6 +36,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
         private void RegisterServices()
         {
             _services.Register<IAssets>(new AssetProvider());
+            _services.Register<IPlayerProgressService>(new PlayerProgressService());
             _services.Register<IInputService>(new InputService(_coroutineRunner));
             _services.Register<IHeroHandler>(new HeroHandler());
             _services.Register<IHeroFactory>(new HeroFactory(_services.Single<IAssets>(), _services.Single<IInputService>()));

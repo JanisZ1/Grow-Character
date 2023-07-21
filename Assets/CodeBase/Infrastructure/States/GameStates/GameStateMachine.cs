@@ -2,6 +2,7 @@
 using Assets.CodeBase.Infrastructure.Services.Factory;
 using Assets.CodeBase.Infrastructure.Services.HeroHandler;
 using Assets.CodeBase.Infrastructure.Services.InputService;
+using Assets.CodeBase.Infrastructure.Services.PlayerProgressService;
 using System;
 using System.Collections.Generic;
 
@@ -19,7 +20,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
             {
                 [typeof(BootstrapState)] = new BootstrapState(this, coroutineRunner, sceneLoader, services),
                 [typeof(LoadLevelState)] = new LoadLevelState(this, services.Single<IHeroFactory>(), services.Single<IHeroHandler>(), services.Single<ICinemachineFactory>(), services.Single<IInputService>()),
-                [typeof(LoadProgressState)] = new LoadProgressState(this),
+                [typeof(LoadProgressState)] = new LoadProgressState(this, services.Single<IPlayerProgressService>()),
             };
         }
 
