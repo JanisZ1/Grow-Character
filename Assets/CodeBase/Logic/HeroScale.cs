@@ -16,7 +16,7 @@ namespace Assets.CodeBase.Logic
         private void Start() =>
             _inputService.MouseButtonDown += AddScale;
 
-        private void OnDestroy() => 
+        private void OnDestroy() =>
             _inputService.MouseButtonDown -= AddScale;
 
         private void AddScale() =>

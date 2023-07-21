@@ -2,9 +2,5 @@
 {
     public class HeroScaleService : IHeroScaleService
     {
-        public HeroScaleService()
-        {
-
-        }
     }
 }

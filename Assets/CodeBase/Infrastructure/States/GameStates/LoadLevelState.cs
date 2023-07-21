@@ -1,7 +1,6 @@
 ﻿using Assets.CodeBase.Infrastructure.Services.Factory;
 using Assets.CodeBase.Infrastructure.Services.HeroHandler;
 using Assets.CodeBase.Infrastructure.Services.InputService;
-using System;
 using UnityEngine;
 
 namespace Assets.CodeBase.Infrastructure.States.GameStates
@@ -31,7 +30,12 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
             _inputService.StartUpdate();
             InitializeHero();
             InitializeCinemachine();
+
+            EnterLoadProgress();
         }
+
+        private void EnterLoadProgress() =>
+            _stateMachine.Enter<LoadProgressState>();
 
         private void InitializeHero()
         {
