@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 2fec23d5893e07c4d8c10c84a7d91af1
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Prilly Monly
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 46bf35fac102b4242b2de6445dbf604e, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
