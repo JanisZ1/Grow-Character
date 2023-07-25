@@ -19,7 +19,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
             _states = new Dictionary<Type, IExitableState>()
             {
                 [typeof(BootstrapState)] = new BootstrapState(this, coroutineRunner, sceneLoader, services),
-                [typeof(LoadLevelState)] = new LoadLevelState(this, services.Single<IHeroFactory>(), services.Single<IHeroHandler>(), services.Single<ICinemachineFactory>(), services.Single<IInputService>()),
+                [typeof(LoadLevelState)] = new LoadLevelState(this, services.Single<IHeroFactory>(), services.Single<IHeroHandler>(), services.Single<ICinemachineFactory>(), services.Single<IUiFactory>(), services.Single<IInputService>()),
                 [typeof(LoadProgressState)] = new LoadProgressState(this, services.Single<IPlayerProgressService>()),
             };
         }

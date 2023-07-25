@@ -11,14 +11,16 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
         private readonly IHeroFactory _heroFactory;
         private readonly IHeroHandler _heroHandler;
         private readonly ICinemachineFactory _cinemachineFactory;
+        private readonly IUiFactory _uiFactory;
         private readonly IInputService _inputService;
 
-        public LoadLevelState(GameStateMachine gameStateMachine, IHeroFactory heroFactory, IHeroHandler heroHandler, ICinemachineFactory cinemachineFactory, IInputService inputService)
+        public LoadLevelState(GameStateMachine gameStateMachine, IHeroFactory heroFactory, IHeroHandler heroHandler, ICinemachineFactory cinemachineFactory, IUiFactory uiFactory, IInputService inputService)
         {
             _stateMachine = gameStateMachine;
             _heroFactory = heroFactory;
             _heroHandler = heroHandler;
             _cinemachineFactory = cinemachineFactory;
+            _uiFactory = uiFactory;
             _inputService = inputService;
         }
 
@@ -30,7 +32,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
             _inputService.StartUpdate();
             InitializeHero();
             InitializeCinemachine();
-
+            _uiFactory.CreateUiRoot();
             EnterLoadProgress();
         }
 

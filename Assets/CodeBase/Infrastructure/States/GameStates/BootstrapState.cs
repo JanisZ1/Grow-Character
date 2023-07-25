@@ -41,6 +41,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
             _services.Register<IHeroHandler>(new HeroHandler());
             _services.Register<IHeroFactory>(new HeroFactory(_services.Single<IAssets>(), _services.Single<IInputService>(), _services.Single<IPlayerProgressService>()));
             _services.Register<ICinemachineFactory>(new CinemachineFactory(_services.Single<IAssets>(), _services.Single<IHeroHandler>()));
+            _services.Register<IUiFactory>(new UiFactory(_services.Single<IAssets>()));
         }
 
         private void OnLoaded() =>
