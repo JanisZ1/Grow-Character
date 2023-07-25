@@ -38,18 +38,16 @@ namespace Assets.CodeBase.Logic.Hud
 
         private void OpenOrCloseShop()
         {
+            if (!_shopOpened)
             {
-                if (!_shopOpened)
-                {
-                    _shopOpened = true;
-                    _windowService.OpenShop();
-                }
-                else
-                {
-                    _shopOpened = false;
-                    _windowService.CloseShop();
-                };
-            };
+                _shopOpened = true;
+                _windowService.OpenShop();
+            }
+            else
+            {
+                _shopOpened = false;
+                _windowService.CloseShop();
+            }
         }
 
         private void UpdateHud() =>

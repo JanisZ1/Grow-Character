@@ -4,7 +4,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
 {
     public class LoadProgressState : IState
     {
-        private GameStateMachine _gameStateMachine;
+        private readonly GameStateMachine _gameStateMachine;
         private readonly IPlayerProgressService _playerProgressService;
 
         public LoadProgressState(GameStateMachine gameStateMachine, IPlayerProgressService playerProgressService)

@@ -1,5 +1,7 @@
-﻿using Assets.CodeBase.Infrastructure.Services.Factory;
+﻿using Assets.CodeBase.Infrastructure.Services.Factory.CinemachineFactory;
+using Assets.CodeBase.Infrastructure.Services.Factory.HeroFactory;
 using Assets.CodeBase.Infrastructure.Services.Factory.HudFactory;
+using Assets.CodeBase.Infrastructure.Services.Factory.UiFactoryService;
 using Assets.CodeBase.Infrastructure.Services.HeroHandler;
 using Assets.CodeBase.Infrastructure.Services.InputService;
 using UnityEngine;
@@ -8,7 +10,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
 {
     public class LoadLevelState : IPayloadedState<string>
     {
-        private GameStateMachine _stateMachine;
+        private readonly GameStateMachine _stateMachine;
         private readonly IHudFactory _hudFactory;
         private readonly IHeroFactory _heroFactory;
         private readonly IHeroHandler _heroHandler;

@@ -1,7 +1,7 @@
 ﻿using Assets.CodeBase.Infrastructure.Services.AssetProvider;
 using UnityEngine;
 
-namespace Assets.CodeBase.Infrastructure.Services.Factory
+namespace Assets.CodeBase.Infrastructure.Services.Factory.UiFactoryService
 {
     public class UiFactory : IUiFactory
     {

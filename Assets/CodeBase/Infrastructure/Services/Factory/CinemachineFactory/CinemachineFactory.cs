@@ -1,11 +1,11 @@
 ﻿using Assets.CodeBase.Infrastructure.Services.AssetProvider;
 using Assets.CodeBase.Infrastructure.Services.HeroHandler;
-using Assets.CodeBase.Logic;
+using Assets.CodeBase.Logic.Hero;
 using Cinemachine;
 using UnityEngine;
 using CinemachineVirtualCamera = Cinemachine.CinemachineVirtualCamera;
 
-namespace Assets.CodeBase.Infrastructure.Services.Factory
+namespace Assets.CodeBase.Infrastructure.Services.Factory.CinemachineFactory
 {
     public class CinemachineFactory : ICinemachineFactory
     {

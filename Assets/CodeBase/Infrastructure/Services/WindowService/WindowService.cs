@@ -1,5 +1,5 @@
-﻿using Assets.CodeBase.Infrastructure.Services.Factory;
-using Assets.CodeBase.Logic;
+﻿using Assets.CodeBase.Infrastructure.Services.Factory.UiFactoryService;
+using Assets.CodeBase.Logic.Ui;
 using UnityEngine;
 
 namespace Assets.CodeBase.Infrastructure.Services.WindowService

@@ -1,7 +1,9 @@
 ﻿using Assets.CodeBase.Infrastructure.Services;
 using Assets.CodeBase.Infrastructure.Services.AssetProvider;
-using Assets.CodeBase.Infrastructure.Services.Factory;
+using Assets.CodeBase.Infrastructure.Services.Factory.CinemachineFactory;
+using Assets.CodeBase.Infrastructure.Services.Factory.HeroFactory;
 using Assets.CodeBase.Infrastructure.Services.Factory.HudFactory;
+using Assets.CodeBase.Infrastructure.Services.Factory.UiFactoryService;
 using Assets.CodeBase.Infrastructure.Services.HeroHandler;
 using Assets.CodeBase.Infrastructure.Services.InputService;
 using Assets.CodeBase.Infrastructure.Services.PlayerProgressService;
@@ -11,11 +13,11 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
 {
     public class BootstrapState : IState
     {
-        private SceneLoader _sceneLoader;
-        private AllServices _services;
-        private string _sceneName = "Main";
+        private readonly SceneLoader _sceneLoader;
+        private readonly AllServices _services;
+        private readonly string _sceneName = "Main";
 
-        private GameStateMachine _stateMachine;
+        private readonly GameStateMachine _stateMachine;
         private readonly ICoroutineRunner _coroutineRunner;
 
         public BootstrapState(GameStateMachine gameStateMachine, ICoroutineRunner coroutineRunner, SceneLoader sceneLoader, AllServices services)

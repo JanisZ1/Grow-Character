@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.CodeBase.Logic
 {
-    class MoneyEarn : MonoBehaviour
+    public class MoneyEarn : MonoBehaviour
     {
         private IInputService _inputService;
         private IPlayerProgressService _playerProgressService;

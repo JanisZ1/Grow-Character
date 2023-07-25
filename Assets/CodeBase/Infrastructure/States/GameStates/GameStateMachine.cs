@@ -1,6 +1,8 @@
 ﻿using Assets.CodeBase.Infrastructure.Services;
-using Assets.CodeBase.Infrastructure.Services.Factory;
+using Assets.CodeBase.Infrastructure.Services.Factory.CinemachineFactory;
+using Assets.CodeBase.Infrastructure.Services.Factory.HeroFactory;
 using Assets.CodeBase.Infrastructure.Services.Factory.HudFactory;
+using Assets.CodeBase.Infrastructure.Services.Factory.UiFactoryService;
 using Assets.CodeBase.Infrastructure.Services.HeroHandler;
 using Assets.CodeBase.Infrastructure.Services.InputService;
 using Assets.CodeBase.Infrastructure.Services.PlayerProgressService;
@@ -13,7 +15,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
     {
         private IExitableState _currentState;
 
-        private Dictionary<Type, IExitableState> _states;
+        private readonly Dictionary<Type, IExitableState> _states;
 
         public GameStateMachine(ICoroutineRunner coroutineRunner, SceneLoader sceneLoader, AllServices services)
         {

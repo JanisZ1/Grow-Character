@@ -2,9 +2,10 @@
 using Assets.CodeBase.Infrastructure.Services.InputService;
 using Assets.CodeBase.Infrastructure.Services.PlayerProgressService;
 using Assets.CodeBase.Logic;
+using Assets.CodeBase.Logic.Hero;
 using UnityEngine;
 
-namespace Assets.CodeBase.Infrastructure.Services.Factory
+namespace Assets.CodeBase.Infrastructure.Services.Factory.HeroFactory
 {
     public class HeroFactory : IHeroFactory
     {
