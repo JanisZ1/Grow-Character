@@ -1,9 +1,11 @@
 ﻿using Assets.CodeBase.Infrastructure.Services;
 using Assets.CodeBase.Infrastructure.Services.AssetProvider;
 using Assets.CodeBase.Infrastructure.Services.Factory;
+using Assets.CodeBase.Infrastructure.Services.Factory.HudFactory;
 using Assets.CodeBase.Infrastructure.Services.HeroHandler;
 using Assets.CodeBase.Infrastructure.Services.InputService;
 using Assets.CodeBase.Infrastructure.Services.PlayerProgressService;
+using Assets.CodeBase.Infrastructure.Services.WindowService;
 
 namespace Assets.CodeBase.Infrastructure.States.GameStates
 {
@@ -42,6 +44,8 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
             _services.Register<IHeroFactory>(new HeroFactory(_services.Single<IAssets>(), _services.Single<IInputService>(), _services.Single<IPlayerProgressService>()));
             _services.Register<ICinemachineFactory>(new CinemachineFactory(_services.Single<IAssets>(), _services.Single<IHeroHandler>()));
             _services.Register<IUiFactory>(new UiFactory(_services.Single<IAssets>()));
+            _services.Register<IWindowService>(new WindowService(_services.Single<IUiFactory>()));
+            _services.Register<IHudFactory>(new HudFactory(_services.Single<IAssets>(), _services.Single<IInputService>(), _services.Single<IWindowService>(), _services.Single<IPlayerProgressService>()));
         }
 
         private void OnLoaded() =>

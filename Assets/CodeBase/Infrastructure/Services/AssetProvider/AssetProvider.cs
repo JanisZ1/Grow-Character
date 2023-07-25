@@ -15,5 +15,11 @@ namespace Assets.CodeBase.Infrastructure.Services.AssetProvider
             var prefab = Resources.Load<GameObject>(path);
             return Object.Instantiate(prefab);
         }
+
+        public GameObject Instantiate(string path, Transform uiRootTransform)
+        {
+            var prefab = Resources.Load<GameObject>(path);
+            return Object.Instantiate(prefab, uiRootTransform);
+        }
     }
 }

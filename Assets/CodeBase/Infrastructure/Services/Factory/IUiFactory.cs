@@ -3,5 +3,6 @@
     public interface IUiFactory : IService
     {
         void CreateUiRoot();
+        void CreateShop();
     }
 }

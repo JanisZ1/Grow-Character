@@ -1,0 +1,29 @@
+﻿using Assets.CodeBase.Infrastructure.Services.InputService;
+using Assets.CodeBase.Infrastructure.Services.PlayerProgressService;
+using Assets.CodeBase.Infrastructure.Services.WindowService;
+using UnityEngine;
+
+namespace Assets.CodeBase.Logic.Hud
+{
+    public class Hud : MonoBehaviour
+    {
+        private IInputService _inputService;
+        private IWindowService _windowService;
+        private IPlayerProgressService _playerProgress;
+
+        public void Construct(IInputService inputService, IWindowService windowService, IPlayerProgressService playerProgress)
+        {
+            _inputService = inputService;
+            _windowService = windowService;
+            _playerProgress = playerProgress;
+        }
+
+        private void Start()
+        {
+            _inputService.EKeyDown += () =>
+            {
+                _windowService.OpenShop();
+            };
+        }
+    }
+}

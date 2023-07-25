@@ -6,5 +6,6 @@ namespace Assets.CodeBase.Infrastructure.Services.AssetProvider
     {
         GameObject Instantiate(string path, Vector3 at);
         GameObject Instantiate(string path);
+        GameObject Instantiate(string shopPath, Transform uiRootTransform);
     }
 }

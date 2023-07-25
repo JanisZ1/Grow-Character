@@ -6,5 +6,8 @@
         public const string CineMachineVirtualCameraPath = "Prefabs/Virtual Camera";
         public const string CameraRotatePointPath = "Prefabs/CameraRotatePoint";
         public const string UiRootPath = "Prefabs/Ui/Ui_root";
+        public const string ShopPath = "Prefabs/Ui/Shop";
+
+        public const string HudPath = "Prefabs/Ui/Hud";
     }
 }

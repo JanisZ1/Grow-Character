@@ -1,4 +1,5 @@
 ﻿using Assets.CodeBase.Infrastructure.Services.Factory;
+using Assets.CodeBase.Infrastructure.Services.Factory.HudFactory;
 using Assets.CodeBase.Infrastructure.Services.HeroHandler;
 using Assets.CodeBase.Infrastructure.Services.InputService;
 using UnityEngine;
@@ -8,15 +9,17 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
     public class LoadLevelState : IPayloadedState<string>
     {
         private GameStateMachine _stateMachine;
+        private readonly IHudFactory _hudFactory;
         private readonly IHeroFactory _heroFactory;
         private readonly IHeroHandler _heroHandler;
         private readonly ICinemachineFactory _cinemachineFactory;
         private readonly IUiFactory _uiFactory;
         private readonly IInputService _inputService;
 
-        public LoadLevelState(GameStateMachine gameStateMachine, IHeroFactory heroFactory, IHeroHandler heroHandler, ICinemachineFactory cinemachineFactory, IUiFactory uiFactory, IInputService inputService)
+        public LoadLevelState(GameStateMachine gameStateMachine, IHudFactory hudFactory, IHeroFactory heroFactory, IHeroHandler heroHandler, ICinemachineFactory cinemachineFactory, IUiFactory uiFactory, IInputService inputService)
         {
             _stateMachine = gameStateMachine;
+            _hudFactory = hudFactory;
             _heroFactory = heroFactory;
             _heroHandler = heroHandler;
             _cinemachineFactory = cinemachineFactory;
@@ -33,6 +36,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
             InitializeHero();
             InitializeCinemachine();
             _uiFactory.CreateUiRoot();
+            _hudFactory.CreateHud();
             EnterLoadProgress();
         }
 
