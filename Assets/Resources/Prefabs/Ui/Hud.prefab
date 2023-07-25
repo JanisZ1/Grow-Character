@@ -36,7 +36,7 @@ RectTransform:
   - {fileID: 3569915598333802654}
   - {fileID: 4466627222542868096}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -119,6 +119,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _money: {fileID: 965443893198442279}
+  _mass: {fileID: 8441756652147452424}
+  _maxMass: {fileID: 3049678470291904332}
 --- !u!1 &1180103634773370647
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,7 +284,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Mass: 0'
+  m_text: 'Mass: '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f3795bbcc7ac1234db8df805ee0f33bd, type: 2}
   m_sharedMaterial: {fileID: 6482006496066002488, guid: f3795bbcc7ac1234db8df805ee0f33bd,
@@ -560,7 +562,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'MaximumMass: 0'
+  m_text: 'MaximumMass: '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f3795bbcc7ac1234db8df805ee0f33bd, type: 2}
   m_sharedMaterial: {fileID: 6482006496066002488, guid: f3795bbcc7ac1234db8df805ee0f33bd,

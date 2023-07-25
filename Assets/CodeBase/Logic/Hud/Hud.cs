@@ -13,6 +13,11 @@ namespace Assets.CodeBase.Logic.Hud
         private IPlayerProgressService _playerProgress;
 
         [SerializeField] private TextMeshProUGUI _money;
+        [SerializeField] private TextMeshProUGUI _mass;
+        [SerializeField] private TextMeshProUGUI _maxMass;
+
+        private string _massText;
+        private string _maxMassText;
 
         private bool _shopOpened;
 
@@ -25,14 +30,22 @@ namespace Assets.CodeBase.Logic.Hud
 
         private void Start()
         {
-            _playerProgress.PlayerProgress.MoneyData.Changed += UpdateHud;
+            _massText = _mass.text;
+            _maxMassText = _maxMass.text;
+
+            _playerProgress.PlayerProgress.MoneyData.Changed += UpdateMoneyInHud;
+            _playerProgress.PlayerProgress.MassData.Mass.Changed += UpdateMassInHud;
+            _playerProgress.PlayerProgress.MassData.MaxMass.Changed += UpdateMaxMassInHud;
 
             _inputService.EKeyDown += OpenOrCloseShop;
         }
 
         private void OnDestroy()
         {
-            _playerProgress.PlayerProgress.MoneyData.Changed -= UpdateHud;
+            _playerProgress.PlayerProgress.MoneyData.Changed -= UpdateMoneyInHud;
+            _playerProgress.PlayerProgress.MassData.Mass.Changed -= UpdateMassInHud;
+            _playerProgress.PlayerProgress.MassData.MaxMass.Changed -= UpdateMaxMassInHud;
+
             _inputService.EKeyDown -= OpenOrCloseShop;
         }
 
@@ -50,7 +63,13 @@ namespace Assets.CodeBase.Logic.Hud
             }
         }
 
-        private void UpdateHud() =>
+        private void UpdateMaxMassInHud() =>
+            _maxMass.text = _maxMassText + _playerProgress.PlayerProgress.MassData.MaxMass.Current;
+
+        private void UpdateMassInHud() =>
+            _maxMass.text = _massText + _playerProgress.PlayerProgress.MassData.Mass.Current.ToString("0.00");
+
+        private void UpdateMoneyInHud() =>
             _money.text = $"{_playerProgress.PlayerProgress.MoneyData.Money}";
     }
 }
