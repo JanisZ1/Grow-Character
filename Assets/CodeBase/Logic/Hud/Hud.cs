@@ -1,6 +1,7 @@
 ﻿using Assets.CodeBase.Infrastructure.Services.InputService;
 using Assets.CodeBase.Infrastructure.Services.PlayerProgressService;
 using Assets.CodeBase.Infrastructure.Services.WindowService;
+using TMPro;
 using UnityEngine;
 
 namespace Assets.CodeBase.Logic.Hud
@@ -10,6 +11,8 @@ namespace Assets.CodeBase.Logic.Hud
         private IInputService _inputService;
         private IWindowService _windowService;
         private IPlayerProgressService _playerProgress;
+
+        [SerializeField] private TextMeshProUGUI _money;
 
         private bool _shopOpened;
 
@@ -22,7 +25,19 @@ namespace Assets.CodeBase.Logic.Hud
 
         private void Start()
         {
-            _inputService.EKeyDown += () =>
+            _playerProgress.PlayerProgress.MoneyData.Changed += UpdateHud;
+
+            _inputService.EKeyDown += OpenOrCloseShop;
+        }
+
+        private void OnDestroy()
+        {
+            _playerProgress.PlayerProgress.MoneyData.Changed -= UpdateHud;
+            _inputService.EKeyDown -= OpenOrCloseShop;
+        }
+
+        private void OpenOrCloseShop()
+        {
             {
                 if (!_shopOpened)
                 {
@@ -36,5 +51,8 @@ namespace Assets.CodeBase.Logic.Hud
                 };
             };
         }
+
+        private void UpdateHud() =>
+            _money.text = $"{_playerProgress.PlayerProgress.MoneyData.Money}";
     }
 }
