@@ -277,6 +277,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4085397189798343921}
+  - component: {fileID: 2718218146175678093}
   m_Layer: 5
   m_Name: Shop
   m_TagString: Untagged
@@ -306,6 +307,18 @@ RectTransform:
   m_AnchoredPosition: {x: 657.9999, y: 0}
   m_SizeDelta: {x: -1384.0002, y: -60}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2718218146175678093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3665121904005891853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37f80f32902cebf4f843823d22b032f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3970385268421029256
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,7 +523,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 8378863936621530478}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.5470896
+  m_Size: 0.23666014
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

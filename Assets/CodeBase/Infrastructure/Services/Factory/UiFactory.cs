@@ -14,7 +14,7 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory
         public void CreateUiRoot() =>
             _uiRootTransform = _assets.Instantiate(AssetPath.UiRootPath).transform;
 
-        public void CreateShop() =>
+        public GameObject CreateShop() =>
             _assets.Instantiate(AssetPath.ShopPath, _uiRootTransform);
     }
 }

@@ -1,8 +1,10 @@
-﻿namespace Assets.CodeBase.Infrastructure.Services.Factory
+﻿using UnityEngine;
+
+namespace Assets.CodeBase.Infrastructure.Services.Factory
 {
     public interface IUiFactory : IService
     {
         void CreateUiRoot();
-        void CreateShop();
+        GameObject CreateShop();
     }
 }

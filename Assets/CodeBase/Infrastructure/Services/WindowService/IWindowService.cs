@@ -3,5 +3,6 @@
     public interface IWindowService : IService
     {
         void OpenShop();
+        void CloseShop();
     }
 }

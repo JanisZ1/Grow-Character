@@ -11,6 +11,8 @@ namespace Assets.CodeBase.Logic.Hud
         private IWindowService _windowService;
         private IPlayerProgressService _playerProgress;
 
+        private bool _shopOpened;
+
         public void Construct(IInputService inputService, IWindowService windowService, IPlayerProgressService playerProgress)
         {
             _inputService = inputService;
@@ -22,7 +24,16 @@ namespace Assets.CodeBase.Logic.Hud
         {
             _inputService.EKeyDown += () =>
             {
-                _windowService.OpenShop();
+                if (!_shopOpened)
+                {
+                    _shopOpened = true;
+                    _windowService.OpenShop();
+                }
+                else
+                {
+                    _shopOpened = false;
+                    _windowService.CloseShop();
+                };
             };
         }
     }
