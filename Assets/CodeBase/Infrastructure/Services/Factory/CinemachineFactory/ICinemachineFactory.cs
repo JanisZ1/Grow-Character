@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.CodeBase.Infrastructure.Services.Factory
+namespace Assets.CodeBase.Infrastructure.Services.Factory.CinemachineFactory
 {
     public interface ICinemachineFactory : IService
     {

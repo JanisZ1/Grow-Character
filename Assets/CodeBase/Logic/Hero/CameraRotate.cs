@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.CodeBase.Logic
+namespace Assets.CodeBase.Logic.Hero
 {
     public class CameraRotate : MonoBehaviour
     {

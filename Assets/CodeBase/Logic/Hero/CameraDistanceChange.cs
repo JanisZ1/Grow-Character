@@ -1,7 +1,7 @@
 ﻿using Cinemachine;
 using UnityEngine;
 
-namespace Assets.CodeBase.Logic
+namespace Assets.CodeBase.Logic.Hero
 {
     public class CameraDistanceChange : MonoBehaviour
     {

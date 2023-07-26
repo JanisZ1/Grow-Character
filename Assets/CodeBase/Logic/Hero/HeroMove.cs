@@ -1,7 +1,7 @@
 ﻿using Assets.CodeBase.Infrastructure.Services.InputService;
 using UnityEngine;
 
-namespace Assets.CodeBase.Logic
+namespace Assets.CodeBase.Logic.Hero
 {
     public class HeroMove : MonoBehaviour
     {

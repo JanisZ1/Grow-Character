@@ -3,13 +3,12 @@
 [Serializable]
 public class MoneyData
 {
-    public float Money;
-
+    public float Count;
     public event Action Changed;
 
-    public void Earn(Money money)
+    public void Earn(float moneyValue)
     {
-        Money += money.Value;
+        Count += moneyValue;
         Changed?.Invoke();
     }
 }

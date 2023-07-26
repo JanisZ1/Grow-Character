@@ -11,7 +11,7 @@ namespace Assets.CodeBase.Infrastructure.Services.InputService
         private readonly ICoroutineRunner _coroutineRunner;
         private Coroutine _coroutine;
 
-        public event Action SpaceKeyDown;
+        public event Action EKeyDown;
         public event Action MouseButtonDown;
 
         public Vector3 Axis => GetAxis();
@@ -29,8 +29,8 @@ namespace Assets.CodeBase.Infrastructure.Services.InputService
         {
             yield return null;
 
-            if (Input.GetKeyDown(KeyCode.Space))
-                SpaceKeyDown?.Invoke();
+            if (Input.GetKeyDown(KeyCode.E))
+                EKeyDown?.Invoke();
 
             if (Input.GetMouseButtonDown(0))
                 MouseButtonDown?.Invoke();

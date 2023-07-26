@@ -1,7 +1,7 @@
 ﻿using Assets.CodeBase.Infrastructure.Services.HeroHandler;
 using UnityEngine;
 
-namespace Assets.CodeBase.Logic
+namespace Assets.CodeBase.Logic.Hero
 {
     public class CameraRotatePoint : MonoBehaviour
     {
