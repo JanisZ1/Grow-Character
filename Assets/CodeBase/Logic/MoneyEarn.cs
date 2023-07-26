@@ -21,15 +21,11 @@ namespace Assets.CodeBase.Logic
         private void OnDestroy() =>
             _inputService.MouseButtonDown -= Earn;
 
-        public void Earn()
+        private void Earn()
         {
-            Money money = new Money
-            {
-                //TODO: Get value from current buyed upgrades
-                Value = 2
-            };
+            //float moneyValue = _playerProgressService.PlayerProgress.MoneyData.Value;
 
-            _playerProgressService.PlayerProgress.MoneyData.Earn(money);
+            //_playerProgressService.PlayerProgress.MoneyData.Earn(moneyValue);
         }
     }
 }
