@@ -70,6 +70,6 @@ namespace Assets.CodeBase.Logic.Hud
             _mass.text = _massText + _playerProgress.PlayerProgress.MassData.Mass.Current.ToString("0.00");
 
         private void UpdateMoneyInHud() =>
-            _money.text = $"{_playerProgress.PlayerProgress.MoneyData.Count}";
+            _money.text = _playerProgress.PlayerProgress.MoneyData.Count.ToString("0.0");
     }
 }
