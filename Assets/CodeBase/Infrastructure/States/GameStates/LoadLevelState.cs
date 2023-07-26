@@ -4,6 +4,7 @@ using Assets.CodeBase.Infrastructure.Services.Factory.HudFactory;
 using Assets.CodeBase.Infrastructure.Services.Factory.UiFactoryService;
 using Assets.CodeBase.Infrastructure.Services.HeroHandler;
 using Assets.CodeBase.Infrastructure.Services.InputService;
+using Assets.CodeBase.Infrastructure.Services.StaticData;
 using UnityEngine;
 
 namespace Assets.CodeBase.Infrastructure.States.GameStates
@@ -11,6 +12,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
     public class LoadLevelState : IPayloadedState<string>
     {
         private readonly GameStateMachine _stateMachine;
+        private readonly IStaticDataService _staticData;
         private readonly IHudFactory _hudFactory;
         private readonly IHeroFactory _heroFactory;
         private readonly IHeroHandler _heroHandler;
@@ -18,9 +20,10 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
         private readonly IUiFactory _uiFactory;
         private readonly IInputService _inputService;
 
-        public LoadLevelState(GameStateMachine gameStateMachine, IHudFactory hudFactory, IHeroFactory heroFactory, IHeroHandler heroHandler, ICinemachineFactory cinemachineFactory, IUiFactory uiFactory, IInputService inputService)
+        public LoadLevelState(GameStateMachine gameStateMachine, IStaticDataService staticData, IHudFactory hudFactory, IHeroFactory heroFactory, IHeroHandler heroHandler, ICinemachineFactory cinemachineFactory, IUiFactory uiFactory, IInputService inputService)
         {
             _stateMachine = gameStateMachine;
+            _staticData = staticData;
             _hudFactory = hudFactory;
             _heroFactory = heroFactory;
             _heroHandler = heroHandler;
@@ -34,6 +37,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
 
         private void InitializeLevel()
         {
+            _staticData.Load();
             _inputService.StartUpdate();
             InitializeHero();
             InitializeCinemachine();

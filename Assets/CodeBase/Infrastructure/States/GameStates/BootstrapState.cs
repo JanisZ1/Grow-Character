@@ -7,6 +7,7 @@ using Assets.CodeBase.Infrastructure.Services.Factory.UiFactoryService;
 using Assets.CodeBase.Infrastructure.Services.HeroHandler;
 using Assets.CodeBase.Infrastructure.Services.InputService;
 using Assets.CodeBase.Infrastructure.Services.PlayerProgressService;
+using Assets.CodeBase.Infrastructure.Services.StaticData;
 using Assets.CodeBase.Infrastructure.Services.WindowService;
 
 namespace Assets.CodeBase.Infrastructure.States.GameStates
@@ -40,6 +41,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
         private void RegisterServices()
         {
             _services.Register<IAssets>(new AssetProvider());
+            _services.Register<IStaticDataService>(new StaticDataService());
             _services.Register<IPlayerProgressService>(new PlayerProgressService());
             _services.Register<IInputService>(new InputService(_coroutineRunner));
             _services.Register<IHeroHandler>(new HeroHandler());
