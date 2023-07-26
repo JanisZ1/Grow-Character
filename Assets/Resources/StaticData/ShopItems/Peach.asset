@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d6fc45c76bce1148858fa003a42c14d, type: 3}
   m_Name: Peach
   m_EditorClassIdentifier: 
-  Calories: 0
-  MaximumMass: 0
+  Calories: 0.7
+  MaximumMass: 6
   ShopItemType: 0

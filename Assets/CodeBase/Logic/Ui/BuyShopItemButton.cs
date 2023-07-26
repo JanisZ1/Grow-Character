@@ -1,4 +1,6 @@
-﻿using Assets.CodeBase.Infrastructure.Services.PlayerProgressService;
+﻿using Assets.CodeBase.Infrastructure.Services.Observer;
+using Assets.CodeBase.Infrastructure.Services.StaticData;
+using Assets.CodeBase.Infrastructure.StaticData;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,12 +9,19 @@ namespace Assets.CodeBase.Logic.Ui
     public class BuyShopItemButton : MonoBehaviour
     {
         [SerializeField] private Button _button;
-        [SerializeField] private float _moneyValue;
+        [SerializeField] private ShopItemType _shopItemType;
 
-        private readonly IPlayerProgressService _playerProgressService;
+        private IStaticDataService _staticData;
+        private IShopItemObserver _shopItemObserver;
+        private ShopItemData _shopItemData;
 
-        public BuyShopItemButton(IPlayerProgressService playerProgressService) =>
-            _playerProgressService = playerProgressService;
+        public void Construct(IStaticDataService staticData, IShopItemObserver shopItemObserver)
+        {
+            _staticData = staticData;
+            _shopItemObserver = shopItemObserver;
+
+            _shopItemData = _staticData.ForShopItem(_shopItemType);
+        }
 
         private void Start() =>
             _button.onClick.AddListener(BuyItem);
@@ -20,9 +29,7 @@ namespace Assets.CodeBase.Logic.Ui
         private void OnDestroy() =>
             _button.onClick.RemoveListener(BuyItem);
 
-        private void BuyItem()
-        {
-            //_playerProgressService.PlayerProgress.MoneyData.Value = _moneyValue;
-        }
+        private void BuyItem() =>
+            _shopItemObserver.OnBuyed(_shopItemData);
     }
 }

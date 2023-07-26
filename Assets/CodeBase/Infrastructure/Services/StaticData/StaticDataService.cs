@@ -9,7 +9,7 @@ namespace Assets.CodeBase.Infrastructure.Services.StaticData
     {
         private Dictionary<ShopItemType, ShopItemData> _shopItems;
 
-        private const string ShopItemsStaticDataPath = "Resources/StaticData";
+        private const string ShopItemsStaticDataPath = "StaticData/ShopItems";
 
         public void Load()
         {

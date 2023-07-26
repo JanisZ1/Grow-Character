@@ -1,5 +1,7 @@
 ﻿using Assets.CodeBase.Infrastructure.Services.InputService;
+using Assets.CodeBase.Infrastructure.Services.Observer;
 using Assets.CodeBase.Infrastructure.Services.PlayerProgressService;
+using Assets.CodeBase.Infrastructure.StaticData;
 using UnityEngine;
 
 namespace Assets.CodeBase.Logic
@@ -8,24 +10,33 @@ namespace Assets.CodeBase.Logic
     {
         private IInputService _inputService;
         private IPlayerProgressService _playerProgressService;
+        private IShopItemObserver _shopItemObserver;
 
-        public void Construct(IInputService inputService, IPlayerProgressService playerProgressService)
+        private float _earnValue;
+
+        public void Construct(IInputService inputService, IPlayerProgressService playerProgressService, IShopItemObserver shopItemObserver)
         {
             _inputService = inputService;
             _playerProgressService = playerProgressService;
+            _shopItemObserver = shopItemObserver;
         }
 
-        private void Start() =>
-            _inputService.MouseButtonDown += Earn;
-
-        private void OnDestroy() =>
-            _inputService.MouseButtonDown -= Earn;
-
-        private void Earn()
+        private void Start()
         {
-            //float moneyValue = _playerProgressService.PlayerProgress.MoneyData.Value;
-
-            //_playerProgressService.PlayerProgress.MoneyData.Earn(moneyValue);
+            _inputService.MouseButtonDown += Earn;
+            _shopItemObserver.Buyed += ChangeEarnValue;
         }
+
+        private void OnDestroy()
+        {
+            _inputService.MouseButtonDown -= Earn;
+            _shopItemObserver.Buyed -= ChangeEarnValue;
+        }
+
+        private void ChangeEarnValue(ShopItemData shopItemData) =>
+            _earnValue = shopItemData.Calories;
+
+        private void Earn() =>
+            _playerProgressService.PlayerProgress.MoneyData.Earn(_earnValue);
     }
 }
