@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6587193617485090198}
   - component: {fileID: 3912613781605184838}
   - component: {fileID: 8385054386694798590}
+  - component: {fileID: 2331401896693169510}
   m_Layer: 6
   m_Name: Hero
   m_TagString: Untagged
@@ -165,7 +166,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _heroTransform: {fileID: 1307777069076094500}
-  _scaleFactor: 0.001
 --- !u!114 &8385054386694798590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,5 +176,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 927e0ca54fb2845429233b0812b56176, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2331401896693169510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349670710905306374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e0fcbbe3705b1a49b8746c3d68c6554, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

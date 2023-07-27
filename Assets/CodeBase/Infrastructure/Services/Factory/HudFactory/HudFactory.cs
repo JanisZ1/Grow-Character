@@ -28,4 +28,5 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory.HudFactory
             hud.GetComponent<Hud>().Construct(_inputService, _windowService, _playerProgress);
         }
     }
+
 }

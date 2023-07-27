@@ -1,6 +1,9 @@
 ﻿using Assets.CodeBase.Infrastructure.Services;
 using Assets.CodeBase.Infrastructure.Services.AssetProvider;
+using Assets.CodeBase.Infrastructure.Services.CoinSpawnerHandler;
+using Assets.CodeBase.Infrastructure.Services.CoinSpawnService;
 using Assets.CodeBase.Infrastructure.Services.Factory.CinemachineFactory;
+using Assets.CodeBase.Infrastructure.Services.Factory.CoinFactory;
 using Assets.CodeBase.Infrastructure.Services.Factory.HeroFactory;
 using Assets.CodeBase.Infrastructure.Services.Factory.HudFactory;
 using Assets.CodeBase.Infrastructure.Services.Factory.UiFactoryService;
@@ -48,6 +51,9 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
             _services.Register<IInputService>(new InputService(_coroutineRunner));
             _services.Register<IHeroHandler>(new HeroHandler());
             _services.Register<IHeroFactory>(new HeroFactory(_services.Single<IAssets>(), _services.Single<IInputService>(), _services.Single<IPlayerProgressService>(), _services.Single<IShopItemObserver>()));
+            _services.Register<ICoinSpawnerHandler>(new CoinSpawnerHandler());
+            _services.Register<ICoinSpawnService>(new CoinSpawnService(_coroutineRunner, _services.Single<ICoinSpawnerHandler>()));
+            _services.Register<ICoinFactory>(new CoinFactory(_services.Single<IAssets>(), _services.Single<IPlayerProgressService>()));
             _services.Register<ICinemachineFactory>(new CinemachineFactory(_services.Single<IAssets>(), _services.Single<IHeroHandler>()));
             _services.Register<IUiFactory>(new UiFactory(_services.Single<IAssets>(), _services.Single<IStaticDataService>(), _services.Single<IShopItemObserver>()));
             _services.Register<IWindowService>(new WindowService(_services.Single<IUiFactory>()));
