@@ -165,7 +165,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _heroTransform: {fileID: 1307777069076094500}
-  _scaleFactor: 0.001
 --- !u!114 &8385054386694798590
 MonoBehaviour:
   m_ObjectHideFlags: 0

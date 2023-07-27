@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a5d82f4bf9071f44abe423a7e5fad98, type: 3}
   m_Name: Main
   m_EditorClassIdentifier: 
+  LevelName: Main
   CoinSpawners:
   - Position: {x: -96.03583, y: -0.99160504, z: -98.522545}
   - Position: {x: -96.03583, y: -0.99160504, z: -94.522545}
