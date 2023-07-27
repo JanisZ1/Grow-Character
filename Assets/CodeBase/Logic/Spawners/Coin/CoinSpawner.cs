@@ -11,6 +11,6 @@ namespace Assets.CodeBase.Logic.Spawners.Coin
             _coinFactory = coinFactory;
 
         public void Spawn() =>
-            _coinFactory.CreateCoin(at: transform.position);
+            _coinFactory.CreateCoin(at: transform.position, transform);
     }
 }

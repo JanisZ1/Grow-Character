@@ -1,4 +1,5 @@
 ﻿using Assets.CodeBase.Infrastructure.Services.CoinSpawnerHandler;
+using Assets.CodeBase.Infrastructure.Services.CoinSpawnService;
 using Assets.CodeBase.Infrastructure.Services.Factory.CinemachineFactory;
 using Assets.CodeBase.Infrastructure.Services.Factory.CoinFactory;
 using Assets.CodeBase.Infrastructure.Services.Factory.HeroFactory;
@@ -17,6 +18,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
     public class LoadLevelState : IPayloadedState<string>
     {
         private readonly GameStateMachine _stateMachine;
+        private readonly ICoinSpawnService _coinSpawnService;
         private readonly ICoinSpawnerHandler _coinSpawnerHandler;
         private readonly ICoinFactory _coinFactory;
         private readonly IStaticDataService _staticData;
@@ -27,9 +29,10 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
         private readonly IUiFactory _uiFactory;
         private readonly IInputService _inputService;
 
-        public LoadLevelState(GameStateMachine gameStateMachine, ICoinSpawnerHandler coinSpawnerHandler, ICoinFactory coinFactory, IStaticDataService staticData, IHudFactory hudFactory, IHeroFactory heroFactory, IHeroHandler heroHandler, ICinemachineFactory cinemachineFactory, IUiFactory uiFactory, IInputService inputService)
+        public LoadLevelState(GameStateMachine gameStateMachine, ICoinSpawnService coinSpawnService, ICoinSpawnerHandler coinSpawnerHandler, ICoinFactory coinFactory, IStaticDataService staticData, IHudFactory hudFactory, IHeroFactory heroFactory, IHeroHandler heroHandler, ICinemachineFactory cinemachineFactory, IUiFactory uiFactory, IInputService inputService)
         {
             _stateMachine = gameStateMachine;
+            _coinSpawnService = coinSpawnService;
             _coinSpawnerHandler = coinSpawnerHandler;
             _coinFactory = coinFactory;
             _staticData = staticData;
@@ -51,10 +54,11 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
 
             _inputService.StartUpdate();
             InitializeHero();
+            InitializeCinemachine();
 
             HandleCoinSpawners(levelStaticData);
+            _coinSpawnService.StartSpawn();
 
-            InitializeCinemachine();
             _uiFactory.CreateUiRoot();
             _hudFactory.CreateHud();
             EnterLoadProgress();
@@ -64,9 +68,11 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
         {
             List<CoinSpawner> coinSpawners = new List<CoinSpawner>();
 
-            foreach (CoinSpawnPointData coinSpawner in levelStaticData.CoinSpawners)
-                coinSpawners.Add(_coinFactory.CreateSpawner(coinSpawner.Position));
-
+            foreach (CoinSpawnPointData coinSpawnerData in levelStaticData.CoinSpawners)
+            {
+                CoinSpawner coinSpawner = _coinFactory.CreateSpawner(coinSpawnerData.Position);
+                coinSpawners.Add(coinSpawner);
+            }
             _coinSpawnerHandler.CoinSpawners = coinSpawners;
         }
 

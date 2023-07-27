@@ -9,5 +9,6 @@
         public const string ShopPath = "Prefabs/Ui/Shop";
         public const string HudPath = "Prefabs/Ui/Hud";
         public const string CoinSpawnerPath = "Prefabs/CoinSpawner";
+        public const string CoinPath = "Prefabs/Coin";
     }
 }

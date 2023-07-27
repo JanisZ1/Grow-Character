@@ -10,7 +10,7 @@ namespace Assets.CodeBase.Logic.Spawners.Coin
         {
             List<CoinSpawnPointData> spawnPoints = new List<CoinSpawnPointData>();
 
-            BoxCollider collider = spawnArea.GetComponentInParent<BoxCollider>();
+            BoxCollider collider = spawnArea.GetComponent<BoxCollider>();
             Transform transform = spawnArea.GetComponent<Transform>();
 
             Vector3 min = MinimalBound(collider);

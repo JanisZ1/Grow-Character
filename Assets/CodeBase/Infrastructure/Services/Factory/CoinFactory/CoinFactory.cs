@@ -13,7 +13,7 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory.CoinFactory
 
         public CoinSpawner CreateSpawner(Vector3 at)
         {
-            GameObject gameObject = _assets.Instantiate(AssetPath.CoinSpawnerPath);
+            GameObject gameObject = _assets.Instantiate(AssetPath.CoinSpawnerPath, at);
 
             CoinSpawner coinSpawner = gameObject.GetComponent<CoinSpawner>();
             coinSpawner.Construct(this);
@@ -21,9 +21,7 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory.CoinFactory
             return coinSpawner;
         }
 
-        public void CreateCoin(Vector3 at)
-        {
-
-        }
+        public GameObject CreateCoin(Vector3 at, Transform parent) =>
+            _assets.Instantiate(AssetPath.CoinPath, parent, at);
     }
 }
