@@ -53,7 +53,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
             _services.Register<IHeroFactory>(new HeroFactory(_services.Single<IAssets>(), _services.Single<IInputService>(), _services.Single<IPlayerProgressService>(), _services.Single<IShopItemObserver>()));
             _services.Register<ICoinSpawnerHandler>(new CoinSpawnerHandler());
             _services.Register<ICoinSpawnService>(new CoinSpawnService(_coroutineRunner, _services.Single<ICoinSpawnerHandler>()));
-            _services.Register<ICoinFactory>(new CoinFactory(_services.Single<IAssets>()));
+            _services.Register<ICoinFactory>(new CoinFactory(_services.Single<IAssets>(), _services.Single<IPlayerProgressService>()));
             _services.Register<ICinemachineFactory>(new CinemachineFactory(_services.Single<IAssets>(), _services.Single<IHeroHandler>()));
             _services.Register<IUiFactory>(new UiFactory(_services.Single<IAssets>(), _services.Single<IStaticDataService>(), _services.Single<IShopItemObserver>()));
             _services.Register<IWindowService>(new WindowService(_services.Single<IUiFactory>()));
