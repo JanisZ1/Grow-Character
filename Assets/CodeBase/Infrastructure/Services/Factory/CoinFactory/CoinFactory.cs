@@ -8,14 +8,17 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory.CoinFactory
     {
         private readonly IAssets _assets;
 
-        public CoinFactory(IAssets assets) => 
+        public CoinFactory(IAssets assets) =>
             _assets = assets;
 
-        public void CreateSpawner(Vector3 at)
+        public CoinSpawner CreateSpawner(Vector3 at)
         {
             GameObject gameObject = _assets.Instantiate(AssetPath.CoinSpawnerPath);
 
-            gameObject.GetComponent<CoinSpawner>().Construct(this);
+            CoinSpawner coinSpawner = gameObject.GetComponent<CoinSpawner>();
+            coinSpawner.Construct(this);
+
+            return coinSpawner;
         }
 
         public void CreateCoin(Vector3 at)

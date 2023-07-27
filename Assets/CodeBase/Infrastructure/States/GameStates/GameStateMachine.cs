@@ -1,4 +1,5 @@
 ﻿using Assets.CodeBase.Infrastructure.Services;
+using Assets.CodeBase.Infrastructure.Services.CoinSpawnerHandler;
 using Assets.CodeBase.Infrastructure.Services.Factory.CinemachineFactory;
 using Assets.CodeBase.Infrastructure.Services.Factory.CoinFactory;
 using Assets.CodeBase.Infrastructure.Services.Factory.HeroFactory;
@@ -24,7 +25,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
             _states = new Dictionary<Type, IExitableState>()
             {
                 [typeof(BootstrapState)] = new BootstrapState(this, coroutineRunner, sceneLoader, services),
-                [typeof(LoadLevelState)] = new LoadLevelState(this, services.Single<ICoinFactory>(), services.Single<IStaticDataService>(), services.Single<IHudFactory>(), services.Single<IHeroFactory>(), services.Single<IHeroHandler>(), services.Single<ICinemachineFactory>(),
+                [typeof(LoadLevelState)] = new LoadLevelState(this, services.Single<ICoinSpawnerHandler>(), services.Single<ICoinFactory>(), services.Single<IStaticDataService>(), services.Single<IHudFactory>(), services.Single<IHeroFactory>(), services.Single<IHeroHandler>(), services.Single<ICinemachineFactory>(),
                 services.Single<IUiFactory>(), services.Single<IInputService>()),
                 [typeof(LoadProgressState)] = new LoadProgressState(this, services.Single<IPlayerProgressService>()),
             };
