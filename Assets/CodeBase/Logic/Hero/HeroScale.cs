@@ -26,6 +26,8 @@ namespace Assets.CodeBase.Logic.Hero
 
         private void Start()
         {
+            LoadProgress();
+
             _shopItemObserver.Buyed += ChangeMaximumMass;
             _shopItemObserver.Buyed += ChangeScaleFactor;
             _inputService.MouseButtonDown += AddScale;
@@ -37,6 +39,27 @@ namespace Assets.CodeBase.Logic.Hero
             _shopItemObserver.Buyed -= ChangeMaximumMass;
             _shopItemObserver.Buyed -= ChangeScaleFactor;
         }
+        //LoadProgressImitation
+        //TODO: Real progress saving and loading
+        private void LoadProgress()
+        {
+            float mass = LoadMassProgress();
+            float scaleFactor = LoadScaleFactorProgress();
+            float maxMass = LoadMaxMassProgress();
+
+            _heroTransform.localScale = new Vector3(mass, mass, mass);
+            _maximumMass = maxMass;
+            _scaleFactor = scaleFactor;
+        }
+
+        private float LoadScaleFactorProgress() =>
+            _playerProgress.PlayerProgress.MassData.Mass.ScaleFactor;
+
+        private float LoadMaxMassProgress() =>
+            _playerProgress.PlayerProgress.MassData.MaxMass.Current;
+
+        private float LoadMassProgress() =>
+            _playerProgress.PlayerProgress.MassData.Mass.Current;
 
         private void ChangeMaximumMass(ShopItemData shopItemData) =>
             _maximumMass = shopItemData.MaximumMass;

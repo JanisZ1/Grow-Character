@@ -16,8 +16,16 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
         public void Enter() =>
             _playerProgressService.PlayerProgress = CreateNewProgress();
 
-        private PlayerProgress CreateNewProgress() =>
-            new PlayerProgress();
+        private PlayerProgress CreateNewProgress()
+        {
+            PlayerProgress playerProgress = new PlayerProgress();
+
+            playerProgress.MassData.Mass.Current = 0.1f;
+            playerProgress.MassData.MaxMass.Current = 0.5f;
+            playerProgress.MassData.Mass.ScaleFactor = 0.001f;
+
+            return playerProgress;
+        }
 
         public void Exit()
         {
