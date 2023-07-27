@@ -1,7 +1,7 @@
 ﻿using Assets.CodeBase.Infrastructure.Services.Factory.CoinFactory;
 using UnityEngine;
 
-namespace Assets.CodeBase.Logic
+namespace Assets.CodeBase.Logic.Spawners.Coin
 {
     public class CoinSpawner : MonoBehaviour
     {

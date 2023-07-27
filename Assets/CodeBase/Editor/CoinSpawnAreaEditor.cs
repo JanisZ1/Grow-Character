@@ -1,4 +1,4 @@
-using Assets.CodeBase.Logic;
+using Assets.CodeBase.Logic.Spawners.Coin;
 using UnityEditor;
 using UnityEngine;
 

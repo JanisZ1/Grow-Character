@@ -8,18 +8,28 @@ namespace Assets.CodeBase.Infrastructure.Services.StaticData
     public class StaticDataService : IStaticDataService
     {
         private Dictionary<ShopItemType, ShopItemData> _shopItems;
+        private Dictionary<string, LevelStaticData> _levels;
 
         private const string ShopItemsStaticDataPath = "StaticData/ShopItems";
+        private const string LevelsStaticDataPath = "StaticData/Level";
 
         public void Load()
         {
             _shopItems = Resources.LoadAll<ShopItemData>(ShopItemsStaticDataPath)
                 .ToDictionary(x => x.ShopItemType, x => x);
+
+            _levels = Resources.LoadAll<LevelStaticData>(LevelsStaticDataPath)
+                .ToDictionary(x => x.LevelName, x => x);
         }
 
         public ShopItemData ForShopItem(ShopItemType shopItemType) =>
             _shopItems.TryGetValue(shopItemType, out ShopItemData itemData)
                 ? itemData
+                : null;
+
+        public LevelStaticData ForLevel(string level) =>
+            _levels.TryGetValue(level, out LevelStaticData levelData)
+                ? levelData
                 : null;
     }
 }
