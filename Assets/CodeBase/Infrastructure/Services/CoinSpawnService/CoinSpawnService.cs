@@ -28,7 +28,7 @@ namespace Assets.CodeBase.Infrastructure.Services.CoinSpawnService
 
             List<CoinSpawner> coinSpawners = _coinSpawnerHandler.CoinSpawners;
             int randomIndex = Random.Range(0, coinSpawners.Count);
-
+            //TODO: Fix multiple coins spawn in one place
             CoinSpawner coinSpawner = coinSpawners.ElementAt(randomIndex);
             coinSpawner.Spawn();
 
