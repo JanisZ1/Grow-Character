@@ -39,6 +39,7 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory.HeroFactory
 
             return gameObject;
         }
+
         private GameObject InstantiateRegistered(string assetPath)
         {
             GameObject gameObject = _assets.Instantiate(assetPath);
