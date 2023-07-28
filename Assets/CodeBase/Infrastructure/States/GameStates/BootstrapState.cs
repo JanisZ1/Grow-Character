@@ -49,7 +49,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
             _services.Register<IStaticDataService>(new StaticDataService());
             _services.Register<IShopItemObserver>(new ShopItemObserver());
             _services.Register<IPlayerProgressService>(new PlayerProgressService());
-            _services.Register<ISaveLoadService>(new SaveLoadService(_services.Single<IPlayerProgressService>()));
+            _services.Register<ISaveLoadService>(new SaveLoadService(_services.Single<IPlayerProgressService>(), _services.Single<IUiFactory>()));
             _services.Register<IInputService>(new InputService(_coroutineRunner));
             _services.Register<IHeroHandler>(new HeroHandler());
             _services.Register<IHeroFactory>(new HeroFactory(_services.Single<IAssets>(), _services.Single<IInputService>(), _services.Single<IPlayerProgressService>(), _services.Single<IShopItemObserver>()));
