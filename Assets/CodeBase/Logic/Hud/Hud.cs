@@ -32,6 +32,7 @@ namespace Assets.CodeBase.Logic.Hud
         {
             _massText = _mass.text;
             _maxMassText = _maxMass.text;
+            UpdateTexts();
 
             _playerProgress.Progress.MoneyData.Changed += UpdateMoneyInHud;
             _playerProgress.Progress.MassData.Mass.Changed += UpdateMassInHud;
@@ -47,6 +48,13 @@ namespace Assets.CodeBase.Logic.Hud
             _playerProgress.Progress.MassData.MaxMass.Changed -= UpdateMaxMassInHud;
 
             _inputService.EKeyDown -= OpenOrCloseShop;
+        }
+
+        private void UpdateTexts()
+        {
+            UpdateMoneyInHud();
+            UpdateMassInHud();
+            UpdateMaxMassInHud();
         }
 
         private void OpenOrCloseShop()
