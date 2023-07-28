@@ -1,8 +1,8 @@
-﻿using Assets.CodeBase.Infrastructure.Services.InputService;
+﻿using Assets.CodeBase.Infrastructure.Data;
+using Assets.CodeBase.Infrastructure.Services.InputService;
 using Assets.CodeBase.Infrastructure.Services.Observer;
 using Assets.CodeBase.Infrastructure.Services.PlayerProgressService;
 using Assets.CodeBase.Infrastructure.Services.SaveLoad;
-using Assets.CodeBase.Infrastructure.StaticData;
 using UnityEngine;
 
 namespace Assets.CodeBase.Logic.Hero
@@ -39,10 +39,10 @@ namespace Assets.CodeBase.Logic.Hero
             _shopItemObserver.Buyed -= ChangeScaleFactor;
         }
 
-        private void ChangeMaximumMass(ShopItemData shopItemData) =>
+        private void ChangeMaximumMass(Infrastructure.StaticData.ShopItemData shopItemData) =>
             _maximumMass = shopItemData.MaximumMass;
 
-        private void ChangeScaleFactor(ShopItemData shopItemData) =>
+        private void ChangeScaleFactor(Infrastructure.StaticData.ShopItemData shopItemData) =>
             _scaleFactor = shopItemData.Calories;
 
         private void AddScale()

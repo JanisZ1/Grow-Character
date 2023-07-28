@@ -1,15 +1,18 @@
 ﻿using System;
 
-[Serializable]
-public class MaxMass
+namespace Assets.CodeBase.Infrastructure.Data
 {
-    public float Current;
-
-    public event Action Changed;
-
-    public void Change(float mass)
+    [Serializable]
+    public class MaxMass
     {
-        Current += mass;
-        Changed?.Invoke();
+        public float Current;
+
+        public event Action Changed;
+
+        public void Change(float mass)
+        {
+            Current += mass;
+            Changed?.Invoke();
+        }
     }
 }

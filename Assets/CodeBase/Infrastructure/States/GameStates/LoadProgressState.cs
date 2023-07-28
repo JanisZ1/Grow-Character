@@ -1,4 +1,5 @@
-﻿using Assets.CodeBase.Infrastructure.Services.PlayerProgressService;
+﻿using Assets.CodeBase.Infrastructure.Data;
+using Assets.CodeBase.Infrastructure.Services.PlayerProgressService;
 using Assets.CodeBase.Infrastructure.Services.SaveLoad;
 using UnityEngine.SceneManagement;
 
