@@ -32,21 +32,29 @@ namespace Assets.CodeBase.Logic.Hud
         {
             _massText = _mass.text;
             _maxMassText = _maxMass.text;
+            UpdateTexts();
 
-            _playerProgress.PlayerProgress.MoneyData.Changed += UpdateMoneyInHud;
-            _playerProgress.PlayerProgress.MassData.Mass.Changed += UpdateMassInHud;
-            _playerProgress.PlayerProgress.MassData.MaxMass.Changed += UpdateMaxMassInHud;
+            _playerProgress.Progress.MoneyData.Changed += UpdateMoneyInHud;
+            _playerProgress.Progress.MassData.Mass.Changed += UpdateMassInHud;
+            _playerProgress.Progress.MassData.MaxMass.Changed += UpdateMaxMassInHud;
 
             _inputService.EKeyDown += OpenOrCloseShop;
         }
 
         private void OnDestroy()
         {
-            _playerProgress.PlayerProgress.MoneyData.Changed -= UpdateMoneyInHud;
-            _playerProgress.PlayerProgress.MassData.Mass.Changed -= UpdateMassInHud;
-            _playerProgress.PlayerProgress.MassData.MaxMass.Changed -= UpdateMaxMassInHud;
+            _playerProgress.Progress.MoneyData.Changed -= UpdateMoneyInHud;
+            _playerProgress.Progress.MassData.Mass.Changed -= UpdateMassInHud;
+            _playerProgress.Progress.MassData.MaxMass.Changed -= UpdateMaxMassInHud;
 
             _inputService.EKeyDown -= OpenOrCloseShop;
+        }
+
+        private void UpdateTexts()
+        {
+            UpdateMoneyInHud();
+            UpdateMassInHud();
+            UpdateMaxMassInHud();
         }
 
         private void OpenOrCloseShop()
@@ -64,12 +72,12 @@ namespace Assets.CodeBase.Logic.Hud
         }
 
         private void UpdateMaxMassInHud() =>
-            _maxMass.text = _maxMassText + _playerProgress.PlayerProgress.MassData.MaxMass.Current;
+            _maxMass.text = _maxMassText + _playerProgress.Progress.MassData.MaxMass.Current;
 
         private void UpdateMassInHud() =>
-            _mass.text = _massText + _playerProgress.PlayerProgress.MassData.Mass.Current.ToString("0.00");
+            _mass.text = _massText + _playerProgress.Progress.MassData.Mass.Current.ToString("0.00");
 
         private void UpdateMoneyInHud() =>
-            _money.text = _playerProgress.PlayerProgress.MoneyData.Count.ToString("0.0");
+            _money.text = _playerProgress.Progress.MoneyData.Count.ToString("0.0");
     }
 }

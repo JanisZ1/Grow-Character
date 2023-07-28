@@ -14,7 +14,7 @@ namespace Assets.CodeBase.Logic.CoinLogic
 
         public void Collect()
         {
-            _playerProgress.PlayerProgress.MoneyData.Earn(_value);
+            _playerProgress.Progress.MoneyData.Earn(_value);
             Destroy(gameObject);
         }
     }

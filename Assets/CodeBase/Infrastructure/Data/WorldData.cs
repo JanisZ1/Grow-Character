@@ -1,0 +1,13 @@
+﻿using System;
+
+namespace Assets.CodeBase.Infrastructure.Data
+{
+    [Serializable]
+    public class WorldData
+    {
+        public string Level;
+
+        public WorldData(string level) =>
+            Level = level;
+    }
+}

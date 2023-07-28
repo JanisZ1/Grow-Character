@@ -1,14 +1,21 @@
 using System;
 
-[Serializable]
-public class PlayerProgress
+namespace Assets.CodeBase.Infrastructure.Data
 {
-    public MoneyData MoneyData;
-    public MassData MassData;
-
-    public PlayerProgress()
+    [Serializable]
+    public class PlayerProgress
     {
-        MoneyData = new MoneyData();
-        MassData = new MassData();
+        public WorldData WorldData;
+        public MoneyData MoneyData;
+        public MassData MassData;
+        public ShopItemData ShopBuyData;
+
+        public PlayerProgress(string bootstrapLevel)
+        {
+            WorldData = new WorldData(bootstrapLevel);
+            MoneyData = new MoneyData();
+            MassData = new MassData();
+            ShopBuyData = new ShopItemData();
+        }
     }
 }

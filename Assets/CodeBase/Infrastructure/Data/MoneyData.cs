@@ -1,14 +1,17 @@
 ﻿using System;
 
-[Serializable]
-public class MoneyData
+namespace Assets.CodeBase.Infrastructure.Data
 {
-    public float Count;
-    public event Action Changed;
-
-    public void Earn(float moneyValue)
+    [Serializable]
+    public class MoneyData
     {
-        Count += moneyValue;
-        Changed?.Invoke();
+        public float Count;
+        public event Action Changed;
+
+        public void Earn(float moneyValue)
+        {
+            Count += moneyValue;
+            Changed?.Invoke();
+        }
     }
 }

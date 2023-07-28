@@ -37,6 +37,6 @@ namespace Assets.CodeBase.Logic
             _earnValue = shopItemData.Calories;
 
         private void Earn() =>
-            _playerProgressService.PlayerProgress.MoneyData.Earn(_earnValue);
+            _playerProgressService.Progress.MoneyData.Earn(_earnValue);
     }
 }

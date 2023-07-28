@@ -11,6 +11,7 @@ using Assets.CodeBase.Infrastructure.Services.HeroHandler;
 using Assets.CodeBase.Infrastructure.Services.InputService;
 using Assets.CodeBase.Infrastructure.Services.Observer;
 using Assets.CodeBase.Infrastructure.Services.PlayerProgressService;
+using Assets.CodeBase.Infrastructure.Services.SaveLoad;
 using Assets.CodeBase.Infrastructure.Services.StaticData;
 using Assets.CodeBase.Infrastructure.Services.WindowService;
 
@@ -20,7 +21,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
     {
         private readonly SceneLoader _sceneLoader;
         private readonly AllServices _services;
-        private readonly string _sceneName = "Main";
+        private readonly string Bootstrap = "Bootstrap";
 
         private readonly GameStateMachine _stateMachine;
         private readonly ICoroutineRunner _coroutineRunner;
@@ -36,7 +37,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
         }
 
         public void Enter() =>
-            _sceneLoader.Load(_sceneName, OnLoaded);
+            _sceneLoader.Load(Bootstrap, OnLoaded);
 
         public void Exit()
         {
@@ -51,6 +52,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
             _services.Register<IInputService>(new InputService(_coroutineRunner));
             _services.Register<IHeroHandler>(new HeroHandler());
             _services.Register<IHeroFactory>(new HeroFactory(_services.Single<IAssets>(), _services.Single<IInputService>(), _services.Single<IPlayerProgressService>(), _services.Single<IShopItemObserver>()));
+            _services.Register<ISaveLoadService>(new SaveLoadService(_services.Single<IPlayerProgressService>(), _services.Single<IHeroFactory>()));
             _services.Register<ICoinSpawnerHandler>(new CoinSpawnerHandler());
             _services.Register<ICoinSpawnService>(new CoinSpawnService(_coroutineRunner, _services.Single<ICoinSpawnerHandler>()));
             _services.Register<ICoinFactory>(new CoinFactory(_services.Single<IAssets>(), _services.Single<IPlayerProgressService>()));
@@ -61,6 +63,6 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
         }
 
         private void OnLoaded() =>
-            _stateMachine.Enter<LoadLevelState, string>(_sceneName);
+            _stateMachine.Enter<LoadProgressState>();
     }
 }

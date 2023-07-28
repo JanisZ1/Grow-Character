@@ -1,15 +1,19 @@
 ﻿using System;
 
-public class Mass
+namespace Assets.CodeBase.Infrastructure.Data
 {
-    public float Current;
-    public float ScaleFactor;
-
-    public event Action Changed;
-
-    public void Change(float mass)
+    [Serializable]
+    public class Mass
     {
-        Current = mass;
-        Changed?.Invoke();
+        public float Current;
+        public float ScaleFactor;
+
+        public event Action Changed;
+
+        public void Change(float mass)
+        {
+            Current = mass;
+            Changed?.Invoke();
+        }
     }
 }

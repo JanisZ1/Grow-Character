@@ -11,7 +11,7 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory.UiFactoryService
         private readonly IAssets _assets;
         private readonly IStaticDataService _staticDataService;
         private readonly IShopItemObserver _shopItemObserver;
-        private Transform _uiRootTransform;
+        private Transform _uiRootTransform;       
 
         public UiFactory(IAssets assets, IStaticDataService staticDataService, IShopItemObserver shopItemObserver)
         {
@@ -25,12 +25,13 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory.UiFactoryService
 
         public GameObject CreateShop()
         {
-            GameObject shop = _assets.Instantiate(AssetPath.ShopPath, _uiRootTransform);
+            GameObject gameObject = _assets.Instantiate(AssetPath.ShopPath, _uiRootTransform);
 
-            foreach (BuyShopItemButton buyShopItemButton in shop.GetComponentsInChildren<BuyShopItemButton>())
+            foreach (BuyShopItemButton buyShopItemButton in gameObject.GetComponentsInChildren<BuyShopItemButton>())
                 buyShopItemButton.Construct(_staticDataService, _shopItemObserver);
 
-            return shop;
+            return gameObject;
         }
     }
 }
+

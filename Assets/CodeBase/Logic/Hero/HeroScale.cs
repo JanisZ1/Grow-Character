@@ -1,12 +1,13 @@
-﻿using Assets.CodeBase.Infrastructure.Services.InputService;
+﻿using Assets.CodeBase.Infrastructure.Data;
+using Assets.CodeBase.Infrastructure.Services.InputService;
 using Assets.CodeBase.Infrastructure.Services.Observer;
 using Assets.CodeBase.Infrastructure.Services.PlayerProgressService;
-using Assets.CodeBase.Infrastructure.StaticData;
+using Assets.CodeBase.Infrastructure.Services.SaveLoad;
 using UnityEngine;
 
 namespace Assets.CodeBase.Logic.Hero
 {
-    public class HeroScale : MonoBehaviour
+    public class HeroScale : MonoBehaviour, ISavedProgress
     {
         [SerializeField] private Transform _heroTransform;
 
@@ -26,8 +27,6 @@ namespace Assets.CodeBase.Logic.Hero
 
         private void Start()
         {
-            LoadProgress();
-
             _shopItemObserver.Buyed += ChangeMaximumMass;
             _shopItemObserver.Buyed += ChangeScaleFactor;
             _inputService.MouseButtonDown += AddScale;
@@ -39,32 +38,11 @@ namespace Assets.CodeBase.Logic.Hero
             _shopItemObserver.Buyed -= ChangeMaximumMass;
             _shopItemObserver.Buyed -= ChangeScaleFactor;
         }
-        //LoadProgressImitation
-        //TODO: Real progress saving and loading
-        private void LoadProgress()
-        {
-            float mass = LoadMassProgress();
-            float scaleFactor = LoadScaleFactorProgress();
-            float maxMass = LoadMaxMassProgress();
 
-            _heroTransform.localScale = new Vector3(mass, mass, mass);
-            _maximumMass = maxMass;
-            _scaleFactor = scaleFactor;
-        }
-
-        private float LoadScaleFactorProgress() =>
-            _playerProgress.PlayerProgress.MassData.Mass.ScaleFactor;
-
-        private float LoadMaxMassProgress() =>
-            _playerProgress.PlayerProgress.MassData.MaxMass.Current;
-
-        private float LoadMassProgress() =>
-            _playerProgress.PlayerProgress.MassData.Mass.Current;
-
-        private void ChangeMaximumMass(ShopItemData shopItemData) =>
+        private void ChangeMaximumMass(Infrastructure.StaticData.ShopItemData shopItemData) =>
             _maximumMass = shopItemData.MaximumMass;
 
-        private void ChangeScaleFactor(ShopItemData shopItemData) =>
+        private void ChangeScaleFactor(Infrastructure.StaticData.ShopItemData shopItemData) =>
             _scaleFactor = shopItemData.Calories;
 
         private void AddScale()
@@ -84,12 +62,30 @@ namespace Assets.CodeBase.Logic.Hero
         }
 
         private void SaveMassChange() =>
-            _playerProgress.PlayerProgress.MassData.Mass.Change(_heroTransform.localScale.x);
+            _playerProgress.Progress.MassData.Mass.Change(_heroTransform.localScale.x);
 
         private Vector3 MassToChange() =>
             _heroTransform.localScale + Vector3.one * _scaleFactor;
 
         private Vector3 MaximumMass() =>
             new Vector3(_maximumMass, _maximumMass, _maximumMass);
+
+        public void SaveProgress(PlayerProgress progress)
+        {
+            progress.MassData.Mass.Current = _heroTransform.localScale.x;
+            progress.MassData.Mass.ScaleFactor = _scaleFactor;
+            progress.MassData.MaxMass.Current = _maximumMass;
+        }
+
+        public void LoadProgress(PlayerProgress progress)
+        {
+            float mass = progress.MassData.Mass.Current;
+            float scaleFactor = progress.MassData.Mass.ScaleFactor;
+            float maxMass = progress.MassData.MaxMass.Current;
+
+            _heroTransform.localScale = new Vector3(mass, mass, mass);
+            _maximumMass = maxMass;
+            _scaleFactor = scaleFactor;
+        }
     }
 }

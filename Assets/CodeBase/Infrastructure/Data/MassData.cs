@@ -1,14 +1,17 @@
 ﻿using System;
 
-[Serializable]
-public class MassData
+namespace Assets.CodeBase.Infrastructure.Data
 {
-    public Mass Mass;
-    public MaxMass MaxMass;
-
-    public MassData()
+    [Serializable]
+    public class MassData
     {
-        Mass = new Mass();
-        MaxMass = new MaxMass();
+        public Mass Mass;
+        public MaxMass MaxMass;
+
+        public MassData()
+        {
+            Mass = new Mass();
+            MaxMass = new MaxMass();
+        }
     }
 }

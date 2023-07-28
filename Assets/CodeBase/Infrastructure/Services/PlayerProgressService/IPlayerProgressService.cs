@@ -1,7 +1,9 @@
-﻿namespace Assets.CodeBase.Infrastructure.Services.PlayerProgressService
+﻿using Assets.CodeBase.Infrastructure.Data;
+
+namespace Assets.CodeBase.Infrastructure.Services.PlayerProgressService
 {
     public interface IPlayerProgressService : IService
     {
-        public PlayerProgress PlayerProgress { get; set; }
+        public PlayerProgress Progress { get; set; }
     }
 }
