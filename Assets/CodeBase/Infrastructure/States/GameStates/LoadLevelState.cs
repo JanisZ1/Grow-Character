@@ -21,6 +21,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
     public class LoadLevelState : IPayloadedState<string>
     {
         private readonly GameStateMachine _stateMachine;
+        private readonly SceneLoader _sceneLoader;
         private readonly ICoroutineRunner _coroutineRunner;
         private readonly IPlayerProgressService _playerProgress;
         private readonly ISaveLoadService _saveLoadService;
@@ -36,9 +37,10 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
         private readonly IInputService _inputService;
         private ProgressSaver _progressSaver;
 
-        public LoadLevelState(GameStateMachine gameStateMachine, ICoroutineRunner coroutineRunner, IPlayerProgressService playerProgress, ISaveLoadService saveLoadService, ICoinSpawnService coinSpawnService, ICoinSpawnerHandler coinSpawnerHandler, ICoinFactory coinFactory, IStaticDataService staticData, IHudFactory hudFactory, IHeroFactory heroFactory, IHeroHandler heroHandler, ICinemachineFactory cinemachineFactory, IUiFactory uiFactory, IInputService inputService)
+        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, ICoroutineRunner coroutineRunner, IPlayerProgressService playerProgress, ISaveLoadService saveLoadService, ICoinSpawnService coinSpawnService, ICoinSpawnerHandler coinSpawnerHandler, ICoinFactory coinFactory, IStaticDataService staticData, IHudFactory hudFactory, IHeroFactory heroFactory, IHeroHandler heroHandler, ICinemachineFactory cinemachineFactory, IUiFactory uiFactory, IInputService inputService)
         {
             _stateMachine = gameStateMachine;
+            _sceneLoader = sceneLoader;
             _coroutineRunner = coroutineRunner;
             _playerProgress = playerProgress;
             _saveLoadService = saveLoadService;
@@ -54,10 +56,13 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
             _inputService = inputService;
         }
 
-        public void Enter(string sceneName) =>
-            InitializeLevel();
+        public void Enter(string sceneName)
+        {
+            _heroFactory.Cleanup();
+            _sceneLoader.Load(sceneName, OnLoaded);
+        }
 
-        private void InitializeLevel()
+        private void OnLoaded()
         {
             _staticData.Load();
             LevelStaticData levelStaticData = _staticData.ForLevel(SceneManager.GetActiveScene().name);

@@ -28,7 +28,8 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
             {
                 [typeof(BootstrapState)] = new BootstrapState(this, coroutineRunner, sceneLoader, services),
                 [typeof(LoadProgressState)] = new LoadProgressState(this, services.Single<ISaveLoadService>(), services.Single<IPlayerProgressService>()),
-                [typeof(LoadLevelState)] = new LoadLevelState(this, coroutineRunner, services.Single<IPlayerProgressService>(), services.Single<ISaveLoadService>(), services.Single<ICoinSpawnService>(), services.Single<ICoinSpawnerHandler>(),
+                [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, coroutineRunner, services.Single<IPlayerProgressService>(), 
+                services.Single<ISaveLoadService>(), services.Single<ICoinSpawnService>(), services.Single<ICoinSpawnerHandler>(),
                 services.Single<ICoinFactory>(), services.Single<IStaticDataService>(), services.Single<IHudFactory>(), services.Single<IHeroFactory>(),
                 services.Single<IHeroHandler>(), services.Single<ICinemachineFactory>(),
                 services.Single<IUiFactory>(), services.Single<IInputService>()),

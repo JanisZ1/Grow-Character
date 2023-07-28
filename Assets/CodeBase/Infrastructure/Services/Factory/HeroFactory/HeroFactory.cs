@@ -61,5 +61,11 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory.HeroFactory
 
             ProgressReaders.Add(progressReader);
         }
+
+        public void Cleanup()
+        {
+            ProgressWriters.Clear();
+            ProgressReaders.Clear();
+        }
     }
 }

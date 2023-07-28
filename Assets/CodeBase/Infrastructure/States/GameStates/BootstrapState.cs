@@ -21,7 +21,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
     {
         private readonly SceneLoader _sceneLoader;
         private readonly AllServices _services;
-        private readonly string _sceneName = "Main";
+        private readonly string Bootstrap = "Bootstrap";
 
         private readonly GameStateMachine _stateMachine;
         private readonly ICoroutineRunner _coroutineRunner;
@@ -37,7 +37,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
         }
 
         public void Enter() =>
-            _sceneLoader.Load(_sceneName, OnLoaded);
+            _sceneLoader.Load(Bootstrap, OnLoaded);
 
         public void Exit()
         {

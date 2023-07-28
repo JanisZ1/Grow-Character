@@ -9,5 +9,6 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory.HeroFactory
         GameObject CreateHero();
         List<ISavedProgress> ProgressWriters { get; }
         List<ISavedProgressReader> ProgressReaders { get; }
+        void Cleanup();
     }
 }

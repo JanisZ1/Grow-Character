@@ -1,7 +1,6 @@
 ﻿using Assets.CodeBase.Infrastructure.Data;
 using Assets.CodeBase.Infrastructure.Services.PlayerProgressService;
 using Assets.CodeBase.Infrastructure.Services.SaveLoad;
-using UnityEngine.SceneManagement;
 
 namespace Assets.CodeBase.Infrastructure.States.GameStates
 {
@@ -33,7 +32,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
 
         private PlayerProgress CreateNewProgress()
         {
-            PlayerProgress playerProgress = new PlayerProgress();
+            PlayerProgress playerProgress = new PlayerProgress(bootstrapLevel: "Main");
 
             playerProgress.MassData.Mass.Current = 0.1f;
             playerProgress.MassData.MaxMass.Current = 0.5f;
@@ -43,7 +42,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
         }
 
         private void EnterLoadLevel() =>
-            _gameStateMachine.Enter<LoadLevelState, string>(SceneManager.GetActiveScene().name);
+            _gameStateMachine.Enter<LoadLevelState, string>(_playerProgressService.Progress.WorldData.Level);
 
         public void Exit()
         {
