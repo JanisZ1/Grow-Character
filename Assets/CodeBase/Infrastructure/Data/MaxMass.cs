@@ -1,5 +1,6 @@
 ﻿using System;
 
+[Serializable]
 public class MaxMass
 {
     public float Current;

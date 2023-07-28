@@ -70,8 +70,12 @@ namespace Assets.CodeBase.Logic.Hero
         private Vector3 MaximumMass() =>
             new Vector3(_maximumMass, _maximumMass, _maximumMass);
 
-        public void SaveProgress(PlayerProgress progress) =>
+        public void SaveProgress(PlayerProgress progress)
+        {
             progress.MassData.Mass.Current = _heroTransform.localScale.x;
+            progress.MassData.Mass.ScaleFactor = _scaleFactor;
+            progress.MassData.MaxMass.Current = _maximumMass;
+        }
 
         public void LoadProgress(PlayerProgress progress)
         {
