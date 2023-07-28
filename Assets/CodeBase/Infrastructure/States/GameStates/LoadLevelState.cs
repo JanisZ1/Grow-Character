@@ -7,12 +7,14 @@ using Assets.CodeBase.Infrastructure.Services.Factory.HudFactory;
 using Assets.CodeBase.Infrastructure.Services.Factory.UiFactoryService;
 using Assets.CodeBase.Infrastructure.Services.HeroHandler;
 using Assets.CodeBase.Infrastructure.Services.InputService;
+using Assets.CodeBase.Infrastructure.Services.PlayerProgressService;
 using Assets.CodeBase.Infrastructure.Services.SaveLoad;
 using Assets.CodeBase.Infrastructure.Services.StaticData;
 using Assets.CodeBase.Infrastructure.StaticData;
 using Assets.CodeBase.Logic.Spawners.Coin;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.CodeBase.Infrastructure.States.GameStates
 {
@@ -20,6 +22,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
     {
         private readonly GameStateMachine _stateMachine;
         private readonly ICoroutineRunner _coroutineRunner;
+        private readonly IPlayerProgressService _playerProgress;
         private readonly ISaveLoadService _saveLoadService;
         private readonly ICoinSpawnService _coinSpawnService;
         private readonly ICoinSpawnerHandler _coinSpawnerHandler;
@@ -33,10 +36,11 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
         private readonly IInputService _inputService;
         private ProgressSaver _progressSaver;
 
-        public LoadLevelState(GameStateMachine gameStateMachine, ICoroutineRunner coroutineRunner, ISaveLoadService saveLoadService, ICoinSpawnService coinSpawnService, ICoinSpawnerHandler coinSpawnerHandler, ICoinFactory coinFactory, IStaticDataService staticData, IHudFactory hudFactory, IHeroFactory heroFactory, IHeroHandler heroHandler, ICinemachineFactory cinemachineFactory, IUiFactory uiFactory, IInputService inputService)
+        public LoadLevelState(GameStateMachine gameStateMachine, ICoroutineRunner coroutineRunner, IPlayerProgressService playerProgress, ISaveLoadService saveLoadService, ICoinSpawnService coinSpawnService, ICoinSpawnerHandler coinSpawnerHandler, ICoinFactory coinFactory, IStaticDataService staticData, IHudFactory hudFactory, IHeroFactory heroFactory, IHeroHandler heroHandler, ICinemachineFactory cinemachineFactory, IUiFactory uiFactory, IInputService inputService)
         {
             _stateMachine = gameStateMachine;
             _coroutineRunner = coroutineRunner;
+            _playerProgress = playerProgress;
             _saveLoadService = saveLoadService;
             _coinSpawnService = coinSpawnService;
             _coinSpawnerHandler = coinSpawnerHandler;
@@ -55,9 +59,8 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
 
         private void InitializeLevel()
         {
-            StartSaveProcess();
             _staticData.Load();
-            LevelStaticData levelStaticData = _staticData.ForLevel("Main");
+            LevelStaticData levelStaticData = _staticData.ForLevel(SceneManager.GetActiveScene().name);
 
             _inputService.StartUpdate();
             InitializeHero();
@@ -68,7 +71,15 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
 
             _uiFactory.CreateUiRoot();
             _hudFactory.CreateHud();
-            EnterLoadProgress();
+            InformProgressReaders();
+            StartSaveProcess();
+            EnterGameLoop();
+        }
+
+        private void InformProgressReaders()
+        {
+            foreach (ISavedProgressReader progressReader in _heroFactory.ProgressReaders)
+                progressReader.LoadProgress(_playerProgress.Progress);
         }
 
         private void StartSaveProcess()
@@ -89,8 +100,8 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
             _coinSpawnerHandler.CoinSpawners = coinSpawners;
         }
 
-        private void EnterLoadProgress() =>
-            _stateMachine.Enter<LoadProgressState>();
+        private void EnterGameLoop() =>
+            _stateMachine.Enter<GameLoopState>();
 
         private void InitializeHero()
         {

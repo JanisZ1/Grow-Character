@@ -49,10 +49,10 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
             _services.Register<IStaticDataService>(new StaticDataService());
             _services.Register<IShopItemObserver>(new ShopItemObserver());
             _services.Register<IPlayerProgressService>(new PlayerProgressService());
-            _services.Register<ISaveLoadService>(new SaveLoadService(_services.Single<IPlayerProgressService>(), _services.Single<IUiFactory>()));
             _services.Register<IInputService>(new InputService(_coroutineRunner));
             _services.Register<IHeroHandler>(new HeroHandler());
             _services.Register<IHeroFactory>(new HeroFactory(_services.Single<IAssets>(), _services.Single<IInputService>(), _services.Single<IPlayerProgressService>(), _services.Single<IShopItemObserver>()));
+            _services.Register<ISaveLoadService>(new SaveLoadService(_services.Single<IPlayerProgressService>(), _services.Single<IHeroFactory>()));
             _services.Register<ICoinSpawnerHandler>(new CoinSpawnerHandler());
             _services.Register<ICoinSpawnService>(new CoinSpawnService(_coroutineRunner, _services.Single<ICoinSpawnerHandler>()));
             _services.Register<ICoinFactory>(new CoinFactory(_services.Single<IAssets>(), _services.Single<IPlayerProgressService>()));
@@ -63,6 +63,6 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
         }
 
         private void OnLoaded() =>
-            _stateMachine.Enter<LoadLevelState, string>(_sceneName);
+            _stateMachine.Enter<LoadProgressState>();
     }
 }

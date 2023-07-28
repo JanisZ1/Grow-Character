@@ -1,9 +1,7 @@
 ﻿using Assets.CodeBase.Infrastructure.Services.AssetProvider;
 using Assets.CodeBase.Infrastructure.Services.Observer;
-using Assets.CodeBase.Infrastructure.Services.SaveLoad;
 using Assets.CodeBase.Infrastructure.Services.StaticData;
 using Assets.CodeBase.Logic.Ui;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.CodeBase.Infrastructure.Services.Factory.UiFactoryService
@@ -13,10 +11,7 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory.UiFactoryService
         private readonly IAssets _assets;
         private readonly IStaticDataService _staticDataService;
         private readonly IShopItemObserver _shopItemObserver;
-        private Transform _uiRootTransform;
-
-        public List<ISavedProgress> ProgressWriters { get; } = new List<ISavedProgress>();
-        public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
+        private Transform _uiRootTransform;       
 
         public UiFactory(IAssets assets, IStaticDataService staticDataService, IShopItemObserver shopItemObserver)
         {
@@ -30,35 +25,12 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory.UiFactoryService
 
         public GameObject CreateShop()
         {
-            GameObject shop = InstantiateRegistered(AssetPath.ShopPath, _uiRootTransform);
+            GameObject gameObject = _assets.Instantiate(AssetPath.ShopPath, _uiRootTransform);
 
-            foreach (BuyShopItemButton buyShopItemButton in shop.GetComponentsInChildren<BuyShopItemButton>())
+            foreach (BuyShopItemButton buyShopItemButton in gameObject.GetComponentsInChildren<BuyShopItemButton>())
                 buyShopItemButton.Construct(_staticDataService, _shopItemObserver);
 
-            return shop;
-        }
-
-        private GameObject InstantiateRegistered(string assetPath, Transform parent)
-        {
-            GameObject gameObject = _assets.Instantiate(assetPath, parent);
-
-            RegisterProgressWatchers(gameObject);
-
             return gameObject;
-        }
-
-        private void RegisterProgressWatchers(GameObject gameObject)
-        {
-            foreach (ISavedProgressReader progressReader in gameObject.GetComponentsInChildren<ISavedProgressReader>())
-                Register(progressReader);
-        }
-
-        private void Register(ISavedProgressReader progressReader)
-        {
-            if (progressReader is ISavedProgress progressWriter)
-                ProgressWriters.Add(progressWriter);
-
-            ProgressReaders.Add(progressReader);
         }
     }
 }

@@ -2,6 +2,6 @@
 {
     public interface IPlayerProgressService : IService
     {
-        public PlayerProgress PlayerProgress { get; set; }
+        public PlayerProgress Progress { get; set; }
     }
 }

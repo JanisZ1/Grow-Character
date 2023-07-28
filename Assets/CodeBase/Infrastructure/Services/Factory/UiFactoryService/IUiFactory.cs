@@ -1,6 +1,4 @@
-﻿using Assets.CodeBase.Infrastructure.Services.SaveLoad;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.CodeBase.Infrastructure.Services.Factory.UiFactoryService
 {
@@ -8,8 +6,5 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory.UiFactoryService
     {
         void CreateUiRoot();
         GameObject CreateShop();
-        List<ISavedProgress> ProgressWriters { get; }
-        List<ISavedProgressReader> ProgressReaders { get; }
-
     }
 }
