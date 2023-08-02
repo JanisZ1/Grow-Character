@@ -12,16 +12,16 @@ namespace Assets.CodeBase.Logic.Ui
 
         [SerializeField] private string _id;
 
-        private bool _buyed;
+        public bool Buyed { get; set; }
 
-        private void ChangeTextToBuyed() =>
+        public void ChangeTextToBuyed() =>
             _priceText.text = "Buyed";
 
         public void SaveProgress(PlayerProgress progress)
         {
             List<string> buyedItemsList = progress.ShopBuyData.BuyedItems;
 
-            if (_buyed && !buyedItemsList.Contains(_id))
+            if (Buyed && !buyedItemsList.Contains(_id))
                 buyedItemsList.Add(_id);
         }
 
@@ -31,7 +31,7 @@ namespace Assets.CodeBase.Logic.Ui
 
             if (buyedItems.Contains(_id))
             {
-                _buyed = true;
+                Buyed = true;
                 ChangeTextToBuyed();
             }
         }

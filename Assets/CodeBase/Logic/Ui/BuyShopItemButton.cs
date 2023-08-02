@@ -11,6 +11,7 @@ namespace Assets.CodeBase.Logic.Ui
 {
     public class BuyShopItemButton : MonoBehaviour
     {
+        [SerializeField] private ShopItem _shopItem;
         [SerializeField] private Button _button;
         [SerializeField] private ShopItemType _shopItemType;
 
@@ -28,22 +29,41 @@ namespace Assets.CodeBase.Logic.Ui
             _shopItemData = _staticData.ForShopItem(_shopItemType);
         }
 
-        private void Start() =>
-            _button.onClick.AddListener(BuyItem);
+        private void Start()
+        {
+            if (!_shopItem.Buyed)
+                _button.onClick.AddListener(BuyItem);
+        }
 
-        private void OnDestroy() =>
-            _button.onClick.RemoveListener(BuyItem);
+        private void OnDestroy()
+        {
+            if (!_shopItem.Buyed)
+                _button.onClick.RemoveListener(BuyItem);
+        }
 
         private void BuyItem()
         {
             MoneyData moneyData = _playerProgress.Progress.MoneyData;
 
-            if (moneyData.Count >= _shopItemData.Price)
+            if (moneyData.Count >= _shopItemData.Price && !_shopItem.Buyed)
             {
-                moneyData.Spend(_shopItemData.Price);
-                moneyData.ByClickEarnAmount = _shopItemData.Profit;
+                SaveData(moneyData);
+                MarkShopItemBuyed();
+                ChangeBuyedText();
                 _shopItemObserver.OnBuyed(_shopItemData);
             }
         }
+
+        private void SaveData(MoneyData moneyData)
+        {
+            moneyData.Spend(_shopItemData.Price);
+            moneyData.ByClickEarnAmount = _shopItemData.Profit;
+        }
+
+        private void MarkShopItemBuyed() =>
+            _shopItem.Buyed = true;
+
+        private void ChangeBuyedText() =>
+            _shopItem.ChangeTextToBuyed();
     }
 }
