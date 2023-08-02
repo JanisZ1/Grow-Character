@@ -1,11 +1,13 @@
-﻿using Assets.CodeBase.Infrastructure.Services.Observer;
+﻿using Assets.CodeBase.Infrastructure.Data;
+using Assets.CodeBase.Infrastructure.Services.Observer;
 using Assets.CodeBase.Infrastructure.Services.PlayerProgressService;
-using Assets.CodeBase.Infrastructure.StaticData;
+using Assets.CodeBase.Infrastructure.Services.SaveLoad;
 using UnityEngine;
+using ShopItemData = Assets.CodeBase.Infrastructure.StaticData.ShopItemData;
 
 namespace Assets.CodeBase.Logic.CoinLogic
 {
-    public class Coin : MonoBehaviour
+    public class Coin : MonoBehaviour, ISavedProgressReader
     {
         private IPlayerProgressService _playerProgress;
         private IShopItemObserver _shopItemObserver;
@@ -33,5 +35,8 @@ namespace Assets.CodeBase.Logic.CoinLogic
 
             Destroy(gameObject);
         }
+
+        public void LoadProgress(PlayerProgress progress) =>
+            Value = progress.MoneyData.ByClickEarnAmount;
     }
 }

@@ -85,6 +85,9 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
         {
             foreach (ISavedProgressReader progressReader in _heroFactory.ProgressReaders)
                 progressReader.LoadProgress(_playerProgress.Progress);
+
+            foreach (ISavedProgressReader progressReader in _coinFactory.ProgressReaders)
+                progressReader.LoadProgress(_playerProgress.Progress);
         }
 
         private void StartSaveProcess()
