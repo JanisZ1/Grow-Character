@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d6fc45c76bce1148858fa003a42c14d, type: 3}
   m_Name: Broccoli
   m_EditorClassIdentifier: 
-  Calories: 0.2
-  MaximumMass: 1
+  Calories: 0.002
+  MaximumMass: 0.5
   ShopItemType: 1

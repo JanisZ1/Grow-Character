@@ -772,6 +772,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6628997525913999524, guid: 99880568d512e9e478c5b86dbe5ff3b9,
+        type: 3}
+      propertyPath: m_text
+      value: 'Maximum Mass: 0.8'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286583384897444385, guid: 99880568d512e9e478c5b86dbe5ff3b9,
+        type: 3}
+      propertyPath: m_text
+      value: 'Calories: 0.004'
+      objectReference: {fileID: 0}
     - target: {fileID: 8791461511716639289, guid: 99880568d512e9e478c5b86dbe5ff3b9,
         type: 3}
       propertyPath: m_Sprite
@@ -1111,6 +1121,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6628997525913999524, guid: 99880568d512e9e478c5b86dbe5ff3b9,
+        type: 3}
+      propertyPath: m_text
+      value: 'Maximum Mass: 0.2'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286583384897444385, guid: 99880568d512e9e478c5b86dbe5ff3b9,
+        type: 3}
+      propertyPath: m_text
+      value: 'Calories: 0.001'
+      objectReference: {fileID: 0}
     - target: {fileID: 8791461511716639289, guid: 99880568d512e9e478c5b86dbe5ff3b9,
         type: 3}
       propertyPath: m_Sprite
@@ -1326,6 +1346,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6628997525913999524, guid: 99880568d512e9e478c5b86dbe5ff3b9,
+        type: 3}
+      propertyPath: m_text
+      value: 'Maximum Mass: 0.5'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286583384897444385, guid: 99880568d512e9e478c5b86dbe5ff3b9,
+        type: 3}
+      propertyPath: m_text
+      value: 'Calories: 0.002'
+      objectReference: {fileID: 0}
     - target: {fileID: 8791461511716639289, guid: 99880568d512e9e478c5b86dbe5ff3b9,
         type: 3}
       propertyPath: m_Sprite
@@ -1540,6 +1570,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628997525913999524, guid: 99880568d512e9e478c5b86dbe5ff3b9,
+        type: 3}
+      propertyPath: m_text
+      value: 'Maximum Mass: 1.2'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286583384897444385, guid: 99880568d512e9e478c5b86dbe5ff3b9,
+        type: 3}
+      propertyPath: m_text
+      value: 'Calories: 0.007'
       objectReference: {fileID: 0}
     - target: {fileID: 8791461511716639289, guid: 99880568d512e9e478c5b86dbe5ff3b9,
         type: 3}
