@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d6fc45c76bce1148858fa003a42c14d, type: 3}
   m_Name: Peach
   m_EditorClassIdentifier: 
+  Profit: 0.02
   Price: 1
-  Calories: 0.02
+  Calories: 0.001
   MaximumMass: 0.2
   ShopItemType: 0

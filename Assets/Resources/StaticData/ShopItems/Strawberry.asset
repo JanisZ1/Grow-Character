@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d6fc45c76bce1148858fa003a42c14d, type: 3}
   m_Name: Strawberry
   m_EditorClassIdentifier: 
+  Profit: 0.1
   Price: 9
-  Calories: 0.1
+  Calories: 0.007
   MaximumMass: 1.2
   ShopItemType: 3

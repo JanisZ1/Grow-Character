@@ -39,8 +39,13 @@ namespace Assets.CodeBase.Logic.Hero
             _shopItemObserver.Buyed -= ChangeScaleFactor;
         }
 
-        private void ChangeMaximumMass(Infrastructure.StaticData.ShopItemData shopItemData) =>
-            _maximumMass = shopItemData.MaximumMass;
+        private void ChangeMaximumMass(Infrastructure.StaticData.ShopItemData shopItemData)
+        {
+            float maximumMass = shopItemData.MaximumMass;
+
+            _maximumMass = maximumMass;
+            _playerProgress.Progress.MassData.MaxMass.Change(maximumMass);
+        }
 
         private void ChangeScaleFactor(Infrastructure.StaticData.ShopItemData shopItemData) =>
             _scaleFactor = shopItemData.Calories;

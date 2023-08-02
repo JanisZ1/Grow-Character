@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d6fc45c76bce1148858fa003a42c14d, type: 3}
   m_Name: Cherry
   m_EditorClassIdentifier: 
+  Profit: 0.06
   Price: 5
-  Calories: 0.06
+  Calories: 0.004
   MaximumMass: 0.8
   ShopItemType: 2
