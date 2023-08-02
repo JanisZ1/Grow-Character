@@ -66,12 +66,12 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory.CoinFactory
 
         private void RegisterProgressWatchers(GameObject gameObject)
         {
-            foreach (ISavedProgress savedProgress in gameObject.GetComponentsInChildren<ISavedProgress>())
+            foreach (ISavedProgressReader progressReader in gameObject.GetComponentsInChildren<ISavedProgressReader>())
             {
-                if (savedProgress is ISavedProgressReader progressReader)
-                    ProgressReaders.Add(progressReader);
+                if (progressReader is ISavedProgress progressWriter)
+                    ProgressWriters.Add(progressWriter);
 
-                ProgressWriters.Add(savedProgress);
+                ProgressReaders.Add(progressReader);
             }
         }
     }
