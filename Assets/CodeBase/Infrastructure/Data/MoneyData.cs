@@ -13,5 +13,11 @@ namespace Assets.CodeBase.Infrastructure.Data
             Count += moneyValue;
             Changed?.Invoke();
         }
+
+        public void Spend(float money)
+        {
+            Count -= money;
+            Changed?.Invoke();
+        }
     }
 }
