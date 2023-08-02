@@ -34,7 +34,7 @@ namespace Assets.CodeBase.Logic
         }
 
         private void ChangeEarnValue(ShopItemData shopItemData) =>
-            EarnValue = shopItemData.Calories;
+            EarnValue = shopItemData.Profit;
 
         private void Earn() =>
             _playerProgressService.Progress.MoneyData.Earn(EarnValue);

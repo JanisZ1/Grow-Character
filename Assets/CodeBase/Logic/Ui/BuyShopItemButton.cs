@@ -41,7 +41,7 @@ namespace Assets.CodeBase.Logic.Ui
             if (moneyData.Count >= _shopItemData.Price)
             {
                 moneyData.Spend(_shopItemData.Price);
-                moneyData.ByClickEarnAmount = _shopItemData.Calories;
+                moneyData.ByClickEarnAmount = _shopItemData.Profit;
                 _shopItemObserver.OnBuyed(_shopItemData);
             }
         }

@@ -27,7 +27,7 @@ namespace Assets.CodeBase.Logic.CoinLogic
             _shopItemObserver.Buyed -= ChangeValue;
 
         private void ChangeValue(ShopItemData shopItemData) =>
-            Value = shopItemData.Calories;
+            Value = shopItemData.Profit;
 
         public void Collect()
         {
