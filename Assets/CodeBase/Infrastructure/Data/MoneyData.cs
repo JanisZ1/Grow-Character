@@ -6,6 +6,7 @@ namespace Assets.CodeBase.Infrastructure.Data
     public class MoneyData
     {
         public float Count;
+        public float ByClickEarnAmount;
         public event Action Changed;
 
         public void Earn(float moneyValue)

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Broccoli
   m_EditorClassIdentifier: 
   Price: 3
-  Calories: 0.002
+  Calories: 0.03
   MaximumMass: 0.5
   ShopItemType: 1

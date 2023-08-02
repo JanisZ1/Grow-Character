@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Strawberry
   m_EditorClassIdentifier: 
   Price: 9
-  Calories: 0.007
+  Calories: 0.1
   MaximumMass: 1.2
   ShopItemType: 3

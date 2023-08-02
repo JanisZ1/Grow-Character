@@ -1,4 +1,5 @@
 ﻿using Assets.CodeBase.Infrastructure.Services.AssetProvider;
+using Assets.CodeBase.Infrastructure.Services.Observer;
 using Assets.CodeBase.Infrastructure.Services.PlayerProgressService;
 using Assets.CodeBase.Logic.CoinLogic;
 using Assets.CodeBase.Logic.Spawners.Coin;
@@ -10,11 +11,13 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory.CoinFactory
     {
         private readonly IAssets _assets;
         private readonly IPlayerProgressService _playerProgress;
+        private readonly IShopItemObserver _shopItemObserver;
 
-        public CoinFactory(IAssets assets, IPlayerProgressService playerProgress)
+        public CoinFactory(IAssets assets, IPlayerProgressService playerProgress, IShopItemObserver shopItemObserver)
         {
             _assets = assets;
             _playerProgress = playerProgress;
+            _shopItemObserver = shopItemObserver;
         }
 
         public CoinSpawner CreateSpawner(Vector3 at)
@@ -31,7 +34,9 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory.CoinFactory
         {
             GameObject gameObject = _assets.Instantiate(AssetPath.CoinPath, parent, at);
 
-            gameObject.GetComponent<Coin>().Construct(_playerProgress);
+            Coin coin = gameObject.GetComponent<Coin>();
+            coin.Construct(_playerProgress, _shopItemObserver);
+            coin.Value = _playerProgress.Progress.MoneyData.ByClickEarnAmount;
 
             return gameObject;
         }

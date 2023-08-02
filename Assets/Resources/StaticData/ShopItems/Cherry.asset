@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Cherry
   m_EditorClassIdentifier: 
   Price: 5
-  Calories: 0.004
+  Calories: 0.06
   MaximumMass: 0.8
   ShopItemType: 2
