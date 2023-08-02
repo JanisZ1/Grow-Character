@@ -59,6 +59,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
         public void Enter(string sceneName)
         {
             _heroFactory.Cleanup();
+            _coinFactory.Cleanup();
             _sceneLoader.Load(sceneName, OnLoaded);
         }
 

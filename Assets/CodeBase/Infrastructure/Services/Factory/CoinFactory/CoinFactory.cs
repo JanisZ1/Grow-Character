@@ -74,5 +74,11 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory.CoinFactory
                 ProgressReaders.Add(progressReader);
             }
         }
+
+        public void Cleanup()
+        {
+            ProgressWriters.Clear();
+            ProgressReaders.Clear();
+        }
     }
 }
