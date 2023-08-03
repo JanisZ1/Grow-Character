@@ -33,7 +33,7 @@ namespace Assets.CodeBase.Logic
             _shopItemObserver.Buyed -= ChangeEarnValue;
         }
 
-        private void ChangeEarnValue(ShopItemData shopItemData) =>
+        private void ChangeEarnValue(ShopItemStaticData shopItemData) =>
             EarnValue = shopItemData.Profit;
 
         private void Earn() =>

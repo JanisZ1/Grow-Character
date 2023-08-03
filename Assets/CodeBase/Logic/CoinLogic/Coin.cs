@@ -3,7 +3,7 @@ using Assets.CodeBase.Infrastructure.Services.Observer;
 using Assets.CodeBase.Infrastructure.Services.PlayerProgressService;
 using Assets.CodeBase.Infrastructure.Services.SaveLoad;
 using UnityEngine;
-using ShopItemData = Assets.CodeBase.Infrastructure.StaticData.ShopItemData;
+using ShopItemStaticData = Assets.CodeBase.Infrastructure.StaticData.ShopItemStaticData;
 
 namespace Assets.CodeBase.Logic.CoinLogic
 {
@@ -26,7 +26,7 @@ namespace Assets.CodeBase.Logic.CoinLogic
         private void OnDestroy() =>
             _shopItemObserver.Buyed -= ChangeValue;
 
-        private void ChangeValue(ShopItemData shopItemData) =>
+        private void ChangeValue(ShopItemStaticData shopItemData) =>
             Value = shopItemData.Profit;
 
         public void Collect()
