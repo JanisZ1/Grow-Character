@@ -17,4 +17,5 @@ MonoBehaviour:
   Calories: 0.024
   MaximumMass: 10
   Id: 7
+  IconSprite: {fileID: 21300000, guid: 1cde0f02899a25f408a9eebf28c4fb9c, type: 3}
   ShopItemType: 7

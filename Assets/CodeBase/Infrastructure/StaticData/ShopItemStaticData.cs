@@ -6,10 +6,11 @@ namespace Assets.CodeBase.Infrastructure.StaticData
     public class ShopItemStaticData : ScriptableObject
     {
         public float Profit;
-        public float Price;
+        public int Price;
         public float Calories;
         public float MaximumMass;
         public int Id;
+        public Sprite IconSprite;
 
         public ShopItemType ShopItemType;
     }
