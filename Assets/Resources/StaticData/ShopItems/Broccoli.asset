@@ -16,4 +16,5 @@ MonoBehaviour:
   Price: 3
   Calories: 0.002
   MaximumMass: 0.5
+  Id: 1
   ShopItemType: 1

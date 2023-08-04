@@ -11,9 +11,9 @@ namespace Assets.CodeBase.Logic.Ui
 {
     public class BuyShopItemButton : MonoBehaviour
     {
-        [SerializeField] private ShopItem _shopItem;
+        public ShopItem ShopItem;
         [SerializeField] private Button _button;
-        [SerializeField] private ShopItemType _shopItemType;
+        public ShopItemType ShopItemType;
 
         private IStaticDataService _staticData;
         private IPlayerProgressService _playerProgress;
@@ -26,7 +26,7 @@ namespace Assets.CodeBase.Logic.Ui
             _playerProgress = playerProgress;
             _shopItemObserver = shopItemObserver;
 
-            _shopItemStaticData = _staticData.ForShopItem(_shopItemType);
+            _shopItemStaticData = _staticData.ForShopItem(ShopItemType);
         }
 
         private void Start() =>
@@ -39,7 +39,7 @@ namespace Assets.CodeBase.Logic.Ui
         {
             MoneyData moneyData = _playerProgress.Progress.MoneyData;
 
-            if (moneyData.Count >= _shopItemStaticData.Price && !_shopItem.Buyed && _shopItem.Unlocked)
+            if (moneyData.Count >= _shopItemStaticData.Price && !ShopItem.Buyed && ShopItem.Unlocked)
             {
                 SaveData(moneyData);
                 MarkShopItemBuyed();
@@ -56,12 +56,12 @@ namespace Assets.CodeBase.Logic.Ui
         }
 
         private void MarkShopItemBuyed() =>
-            _shopItem.Buyed = true;
+            ShopItem.Buyed = true;
 
         private void UnlockNextItem() =>
-            _shopItem.UnlockNextItem();
+            ShopItem.UnlockNextItem();
 
         private void ChangeBuyedText() =>
-            _shopItem.ChangeTextToBuyed();
+            ShopItem.ChangeTextToBuyed();
     }
 }

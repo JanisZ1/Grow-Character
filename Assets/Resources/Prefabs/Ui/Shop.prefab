@@ -629,6 +629,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 57308667648052280, guid: 99880568d512e9e478c5b86dbe5ff3b9,
         type: 3}
+      propertyPath: ShopItemType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 57308667648052280, guid: 99880568d512e9e478c5b86dbe5ff3b9,
+        type: 3}
       propertyPath: _shopItemType
       value: 2
       objectReference: {fileID: 0}
@@ -1302,6 +1307,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 57308667648052280, guid: 99880568d512e9e478c5b86dbe5ff3b9,
         type: 3}
+      propertyPath: ShopItemType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 57308667648052280, guid: 99880568d512e9e478c5b86dbe5ff3b9,
+        type: 3}
       propertyPath: _shopItemType
       value: 1
       objectReference: {fileID: 0}
@@ -1584,6 +1594,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5926619577472182164}
     m_Modifications:
+    - target: {fileID: 57308667648052280, guid: 99880568d512e9e478c5b86dbe5ff3b9,
+        type: 3}
+      propertyPath: ShopItemType
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 57308667648052280, guid: 99880568d512e9e478c5b86dbe5ff3b9,
         type: 3}
       propertyPath: _shopItemType

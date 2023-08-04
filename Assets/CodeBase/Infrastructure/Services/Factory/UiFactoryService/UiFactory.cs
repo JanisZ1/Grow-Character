@@ -3,6 +3,7 @@ using Assets.CodeBase.Infrastructure.Services.Observer;
 using Assets.CodeBase.Infrastructure.Services.PlayerProgressService;
 using Assets.CodeBase.Infrastructure.Services.SaveLoad;
 using Assets.CodeBase.Infrastructure.Services.StaticData;
+using Assets.CodeBase.Infrastructure.StaticData;
 using Assets.CodeBase.Logic.Ui;
 using System.Collections.Generic;
 using UnityEngine;
@@ -36,7 +37,11 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory.UiFactoryService
             GameObject gameObject = InstantiateRegistered(AssetPath.ShopPath, _uiRootTransform);
 
             foreach (BuyShopItemButton buyShopItemButton in gameObject.GetComponentsInChildren<BuyShopItemButton>())
+            {
                 buyShopItemButton.Construct(_staticDataService, _playerProgress, _shopItemObserver);
+                ShopItemStaticData shopItemStaticData = _staticDataService.ForShopItem(buyShopItemButton.ShopItemType);
+                buyShopItemButton.ShopItem.Id = shopItemStaticData.Id;
+            }
 
             return gameObject;
         }

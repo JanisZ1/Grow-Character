@@ -9,6 +9,7 @@ namespace Assets.CodeBase.Infrastructure.StaticData
         public float Price;
         public float Calories;
         public float MaximumMass;
+        public int Id;
 
         public ShopItemType ShopItemType;
     }

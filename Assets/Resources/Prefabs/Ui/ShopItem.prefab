@@ -626,7 +626,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _priceText: {fileID: 149671011490664223}
-  _id: 
+  _nextShopItem: {fileID: 0}
+  Id: 0
 --- !u!1 &7185995038206507414
 GameObject:
   m_ObjectHideFlags: 0
@@ -898,9 +899,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 496d1c44ae3b0cf4eba7fc496cc5bf9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shopItem: {fileID: 2606342267108882935}
+  ShopItem: {fileID: 2606342267108882935}
   _button: {fileID: 372951897627889618}
-  _shopItemType: 0
+  ShopItemType: 0
 --- !u!1 &8836161510605726771
 GameObject:
   m_ObjectHideFlags: 0

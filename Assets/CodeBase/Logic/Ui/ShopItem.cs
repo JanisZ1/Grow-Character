@@ -10,7 +10,8 @@ namespace Assets.CodeBase.Logic.Ui
     {
         [SerializeField] private TextMeshProUGUI _priceText;
         [SerializeField] private ShopItem _nextShopItem;
-        [SerializeField] private int _id;
+
+        public int Id { get; set; }
 
         public bool Unlocked { get; set; }
 
@@ -18,7 +19,7 @@ namespace Assets.CodeBase.Logic.Ui
 
         private void Start()
         {
-            if (_id == 0)
+            if (Id == 0)
                 Unlocked = true;
         }
 
@@ -34,27 +35,22 @@ namespace Assets.CodeBase.Logic.Ui
         public void SaveProgress(PlayerProgress progress)
         {
             List<int> buyedItemsList = progress.ShopBuyData.BuyedItems;
-            List<int> unlockedItemsList = progress.ShopBuyData.UnlockedItems;
 
-            if (Buyed && !buyedItemsList.Contains(_id))
-                buyedItemsList.Add(_id);
-
-            if (Unlocked && !unlockedItemsList.Contains(_id))
-                unlockedItemsList.Add(_id);
+            if (Buyed && !buyedItemsList.Contains(Id))
+                buyedItemsList.Add(Id);
         }
 
         public void LoadProgress(PlayerProgress progress)
         {
             List<int> buyedItems = progress.ShopBuyData.BuyedItems;
-            List<int> unlockedItemsList = progress.ShopBuyData.UnlockedItems;
 
-            if (buyedItems.Contains(_id))
+            if (buyedItems.Contains(Id))
             {
                 Buyed = true;
                 ChangeTextToBuyed();
             }
 
-            if (unlockedItemsList.Contains(_id - 1) || _id == 0)
+            if (buyedItems.Contains(Id - 1) || Id == 0)
                 Unlocked = true;
         }
     }
