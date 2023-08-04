@@ -3,13 +3,29 @@ using Assets.CodeBase.Infrastructure.Services.SaveLoad;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.CodeBase.Logic.Ui
 {
     public class ShopItem : MonoBehaviour, ISavedProgress
     {
-        [SerializeField] private TextMeshProUGUI _priceText;
         [SerializeField] private ShopItem _nextShopItem;
+
+        [SerializeField] private Image _icon;
+        [SerializeField] private TextMeshProUGUI _priceText;
+        [SerializeField] private TextMeshProUGUI _profitText;
+        [SerializeField] private TextMeshProUGUI _massGiveText;
+        [SerializeField] private TextMeshProUGUI _maximumMassText;
+
+        public TextMeshProUGUI PriceText => _priceText;
+
+        public TextMeshProUGUI ProfitText => _profitText;
+
+        public TextMeshProUGUI MassGiveText => _massGiveText;
+
+        public TextMeshProUGUI MaximumMassText => _maximumMassText;
+
+        public Image Icon => _icon;
 
         public int Id { get; set; }
 

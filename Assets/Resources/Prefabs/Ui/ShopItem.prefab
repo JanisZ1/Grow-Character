@@ -552,7 +552,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 12, y: 82.29651}
+  m_AnchoredPosition: {x: 12, y: 0}
   m_SizeDelta: {x: 0, y: -170.59311}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8970472544625354749
@@ -625,9 +625,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bc53325957ac19468d9df6eb1838d70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _priceText: {fileID: 149671011490664223}
   _nextShopItem: {fileID: 0}
-  Id: 0
+  _icon: {fileID: 8791461511716639289}
+  _priceText: {fileID: 149671011490664223}
+  _profitText: {fileID: 4913652836995968140}
+  _massGiveText: {fileID: 8286583384897444385}
+  _maximumMassText: {fileID: 6628997525913999524}
 --- !u!1 &7185995038206507414
 GameObject:
   m_ObjectHideFlags: 0
@@ -802,7 +805,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 4}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -134.50005, y: 59.4}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &2891330177937491727

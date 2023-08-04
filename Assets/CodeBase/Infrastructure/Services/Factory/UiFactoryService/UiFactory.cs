@@ -40,7 +40,13 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory.UiFactoryService
             {
                 buyShopItemButton.Construct(_staticDataService, _playerProgress, _shopItemObserver);
                 ShopItemStaticData shopItemStaticData = _staticDataService.ForShopItem(buyShopItemButton.ShopItemType);
+
                 buyShopItemButton.ShopItem.Id = shopItemStaticData.Id;
+                buyShopItemButton.ShopItem.Icon.sprite = shopItemStaticData.IconSprite;
+                buyShopItemButton.ShopItem.PriceText.text = $"{shopItemStaticData.Price}";
+                buyShopItemButton.ShopItem.ProfitText.text = $"Profit {shopItemStaticData.Profit}";
+                buyShopItemButton.ShopItem.MassGiveText.text = $"Calories {shopItemStaticData.Calories}";
+                buyShopItemButton.ShopItem.MaximumMassText.text = $"MaximumMass {shopItemStaticData.MaximumMass}";
             }
 
             return gameObject;
