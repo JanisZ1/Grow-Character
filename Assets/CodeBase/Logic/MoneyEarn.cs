@@ -12,7 +12,7 @@ namespace Assets.CodeBase.Logic
         private IPlayerProgressService _playerProgressService;
         private IShopItemObserver _shopItemObserver;
 
-        private float _earnValue;
+        public float EarnValue { get; set; }
 
         public void Construct(IInputService inputService, IPlayerProgressService playerProgressService, IShopItemObserver shopItemObserver)
         {
@@ -33,10 +33,10 @@ namespace Assets.CodeBase.Logic
             _shopItemObserver.Buyed -= ChangeEarnValue;
         }
 
-        private void ChangeEarnValue(ShopItemData shopItemData) =>
-            _earnValue = shopItemData.Calories;
+        private void ChangeEarnValue(ShopItemStaticData shopItemData) =>
+            EarnValue = shopItemData.Profit;
 
         private void Earn() =>
-            _playerProgressService.Progress.MoneyData.Earn(_earnValue);
+            _playerProgressService.Progress.MoneyData.Earn(EarnValue);
     }
 }

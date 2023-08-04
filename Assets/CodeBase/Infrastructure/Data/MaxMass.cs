@@ -11,7 +11,7 @@ namespace Assets.CodeBase.Infrastructure.Data
 
         public void Change(float mass)
         {
-            Current += mass;
+            Current = mass;
             Changed?.Invoke();
         }
     }

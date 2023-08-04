@@ -5,9 +5,9 @@ namespace Assets.CodeBase.Infrastructure.Services.Observer
 {
     public class ShopItemObserver : IShopItemObserver
     {
-        public event Action<ShopItemData> Buyed;
+        public event Action<ShopItemStaticData> Buyed;
 
-        public void OnBuyed(ShopItemData shopItemData) =>
+        public void OnBuyed(ShopItemStaticData shopItemData) =>
             Buyed?.Invoke(shopItemData);
     }
 }

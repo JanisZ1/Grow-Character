@@ -59,6 +59,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
         public void Enter(string sceneName)
         {
             _heroFactory.Cleanup();
+            _coinFactory.Cleanup();
             _sceneLoader.Load(sceneName, OnLoaded);
         }
 
@@ -84,6 +85,9 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
         private void InformProgressReaders()
         {
             foreach (ISavedProgressReader progressReader in _heroFactory.ProgressReaders)
+                progressReader.LoadProgress(_playerProgress.Progress);
+
+            foreach (ISavedProgressReader progressReader in _coinFactory.ProgressReaders)
                 progressReader.LoadProgress(_playerProgress.Progress);
         }
 

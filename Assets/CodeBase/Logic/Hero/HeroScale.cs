@@ -39,10 +39,33 @@ namespace Assets.CodeBase.Logic.Hero
             _shopItemObserver.Buyed -= ChangeScaleFactor;
         }
 
-        private void ChangeMaximumMass(Infrastructure.StaticData.ShopItemData shopItemData) =>
-            _maximumMass = shopItemData.MaximumMass;
+        public void SaveProgress(PlayerProgress progress)
+        {
+            progress.MassData.Mass.Current = _heroTransform.localScale.x;
+            progress.MassData.Mass.ScaleFactor = _scaleFactor;
+            progress.MassData.MaxMass.Current = _maximumMass;
+        }
 
-        private void ChangeScaleFactor(Infrastructure.StaticData.ShopItemData shopItemData) =>
+        public void LoadProgress(PlayerProgress progress)
+        {
+            float mass = progress.MassData.Mass.Current;
+            float scaleFactor = progress.MassData.Mass.ScaleFactor;
+            float maxMass = progress.MassData.MaxMass.Current;
+
+            _heroTransform.localScale = new Vector3(mass, mass, mass);
+            _maximumMass = maxMass;
+            _scaleFactor = scaleFactor;
+        }
+
+        private void ChangeMaximumMass(Infrastructure.StaticData.ShopItemStaticData shopItemData)
+        {
+            float maximumMass = shopItemData.MaximumMass;
+
+            _maximumMass = maximumMass;
+            _playerProgress.Progress.MassData.MaxMass.Change(maximumMass);
+        }
+
+        private void ChangeScaleFactor(Infrastructure.StaticData.ShopItemStaticData shopItemData) =>
             _scaleFactor = shopItemData.Calories;
 
         private void AddScale()
@@ -69,23 +92,5 @@ namespace Assets.CodeBase.Logic.Hero
 
         private Vector3 MaximumMass() =>
             new Vector3(_maximumMass, _maximumMass, _maximumMass);
-
-        public void SaveProgress(PlayerProgress progress)
-        {
-            progress.MassData.Mass.Current = _heroTransform.localScale.x;
-            progress.MassData.Mass.ScaleFactor = _scaleFactor;
-            progress.MassData.MaxMass.Current = _maximumMass;
-        }
-
-        public void LoadProgress(PlayerProgress progress)
-        {
-            float mass = progress.MassData.Mass.Current;
-            float scaleFactor = progress.MassData.Mass.ScaleFactor;
-            float maxMass = progress.MassData.MaxMass.Current;
-
-            _heroTransform.localScale = new Vector3(mass, mass, mass);
-            _maximumMass = maxMass;
-            _scaleFactor = scaleFactor;
-        }
     }
 }

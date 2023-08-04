@@ -6,6 +6,6 @@ namespace Assets.CodeBase.Infrastructure.Data
     [Serializable]
     public class ShopBuyData
     {
-        public List<ShopItemData> ShopItemData;
+        public List<int> BuyedItems = new List<int>();
     }
 }
