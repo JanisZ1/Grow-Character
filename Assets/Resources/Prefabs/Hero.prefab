@@ -174,7 +174,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 994ed7003dedfb848829d2588e1dc086, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -341,7 +341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: -673170662906561034}
-  _speed: 1
+  _speed: 0.2
 --- !u!54 &-673170662906561034
 Rigidbody:
   m_ObjectHideFlags: 0
