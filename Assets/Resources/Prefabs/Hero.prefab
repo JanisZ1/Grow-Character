@@ -342,6 +342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _heroTransform: {fileID: 2400751350722245536}
+  _heroEat: {fileID: 1238579482484826504}
 --- !u!114 &4807649550303596481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -395,6 +396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 927e0ca54fb2845429233b0812b56176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _heroEat: {fileID: 1238579482484826504}
 --- !u!114 &-6043588800516895174
 MonoBehaviour:
   m_ObjectHideFlags: 0

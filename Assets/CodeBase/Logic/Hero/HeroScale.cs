@@ -10,17 +10,16 @@ namespace Assets.CodeBase.Logic.Hero
     public class HeroScale : MonoBehaviour, ISavedProgress
     {
         [SerializeField] private Transform _heroTransform;
+        [SerializeField] private HeroEat _heroEat;
 
-        private IInputService _inputService;
         private IPlayerProgressService _playerProgress;
         private IShopItemObserver _shopItemObserver;
 
         private float _maximumMass;
         private float _scaleFactor;
 
-        public void Construct(IInputService inputService, IPlayerProgressService playerProgress, IShopItemObserver shopItemObserver)
+        public void Construct(IPlayerProgressService playerProgress, IShopItemObserver shopItemObserver)
         {
-            _inputService = inputService;
             _playerProgress = playerProgress;
             _shopItemObserver = shopItemObserver;
         }
@@ -29,14 +28,14 @@ namespace Assets.CodeBase.Logic.Hero
         {
             _shopItemObserver.Buyed += ChangeMaximumMass;
             _shopItemObserver.Buyed += ChangeScaleFactor;
-            _inputService.MouseButtonDown += AddScale;
+            _heroEat.Eated += AddScale;
         }
 
         private void OnDestroy()
         {
-            _inputService.MouseButtonDown -= AddScale;
             _shopItemObserver.Buyed -= ChangeMaximumMass;
             _shopItemObserver.Buyed -= ChangeScaleFactor;
+            _heroEat.Eated -= AddScale;
         }
 
         public void SaveProgress(PlayerProgress progress)

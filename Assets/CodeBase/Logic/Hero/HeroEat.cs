@@ -1,4 +1,5 @@
 ﻿using Assets.CodeBase.Infrastructure.Services.InputService;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -7,6 +8,8 @@ namespace Assets.CodeBase.Logic.Hero
     public class HeroEat : MonoBehaviour
     {
         [SerializeField] private HeroAnimator _animator;
+
+        public event Action Eated;
 
         private IInputService _inputService;
         private bool _animationIsPlaying;
@@ -33,6 +36,7 @@ namespace Assets.CodeBase.Logic.Hero
 
             yield return new WaitForSeconds(_animator.EatLength);
 
+            Eated?.Invoke();
             _animationIsPlaying = false;
         }
     }
