@@ -4,6 +4,10 @@ public class HeroAnimator : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
 
+    public void PlayEat() => _animator.SetTrigger("Eat");
+
+    public float EatLength { get; private set; } = 1f;
+
     private void Update()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
