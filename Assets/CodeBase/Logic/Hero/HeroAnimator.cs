@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class HeroAnimator : MonoBehaviour
@@ -8,6 +9,8 @@ public class HeroAnimator : MonoBehaviour
 
     public float EatLength { get; private set; } = 1f;
 
+    public event Action Eated;
+
     private void Update()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -16,4 +19,7 @@ public class HeroAnimator : MonoBehaviour
         _animator.SetFloat("Horizontal", horizontalInput);
         _animator.SetFloat("Vertical", verticalInput);
     }
+
+    public void InvokeEatEvent() => 
+        Eated?.Invoke();
 }

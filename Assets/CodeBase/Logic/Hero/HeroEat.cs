@@ -14,14 +14,20 @@ namespace Assets.CodeBase.Logic.Hero
         private IInputService _inputService;
         private bool _animationIsPlaying;
 
-        public void Construct(IInputService inputService) => 
+        public void Construct(IInputService inputService) =>
             _inputService = inputService;
 
-        private void Start() => 
+        private void Start()
+        {
+            _animator.Eated += FoodEated;
             _inputService.MouseButtonDown += MouseButtonDown;
+        }
 
-        private void OnDestroy() => 
+        private void OnDestroy()
+        {
             _inputService.MouseButtonDown -= MouseButtonDown;
+            _animator.Eated -= FoodEated;
+        }
 
         private void MouseButtonDown()
         {
@@ -36,8 +42,10 @@ namespace Assets.CodeBase.Logic.Hero
 
             yield return new WaitForSeconds(_animator.EatLength);
 
-            Eated?.Invoke();
             _animationIsPlaying = false;
         }
+
+        private void FoodEated() =>
+            Eated?.Invoke();
     }
 }
