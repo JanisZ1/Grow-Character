@@ -38,6 +38,7 @@ namespace Assets.CodeBase.Logic.Hero
         private IEnumerator PlayAnimation()
         {
             _animator.PlayEat();
+
             _animationIsPlaying = true;
 
             yield return new WaitForSeconds(_animator.EatLength);

@@ -20,6 +20,6 @@ public class HeroAnimator : MonoBehaviour
         _animator.SetFloat("Vertical", verticalInput);
     }
 
-    public void InvokeEatEvent() => 
+    public void InvokeEatEvent() =>
         Eated?.Invoke();
 }
