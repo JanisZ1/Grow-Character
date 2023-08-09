@@ -32,7 +32,7 @@ namespace Assets.CodeBase.Logic.Hero
         }
 
         private void AddVelocity(Vector3 to) =>
-            _rigidbody.velocity += (to.x * transform.right + to.z * transform.forward) * _speed;
+            _rigidbody.velocity += (to.x * transform.right + to.z * transform.forward) * (_speed + transform.localScale.x);
 
         private Vector3 ExcludeYAxis(Vector3 axis) =>
             new Vector3(axis.z, 0, axis.x);
