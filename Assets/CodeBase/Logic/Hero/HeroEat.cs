@@ -1,6 +1,5 @@
 ﻿using Assets.CodeBase.Infrastructure.Services.InputService;
 using System;
-using System.Collections;
 using UnityEngine;
 
 namespace Assets.CodeBase.Logic.Hero
@@ -20,30 +19,35 @@ namespace Assets.CodeBase.Logic.Hero
         private void Start()
         {
             _animator.Eated += FoodEated;
+            _animator.StateEntered += StateEntered;
+            _animator.StateExited += StateExited;
             _inputService.MouseButtonDown += MouseButtonDown;
         }
 
         private void OnDestroy()
         {
             _inputService.MouseButtonDown -= MouseButtonDown;
+            _animator.StateEntered -= StateEntered;
+            _animator.StateExited -= StateExited;
             _animator.Eated -= FoodEated;
+        }
+
+        private void StateEntered(AnimatorState state)
+        {
+            if (state == AnimatorState.Eat)
+                _animationIsPlaying = true;
+        }
+
+        private void StateExited(AnimatorState state)
+        {
+            if (state == AnimatorState.Eat)
+                _animationIsPlaying = false;
         }
 
         private void MouseButtonDown()
         {
             if (!_animationIsPlaying)
-                StartCoroutine(PlayAnimation());
-        }
-
-        private IEnumerator PlayAnimation()
-        {
-            _animator.PlayEat();
-
-            _animationIsPlaying = true;
-
-            yield return new WaitForSeconds(_animator.EatLength);
-
-            _animationIsPlaying = false;
+                _animator.PlayEat();
         }
 
         private void FoodEated() =>
