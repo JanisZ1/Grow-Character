@@ -35,9 +35,9 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory.HeroFactory
 
             gameObject.GetComponent<HeroMove>().Construct(_inputService);
             gameObject.GetComponent<HeroEat>().Construct(_inputService);
-            gameObject.GetComponent<HeroScale>().Construct(_inputService, _playerProgressService, _shopItemObserver);
+            gameObject.GetComponent<HeroScale>().Construct(_playerProgressService, _shopItemObserver);
             MoneyEarn moneyEarn = gameObject.GetComponent<MoneyEarn>();
-            moneyEarn.Construct(_inputService, _playerProgressService, _shopItemObserver);
+            moneyEarn.Construct(_playerProgressService, _shopItemObserver);
 
             moneyEarn.EarnValue = _playerProgressService.Progress.MoneyData.ByClickEarnAmount;
 
