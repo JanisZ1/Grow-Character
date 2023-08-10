@@ -10,6 +10,8 @@ namespace Assets.CodeBase.Logic.CoinLogic
 {
     public class Coin : MonoBehaviour, ISavedProgressReader
     {
+        [SerializeField] private Vector3 _rotation;
+
         private IPlayerProgressService _playerProgress;
         private IShopItemObserver _shopItemObserver;
 
@@ -26,6 +28,9 @@ namespace Assets.CodeBase.Logic.CoinLogic
 
         private void OnDestroy() =>
             _shopItemObserver.Buyed -= ChangeValue;
+
+        private void Update() =>
+            transform.Rotate(_rotation);
 
         private void ChangeValue(ShopItemStaticData shopItemData) =>
             Value = shopItemData.Profit;
