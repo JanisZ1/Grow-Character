@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99b6deedd7dfa664aad78c8af4455170, type: 3}
   m_Name: Donut
   m_EditorClassIdentifier: 
-  Profit: 1.4
+  Profit: 4
   Price: 220
-  Calories: 0.052
+  Calories: 0.5
   MaximumMass: 23.2
   Id: 13
   IconSprite: {fileID: 21300000, guid: 9d9500e9154fb4f459620561f70f3899, type: 3}

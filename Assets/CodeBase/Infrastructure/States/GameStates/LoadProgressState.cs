@@ -37,7 +37,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
             playerProgress.MassData.Mass.Current = 0.07f;
             playerProgress.MassData.MaxMass.Current = 0.07f;
             playerProgress.MassData.Mass.ScaleFactor = 0.0002f;
-            playerProgress.MoneyData.ByClickEarnAmount = 0.008f;
+            playerProgress.MoneyData.ByClickEarnAmount = 0.1f;
 
             return playerProgress;
         }

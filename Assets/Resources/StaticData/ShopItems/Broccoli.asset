@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99b6deedd7dfa664aad78c8af4455170, type: 3}
   m_Name: Broccoli
   m_EditorClassIdentifier: 
-  Profit: 0.03
+  Profit: 0.3
   Price: 3
-  Calories: 0.0008
+  Calories: 0.008
   MaximumMass: 0.2
   Id: 1
   IconSprite: {fileID: 21300000, guid: 20888adf21b68e547bc8c3a7bee413ef, type: 3}

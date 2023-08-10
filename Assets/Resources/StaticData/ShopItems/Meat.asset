@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99b6deedd7dfa664aad78c8af4455170, type: 3}
   m_Name: Meat
   m_EditorClassIdentifier: 
-  Profit: 0.93
+  Profit: 2.5
   Price: 130
-  Calories: 0.024
+  Calories: 0.24
   MaximumMass: 11.6
   Id: 10
   IconSprite: {fileID: 21300000, guid: d443281380163cd449b1a452d7cadf33, type: 3}

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99b6deedd7dfa664aad78c8af4455170, type: 3}
   m_Name: Sausage
   m_EditorClassIdentifier: 
-  Profit: 1.2
+  Profit: 3.3
   Price: 180
-  Calories: 0.04
+  Calories: 0.4
   MaximumMass: 18.8
   Id: 12
   IconSprite: {fileID: 21300000, guid: 5a3edfdb708df8d4aa3c91b240fd8e1d, type: 3}
