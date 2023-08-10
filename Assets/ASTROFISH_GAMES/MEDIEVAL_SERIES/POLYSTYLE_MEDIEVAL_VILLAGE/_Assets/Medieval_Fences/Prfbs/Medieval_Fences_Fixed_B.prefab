@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8602107324436743586}
   - component: {fileID: 2994556108636027864}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Medieval_Fences_Fixed_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 1043292777271623986}
   - component: {fileID: 6819895405073073446}
   - component: {fileID: 772871966236852865}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Medieval_Fences_Fixed_B_Collision_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 1860341769256451214}
   - component: {fileID: 2594605159154318019}
   - component: {fileID: 3359212010311162169}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Medieval_Fences_Fixed_B_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 6804683204630224958}
   - component: {fileID: 6804683204633124892}
   - component: {fileID: 6804683204631995100}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Medieval_Fences_Fixed_B_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,7 +300,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8292553996535267975}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Medieval_Fences_Fixed_B_Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334,7 +334,7 @@ GameObject:
   - component: {fileID: 1772862332454631673}
   - component: {fileID: 5541555950829149765}
   - component: {fileID: 239339839128465952}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Medieval_Fences_Fixed_B_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
