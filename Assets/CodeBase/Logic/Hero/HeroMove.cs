@@ -24,18 +24,18 @@ namespace Assets.CodeBase.Logic.Hero
         private void FixedUpdate()
         {
             Vector3 axis = _inputService.Axis.normalized;
-            Vector3 direction = ExcludeYAxis(axis);
+            Vector3 direction = Direction(axis);
             AddVelocity(to: direction);
 
             if (Moving())
                 SetRotationLikeCamera();
         }
 
-        private void AddVelocity(Vector3 to) =>
+        private void AddVelocity(Vector3 to) => 
             _rigidbody.velocity += (to.x * transform.right + to.z * transform.forward) * (_speed + transform.localScale.x);
 
-        private Vector3 ExcludeYAxis(Vector3 axis) =>
-            new Vector3(axis.z, 0, axis.x);
+        private Vector3 Direction(Vector3 axis) =>
+            new Vector3(axis.z, _rigidbody.velocity.y, axis.x);
 
         private void SetRotationLikeCamera()
         {
@@ -44,7 +44,7 @@ namespace Assets.CodeBase.Logic.Hero
         }
 
         private Vector3 AddY() =>
-            new Vector3(transform.position.x, transform.position.y + transform.localScale.y, transform.position.z);
+            new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
 
         private bool Moving() =>
             _rigidbody.velocity != Vector3.zero;

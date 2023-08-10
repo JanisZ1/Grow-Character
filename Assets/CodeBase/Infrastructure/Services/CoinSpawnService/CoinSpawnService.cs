@@ -27,12 +27,18 @@ namespace Assets.CodeBase.Infrastructure.Services.CoinSpawnService
             yield return new WaitForSeconds(1);
 
             List<CoinSpawner> coinSpawners = _coinSpawnerHandler.CoinSpawners;
-            int randomIndex = Random.Range(0, coinSpawners.Count);
-            //TODO: Fix multiple coins spawn in one place
+
+            int randomIndex = RandomIndex(coinSpawners);
+
             CoinSpawner coinSpawner = coinSpawners.ElementAt(randomIndex);
-            coinSpawner.Spawn();
+
+            if (!coinSpawner.Spawned)
+                coinSpawner.Spawn();
 
             yield return SpawnProcess();
         }
+
+        private int RandomIndex(List<CoinSpawner> coinSpawners) =>
+            Random.Range(0, coinSpawners.Count);
     }
 }

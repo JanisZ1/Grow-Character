@@ -2,6 +2,7 @@
 using Assets.CodeBase.Infrastructure.Services.Observer;
 using Assets.CodeBase.Infrastructure.Services.PlayerProgressService;
 using Assets.CodeBase.Infrastructure.Services.SaveLoad;
+using Assets.CodeBase.Logic.Spawners.Coin;
 using UnityEngine;
 using ShopItemStaticData = Assets.CodeBase.Infrastructure.StaticData.ShopItemStaticData;
 
@@ -32,9 +33,12 @@ namespace Assets.CodeBase.Logic.CoinLogic
         public void Collect()
         {
             _playerProgress.Progress.MoneyData.Earn(Value);
-
+            MarkSpawnerNotSpawned();
             Destroy(gameObject);
         }
+
+        private void MarkSpawnerNotSpawned() =>
+            GetComponentInParent<CoinSpawner>().Spawned = false;
 
         public void LoadProgress(PlayerProgress progress) =>
             Value = progress.MoneyData.ByClickEarnAmount;

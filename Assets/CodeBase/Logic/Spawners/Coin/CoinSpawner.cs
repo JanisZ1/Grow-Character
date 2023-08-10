@@ -7,10 +7,15 @@ namespace Assets.CodeBase.Logic.Spawners.Coin
     {
         private ICoinFactory _coinFactory;
 
+        public bool Spawned { get; set; }
+
         public void Construct(ICoinFactory coinFactory) =>
             _coinFactory = coinFactory;
 
-        public void Spawn() =>
+        public void Spawn()
+        {
             _coinFactory.CreateCoin(at: transform.position, transform);
+            Spawned = true;
+        }
     }
 }

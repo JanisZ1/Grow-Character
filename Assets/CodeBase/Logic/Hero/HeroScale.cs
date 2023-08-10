@@ -1,5 +1,4 @@
 ﻿using Assets.CodeBase.Infrastructure.Data;
-using Assets.CodeBase.Infrastructure.Services.InputService;
 using Assets.CodeBase.Infrastructure.Services.Observer;
 using Assets.CodeBase.Infrastructure.Services.PlayerProgressService;
 using Assets.CodeBase.Infrastructure.Services.SaveLoad;
@@ -76,7 +75,7 @@ namespace Assets.CodeBase.Logic.Hero
                 _heroTransform.localScale = massToChange;
                 SaveMassChange();
             }
-            if (_heroTransform.localScale.x > _maximumMass)
+            if (massToChange.x >= _maximumMass)
             {
                 _heroTransform.localScale = MaximumMass();
                 SaveMassChange();
