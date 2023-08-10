@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99b6deedd7dfa664aad78c8af4455170, type: 3}
   m_Name: Pizza
   m_EditorClassIdentifier: 
-  Profit: 0.78
+  Profit: 2.2
   Price: 100
   Calories: 0.016
   MaximumMass: 8.8

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99b6deedd7dfa664aad78c8af4455170, type: 3}
   m_Name: Carrot
   m_EditorClassIdentifier: 
-  Profit: 0.3
+  Profit: 1.35
   Price: 28
   Calories: 0.0072
   MaximumMass: 2.8
