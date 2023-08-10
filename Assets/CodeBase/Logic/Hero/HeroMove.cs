@@ -44,7 +44,7 @@ namespace Assets.CodeBase.Logic.Hero
         }
 
         private Vector3 AddY() =>
-            new Vector3(transform.position.x, transform.position.y + transform.localScale.y, transform.position.z);
+            new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
 
         private bool Moving() =>
             _rigidbody.velocity != Vector3.zero;

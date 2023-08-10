@@ -1,5 +1,4 @@
 ﻿using Assets.CodeBase.Infrastructure.Data;
-using Assets.CodeBase.Infrastructure.Services.InputService;
 using Assets.CodeBase.Infrastructure.Services.Observer;
 using Assets.CodeBase.Infrastructure.Services.PlayerProgressService;
 using Assets.CodeBase.Infrastructure.Services.SaveLoad;
