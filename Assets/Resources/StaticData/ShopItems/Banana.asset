@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Profit: 1.8
   Price: 72
-  Calories: 0.012
+  Calories: 0.12
   MaximumMass: 6
   Id: 8
   IconSprite: {fileID: 21300000, guid: bc07bacd596be2a439a2a5504e144965, type: 3}
