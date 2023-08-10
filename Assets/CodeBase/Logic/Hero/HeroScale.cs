@@ -76,7 +76,7 @@ namespace Assets.CodeBase.Logic.Hero
                 _heroTransform.localScale = massToChange;
                 SaveMassChange();
             }
-            if (_heroTransform.localScale.x > _maximumMass)
+            if (massToChange.x >= _maximumMass)
             {
                 _heroTransform.localScale = MaximumMass();
                 SaveMassChange();
