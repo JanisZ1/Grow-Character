@@ -7,9 +7,12 @@ namespace Assets.CodeBase.Logic.Hero
     {
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private float _speed;
+        [SerializeField] private ParticleSystem _particles;
 
         private IInputService _inputService;
         private Transform _cameraTransform;
+
+        private bool _particlesPlaying;
 
         public void Construct(IInputService inputService) =>
             _inputService = inputService;
@@ -29,9 +32,21 @@ namespace Assets.CodeBase.Logic.Hero
 
             if (Moving())
                 SetRotationLikeCamera();
+
+            if (MovingOnHorizontalAxis() && !_particlesPlaying)
+            {
+                _particles.Play();
+                _particlesPlaying = true;
+            }
+
+            else if (!MovingOnHorizontalAxis() && _particlesPlaying)
+            {
+                _particles.Stop();
+                _particlesPlaying = false;
+            }
         }
 
-        private void AddVelocity(Vector3 to) => 
+        private void AddVelocity(Vector3 to) =>
             _rigidbody.velocity += (to.x * transform.right + to.z * transform.forward) * (_speed + transform.localScale.x);
 
         private Vector3 Direction(Vector3 axis) =>
@@ -48,5 +63,8 @@ namespace Assets.CodeBase.Logic.Hero
 
         private bool Moving() =>
             _rigidbody.velocity != Vector3.zero;
+
+        private bool MovingOnHorizontalAxis() =>
+            _rigidbody.velocity.x != 0 && _rigidbody.velocity.z != 0;
     }
 }

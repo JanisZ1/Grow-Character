@@ -3,6 +3,7 @@ using Assets.CodeBase.Infrastructure.Services.Observer;
 using Assets.CodeBase.Infrastructure.Services.PlayerProgressService;
 using Assets.CodeBase.Infrastructure.Services.SaveLoad;
 using Assets.CodeBase.Logic.Spawners.Coin;
+using System.Collections;
 using UnityEngine;
 using ShopItemStaticData = Assets.CodeBase.Infrastructure.StaticData.ShopItemStaticData;
 
@@ -10,6 +11,12 @@ namespace Assets.CodeBase.Logic.CoinLogic
 {
     public class Coin : MonoBehaviour, ISavedProgressReader
     {
+        [SerializeField] private Vector3 _rotation;
+        [SerializeField] private float _collectEffectTime = 2f;
+        [SerializeField] private float _destroyAfterCollectedTime = 2f;
+
+        [SerializeField] private CoinRaycastToGround _coinRaycastToGround;
+
         private IPlayerProgressService _playerProgress;
         private IShopItemObserver _shopItemObserver;
 
@@ -27,14 +34,37 @@ namespace Assets.CodeBase.Logic.CoinLogic
         private void OnDestroy() =>
             _shopItemObserver.Buyed -= ChangeValue;
 
+        private void Update() =>
+            transform.Rotate(_rotation);
+
         private void ChangeValue(ShopItemStaticData shopItemData) =>
             Value = shopItemData.Profit;
 
         public void Collect()
         {
             _playerProgress.Progress.MoneyData.Earn(Value);
+
             MarkSpawnerNotSpawned();
-            Destroy(gameObject);
+
+            _coinRaycastToGround.enabled = false;
+
+            StartCoroutine(PlayCollectEffect(_collectEffectTime));
+            Destroy(gameObject, _destroyAfterCollectedTime);
+        }
+
+        private IEnumerator PlayCollectEffect(float effectTime)
+        {
+            float currentTime = 0f;
+
+            Vector3 position = transform.position;
+
+            while (currentTime < effectTime)
+            {
+                yield return null;
+
+                transform.position = Vector3.Lerp(position, position + Vector3.up, currentTime);
+                currentTime += Time.deltaTime;
+            }
         }
 
         private void MarkSpawnerNotSpawned() =>
