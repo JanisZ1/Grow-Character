@@ -71,13 +71,15 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
             _staticData.Load();
             LevelStaticData levelStaticData = _staticData.ForLevel(SceneManager.GetActiveScene().name);
 
+            _soundFactory.CreateBackgroundSounds();
+
             _inputService.StartUpdate();
             InitializeHero();
             InitializeCinemachine();
 
             HandleCoinSpawners(levelStaticData);
             _coinSpawnService.StartSpawn();
-            _soundFactory.CreateBackgroundSound();
+            _soundFactory.CreateBackgroundSounds();
             _uiFactory.CreateUiRoot();
             _hudFactory.CreateHud();
             InformProgressReaders();

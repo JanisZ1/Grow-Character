@@ -1,15 +1,25 @@
-﻿using Assets.CodeBase.Infrastructure.Services.AssetProvider;
+﻿using Assets.CodeBase.Infrastructure.Services.StaticData;
+using Assets.CodeBase.Infrastructure.StaticData;
+using UnityEngine;
+using System.Collections.Generic;
 
 namespace Assets.CodeBase.Infrastructure.Services.Factory
 {
     public class SoundFactory : ISoundFactory
     {
-        private readonly IAssets _assets;
+        private readonly IStaticDataService _staticData;
 
-        public SoundFactory(IAssets assets) =>
-            _assets = assets;
+        public SoundFactory(IStaticDataService staticData) =>
+            _staticData = staticData;
 
-        public void CreateBackgroundSound() =>
-            _assets.Instantiate(AssetPath.MainBackgroundSoundPath);
+        public void CreateBackgroundSounds()
+        {
+            List<BackgroundSoundStaticData> allBackgroundSounds = _staticData.ForAllBackgroundSounds();
+
+            foreach (BackgroundSoundStaticData backgroundSoundData in allBackgroundSounds)
+            {
+                Object.Instantiate(backgroundSoundData.Prefab);
+            }
+        }
     }
 }

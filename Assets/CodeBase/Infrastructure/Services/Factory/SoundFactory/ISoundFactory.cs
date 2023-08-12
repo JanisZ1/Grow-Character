@@ -2,6 +2,6 @@
 {
     public interface ISoundFactory : IService
     {
-        void CreateBackgroundSound();
+        void CreateBackgroundSounds();
     }
 }
