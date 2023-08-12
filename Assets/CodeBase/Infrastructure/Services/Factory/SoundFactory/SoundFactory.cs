@@ -12,14 +12,19 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory
         public SoundFactory(IStaticDataService staticData) =>
             _staticData = staticData;
 
-        public void CreateBackgroundSounds()
+        public List<GameObject> CreateBackgroundSounds()
         {
             List<BackgroundSoundStaticData> allBackgroundSounds = _staticData.ForAllBackgroundSounds();
 
+            List<GameObject> createdSounds = new List<GameObject>();
+
             foreach (BackgroundSoundStaticData backgroundSoundData in allBackgroundSounds)
             {
-                Object.Instantiate(backgroundSoundData.Prefab);
+                GameObject sound = Object.Instantiate(backgroundSoundData.Prefab);
+                createdSounds.Add(sound);
             }
+
+            return createdSounds;
         }
     }
 }

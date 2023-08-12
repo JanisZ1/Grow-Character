@@ -1,7 +1,10 @@
-﻿namespace Assets.CodeBase.Infrastructure.Services.Factory
+﻿using System.Collections.Generic;
+using UnityEngine;
+
+namespace Assets.CodeBase.Infrastructure.Services.Factory
 {
     public interface ISoundFactory : IService
     {
-        void CreateBackgroundSounds();
+        List<GameObject> CreateBackgroundSounds();
     }
 }

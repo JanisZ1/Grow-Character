@@ -13,7 +13,7 @@ namespace Assets.CodeBase.Infrastructure.Services.StaticData
 
         private const string ShopItemsStaticDataPath = "StaticData/ShopItems";
         private const string LevelsStaticDataPath = "StaticData/Level";
-        private const string BackgroundSoundsStaticDataPath = "";
+        private const string BackgroundSoundsStaticDataPath = "StaticData/Sounds";
 
         public void Load()
         {
