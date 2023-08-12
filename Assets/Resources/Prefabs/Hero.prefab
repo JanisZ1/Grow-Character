@@ -196,7 +196,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 6150319567197561432}
-  _eatSound: {fileID: 7362267813734048413}
 --- !u!1 &816140557073536646
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,6 +448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 8895576494300189174}
+  _eatSound: {fileID: 7362267813734048413}
 --- !u!1 &1271196140166403735
 GameObject:
   m_ObjectHideFlags: 0

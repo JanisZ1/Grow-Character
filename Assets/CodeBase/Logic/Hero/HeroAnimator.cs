@@ -5,7 +5,6 @@ using UnityEngine;
 public class HeroAnimator : MonoBehaviour, IAnimationStateReader
 {
     [SerializeField] private Animator _animator;
-    [SerializeField] private AudioSource _eatSound;
 
     private readonly int _eatStateHash = Animator.StringToHash("Eat");
 
@@ -27,11 +26,8 @@ public class HeroAnimator : MonoBehaviour, IAnimationStateReader
         _animator.SetFloat("Vertical", verticalInput);
     }
 
-    public void InvokeEatEvent()
-    {
-        _eatSound.Play();
+    public void InvokeEatEvent() => 
         Eated?.Invoke();
-    }
 
     public void ExitedState(int stateHash)
     {
