@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.CodeBase.Infrastructure.Services.Factory
 {
     public interface ISoundFactory : IService
     {
-        List<GameObject> CreateBackgroundSounds();
+        void CreateSoundSwitcher();
+        GameObject SoundSwitcher { get; }
     }
 }

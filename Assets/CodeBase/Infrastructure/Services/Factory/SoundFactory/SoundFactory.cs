@@ -1,30 +1,28 @@
 ﻿using Assets.CodeBase.Infrastructure.Services.StaticData;
-using Assets.CodeBase.Infrastructure.StaticData;
 using UnityEngine;
-using System.Collections.Generic;
+using Assets.CodeBase.Infrastructure.Services.AssetProvider;
 
 namespace Assets.CodeBase.Infrastructure.Services.Factory
 {
     public class SoundFactory : ISoundFactory
     {
+        private readonly IAssets _assets;
         private readonly IStaticDataService _staticData;
+        private readonly ICoroutineRunner _coroutineRunner;
 
-        public SoundFactory(IStaticDataService staticData) =>
-            _staticData = staticData;
+        public GameObject SoundSwitcher { get; private set; }
 
-        public List<GameObject> CreateBackgroundSounds()
+        public SoundFactory(IAssets assets, IStaticDataService staticData, ICoroutineRunner coroutineRunner)
         {
-            List<BackgroundSoundStaticData> allBackgroundSounds = _staticData.ForAllBackgroundSounds();
+            _assets = assets;
+            _staticData = staticData;
+            _coroutineRunner = coroutineRunner;
+        }
 
-            List<GameObject> createdSounds = new List<GameObject>();
-
-            foreach (BackgroundSoundStaticData backgroundSoundData in allBackgroundSounds)
-            {
-                GameObject sound = Object.Instantiate(backgroundSoundData.Prefab);
-                createdSounds.Add(sound);
-            }
-
-            return createdSounds;
+        public void CreateSoundSwitcher()
+        {
+            SoundSwitcher = _assets.Instantiate(AssetPath.SoundSwitcherPath);
+            SoundSwitcher.GetComponent<SoundSwitcher>().Construct(_coroutineRunner);
         }
     }
 }

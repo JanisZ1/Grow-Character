@@ -10,7 +10,6 @@
         public const string HudPath = "Prefabs/Ui/Hud";
         public const string CoinSpawnerPath = "Prefabs/CoinSpawner";
         public const string CoinPath = "Prefabs/Coin";
-
-        public const string MainBackgroundSoundPath = "Prefabs/Sounds/Background_sound";
+        public const string SoundSwitcherPath = "Prefabs/Sounds/SoundSwitcher";
     }
 }

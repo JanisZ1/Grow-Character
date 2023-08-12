@@ -8,5 +8,5 @@ namespace Assets.CodeBase.Infrastructure.Services.HeroHandler
 
         public void Handle(GameObject hero) =>
             HeroGameObject = hero;
-    }
+    }  
 }

@@ -71,7 +71,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
             _staticData.Load();
             LevelStaticData levelStaticData = _staticData.ForLevel(SceneManager.GetActiveScene().name);
 
-            _soundFactory.CreateBackgroundSounds();
+            StartSoundSwitch();
 
             _inputService.StartUpdate();
             InitializeHero();
@@ -79,12 +79,19 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
 
             HandleCoinSpawners(levelStaticData);
             _coinSpawnService.StartSpawn();
-            _soundFactory.CreateBackgroundSounds();
             _uiFactory.CreateUiRoot();
             _hudFactory.CreateHud();
             InformProgressReaders();
             StartSaveProcess();
             EnterGameLoop();
+        }
+
+        private void StartSoundSwitch()
+        {
+            _soundFactory.CreateSoundSwitcher();
+
+            SoundSwitcher soundSwitcher = _soundFactory.SoundSwitcher.GetComponent<SoundSwitcher>();
+            soundSwitcher.StartSoundSwitch();
         }
 
         private void InformProgressReaders()
