@@ -34,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4558313808953833974
 MeshFilter:
@@ -101,6 +101,8 @@ MonoBehaviour:
   _rotation: {x: 0, y: 1, z: 0}
   _collectEffectTime: 2
   _destroyAfterCollectedTime: 2
+  _pickupSoundPrefab: {fileID: 3379995551222023169, guid: ca1b3ede568d7ed4e915a86521e72e4a,
+    type: 3}
   _coinRaycastToGround: {fileID: 1213128515516061125}
 --- !u!135 &7304632835081740696
 SphereCollider:

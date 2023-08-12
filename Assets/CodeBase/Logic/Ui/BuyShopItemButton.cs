@@ -13,6 +13,7 @@ namespace Assets.CodeBase.Logic.Ui
     {
         public ShopItem ShopItem;
         [SerializeField] private Button _button;
+        [SerializeField] private AudioSource _buyItemSound;
         public ShopItemType ShopItemType;
 
         private IStaticDataService _staticData;
@@ -45,6 +46,7 @@ namespace Assets.CodeBase.Logic.Ui
                 MarkShopItemBuyed();
                 UnlockNextItem();
                 ChangeBuyedText();
+                _buyItemSound.Play();
                 _shopItemObserver.OnBuyed(_shopItemStaticData);
             }
         }

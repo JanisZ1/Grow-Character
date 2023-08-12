@@ -1,5 +1,6 @@
 ﻿using Assets.CodeBase.Infrastructure.Services.CoinSpawnerHandler;
 using Assets.CodeBase.Infrastructure.Services.CoinSpawnService;
+using Assets.CodeBase.Infrastructure.Services.Factory;
 using Assets.CodeBase.Infrastructure.Services.Factory.CinemachineFactory;
 using Assets.CodeBase.Infrastructure.Services.Factory.CoinFactory;
 using Assets.CodeBase.Infrastructure.Services.Factory.HeroFactory;
@@ -22,6 +23,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
     {
         private readonly GameStateMachine _stateMachine;
         private readonly SceneLoader _sceneLoader;
+        private readonly ISoundFactory _soundFactory;
         private readonly ICoroutineRunner _coroutineRunner;
         private readonly IPlayerProgressService _playerProgress;
         private readonly ISaveLoadService _saveLoadService;
@@ -37,10 +39,11 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
         private readonly IInputService _inputService;
         private ProgressSaver _progressSaver;
 
-        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, ICoroutineRunner coroutineRunner, IPlayerProgressService playerProgress, ISaveLoadService saveLoadService, ICoinSpawnService coinSpawnService, ICoinSpawnerHandler coinSpawnerHandler, ICoinFactory coinFactory, IStaticDataService staticData, IHudFactory hudFactory, IHeroFactory heroFactory, IHeroHandler heroHandler, ICinemachineFactory cinemachineFactory, IUiFactory uiFactory, IInputService inputService)
+        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, ISoundFactory soundFactory, ICoroutineRunner coroutineRunner, IPlayerProgressService playerProgress, ISaveLoadService saveLoadService, ICoinSpawnService coinSpawnService, ICoinSpawnerHandler coinSpawnerHandler, ICoinFactory coinFactory, IStaticDataService staticData, IHudFactory hudFactory, IHeroFactory heroFactory, IHeroHandler heroHandler, ICinemachineFactory cinemachineFactory, IUiFactory uiFactory, IInputService inputService)
         {
             _stateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
+            _soundFactory = soundFactory;
             _coroutineRunner = coroutineRunner;
             _playerProgress = playerProgress;
             _saveLoadService = saveLoadService;
@@ -74,7 +77,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
 
             HandleCoinSpawners(levelStaticData);
             _coinSpawnService.StartSpawn();
-
+            _soundFactory.CreateBackgroundSound();
             _uiFactory.CreateUiRoot();
             _hudFactory.CreateHud();
             InformProgressReaders();
