@@ -71,7 +71,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
             _staticData.Load();
             LevelStaticData levelStaticData = _staticData.ForLevel(SceneManager.GetActiveScene().name);
 
-            StartSoundSwitch();
+            _soundFactory.CreateSoundSwitcher();
 
             _inputService.StartUpdate();
             InitializeHero();
@@ -84,14 +84,6 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
             InformProgressReaders();
             StartSaveProcess();
             EnterGameLoop();
-        }
-
-        private void StartSoundSwitch()
-        {
-            _soundFactory.CreateSoundSwitcher();
-
-            //SoundSwitcher soundSwitcher = _soundFactory.SoundSwitcher.GetComponent<SoundSwitcher>();
-            //soundSwitcher.StartSoundSwitch();
         }
 
         private void InformProgressReaders()
