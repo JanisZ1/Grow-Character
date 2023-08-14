@@ -1,44 +1,26 @@
-﻿using Assets.CodeBase.Logic;
-using System.Collections;
+﻿using Assets.CodeBase.Infrastructure.Services.BackgroundSoundObserver;
+using Assets.CodeBase.Logic;
 using UnityEngine;
 
 namespace Assets.CodeBase.Infrastructure
 {
     public class SoundSwitcher : MonoBehaviour
     {
-        private ICoroutineRunner _coroutineRunner;
-        [SerializeField] private BackgroundSound _startingSound;
-        private BackgroundSound _playingBackgroundSound;
+        private IBackgroundSoundObserver _backgroundSoundObserver;
 
-        public void Construct(ICoroutineRunner coroutineRunner) =>
-            _coroutineRunner = coroutineRunner;
+        public void Construct(IBackgroundSoundObserver backgroundSoundObserver) =>
+            _backgroundSoundObserver = backgroundSoundObserver;
 
-        private void Awake() =>
-            _playingBackgroundSound = _startingSound;
+        private void Start() =>
+            _backgroundSoundObserver.SoundFinished += OnSoundFinished;
 
-        public void StartSoundSwitch() =>
-            _coroutineRunner.StartCoroutine(SwitchSoundProcess());
+        private void OnDestroy() =>
+            _backgroundSoundObserver.SoundFinished -= OnSoundFinished;
 
-        private void PlayNextSound()
-        {
-            _playingBackgroundSound.NextAudioSource.Play();
-            _playingBackgroundSound = _playingBackgroundSound.NextAudioSource.GetComponent<BackgroundSound>();
-        }
+        private void OnSoundFinished(BackgroundSound backgroundSound) =>
+            PlayNext(backgroundSound.NextAudioSource);
 
-        private IEnumerator SwitchSoundProcess()
-        {
-            while (_playingBackgroundSound.AudioSource.isPlaying)
-                yield return null;
-
-            if (!Application.isFocused)
-            {
-                yield return new WaitUntil(() => Application.isFocused);
-                yield return SwitchSoundProcess();
-            }
-
-            PlayNextSound();
-
-            yield return SwitchSoundProcess();
-        }
+        private void PlayNext(AudioSource sound) => 
+            sound.Play();
     }
 }

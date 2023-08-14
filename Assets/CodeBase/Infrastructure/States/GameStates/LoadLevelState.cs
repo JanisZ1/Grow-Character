@@ -90,8 +90,8 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
         {
             _soundFactory.CreateSoundSwitcher();
 
-            SoundSwitcher soundSwitcher = _soundFactory.SoundSwitcher.GetComponent<SoundSwitcher>();
-            soundSwitcher.StartSoundSwitch();
+            //SoundSwitcher soundSwitcher = _soundFactory.SoundSwitcher.GetComponent<SoundSwitcher>();
+            //soundSwitcher.StartSoundSwitch();
         }
 
         private void InformProgressReaders()
