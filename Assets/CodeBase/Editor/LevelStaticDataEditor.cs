@@ -25,7 +25,7 @@ namespace Assets.CodeBase.Editor
 
                 levelStaticData.CoinSpawners = coinSpawnPointsGenerator.GenerateProbeStaticData(coinSpawnArea);
                 levelStaticData.HeightShowBuildings = heightShowBuildingSpawners
-                    .Select(x => new HeightShowBuildingData(x.BuildingType, x.transform.position))
+                    .Select(x => new HeightShowBuildingSpawnerData(x.BuildingType, x.transform.position))
                     .ToList();
             }
 

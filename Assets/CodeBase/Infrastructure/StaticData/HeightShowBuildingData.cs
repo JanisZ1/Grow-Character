@@ -2,15 +2,9 @@
 
 namespace Assets.CodeBase.Infrastructure.StaticData
 {
-    public class HeightShowBuildingData
+    public class HeightShowBuildingData : ScriptableObject
     {
         public HeightShowBuildingType BuildingType;
-        public Vector3 Position;
-
-        public HeightShowBuildingData(HeightShowBuildingType buildingType, Vector3 position)
-        {
-            BuildingType = buildingType;
-            Position = position;
-        }
+        public GameObject Prefab;
     }
 }
