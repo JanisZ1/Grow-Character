@@ -9,9 +9,9 @@
         SmallTower = 4,
         MediumTower = 5,
         BigTower = 6,
-        SmallWillageHouse = 7,
-        MediumWillageHouse = 8,
-        BigWillageHouse = 9,
+        SmallVillageHouse = 7,
+        MediumVillageHouse = 8,
+        BigVillageHouse = 9,
         MediumOffice = 10,
         BigOffice = 11,
     }

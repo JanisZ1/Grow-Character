@@ -2,6 +2,7 @@
 
 namespace Assets.CodeBase.Infrastructure.StaticData
 {
+    [CreateAssetMenu(fileName = "HeightShowBuildingData", menuName = "StaticData/HeightShowBuildingData")]
     public class HeightShowBuildingData : ScriptableObject
     {
         public HeightShowBuildingType BuildingType;

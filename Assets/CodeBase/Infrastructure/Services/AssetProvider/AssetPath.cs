@@ -11,6 +11,6 @@
         public const string CoinSpawnerPath = "Prefabs/CoinSpawner";
         public const string CoinPath = "Prefabs/Coin";
         public const string SoundSwitcherPath = "Prefabs/Sounds/SoundSwitcher";
-        public const string HeightShowBuildingSpawnerPath = "Prefabs/HeightShowBuilding/HeightShowBuildingSpawner";
+        public const string HeightShowBuildingSpawnerPath = "Prefabs/HeightShowBuilding/Spawners/HeightShowBuildingSpawner";
     }
 }
