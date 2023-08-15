@@ -18,9 +18,6 @@ namespace Assets.CodeBase.Infrastructure
             _backgroundSoundObserver.SoundFinished -= OnSoundFinished;
 
         private void OnSoundFinished(BackgroundSound backgroundSound) =>
-            PlayNext(backgroundSound.NextAudioSource);
-
-        private void PlayNext(AudioSource sound) => 
-            sound.Play();
+            backgroundSound.PlayNext();
     }
 }
