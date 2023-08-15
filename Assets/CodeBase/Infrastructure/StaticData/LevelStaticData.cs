@@ -8,5 +8,6 @@ namespace Assets.CodeBase.Infrastructure.StaticData
     {
         public string LevelName;
         public List<CoinSpawnPointData> CoinSpawners;
+        public List<HeightShowBuildingData> HeightShowBuildings;
     }
 }

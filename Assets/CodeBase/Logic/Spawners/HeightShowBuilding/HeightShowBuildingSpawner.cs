@@ -6,11 +6,11 @@ namespace Assets.CodeBase.Logic.Spawners.HeightShowBuilding
 {
     public class HeightShowBuildingSpawner : MonoBehaviour
     {
-        [SerializeField] HeightShowBuildingType _buildingType;
+        public HeightShowBuildingType BuildingType;
 
         private IHeightShowBuildingFactory _heightShowBuildingFactory;
 
         public void Spawn() =>
-            _heightShowBuildingFactory.CreateBuilding(_buildingType);
+            _heightShowBuildingFactory.CreateBuilding(BuildingType);
     }
 }

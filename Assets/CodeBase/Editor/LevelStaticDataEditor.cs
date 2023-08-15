@@ -1,5 +1,7 @@
 ﻿using Assets.CodeBase.Infrastructure.StaticData;
 using Assets.CodeBase.Logic.Spawners.Coin;
+using Assets.CodeBase.Logic.Spawners.HeightShowBuilding;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -14,13 +16,17 @@ namespace Assets.CodeBase.Editor
 
             LevelStaticData levelStaticData = (LevelStaticData)target;
 
-            if (GUILayout.Button("Generate coin spawn points"))
+            if (GUILayout.Button("Collect Data"))
             {
                 CoinSpawnArea coinSpawnArea = FindObjectOfType<CoinSpawnArea>();
+                HeightShowBuildingSpawner[] heightShowBuildingSpawners = FindObjectsOfType<HeightShowBuildingSpawner>();
 
                 CoinSpawnPointsGenerator coinSpawnPointsGenerator = new CoinSpawnPointsGenerator();
 
                 levelStaticData.CoinSpawners = coinSpawnPointsGenerator.GenerateProbeStaticData(coinSpawnArea);
+                levelStaticData.HeightShowBuildings = heightShowBuildingSpawners
+                    .Select(x => new HeightShowBuildingData(x.BuildingType, x.transform.position))
+                    .ToList();
             }
 
             if (Time.frameCount % 100 == 0)
