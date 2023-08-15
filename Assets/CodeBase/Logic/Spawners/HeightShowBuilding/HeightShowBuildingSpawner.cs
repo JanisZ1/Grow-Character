@@ -13,7 +13,10 @@ namespace Assets.CodeBase.Logic.Spawners.HeightShowBuilding
         public void Construct(IHeightShowBuildingFactory heightShowBuildingFactory) =>
             _heightShowBuildingFactory = heightShowBuildingFactory;
 
-        public void Spawn() =>
+        private void Start() =>
+            Spawn();
+
+        private void Spawn() =>
             _heightShowBuildingFactory.CreateBuilding(BuildingType);
     }
 }
