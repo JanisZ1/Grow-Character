@@ -17,6 +17,6 @@ namespace Assets.CodeBase.Logic.Spawners.HeightShowBuilding
             Spawn();
 
         private void Spawn() =>
-            _heightShowBuildingFactory.CreateBuilding(BuildingType);
+            _heightShowBuildingFactory.CreateBuilding(BuildingType, parent: transform);
     }
 }

@@ -18,11 +18,11 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory.HeightShowBuilding
             _staticData = staticData;
         }
 
-        public GameObject CreateBuilding(HeightShowBuildingType buildingType)
+        public GameObject CreateBuilding(HeightShowBuildingType buildingType, Transform parent)
         {
             HeightShowBuildingData heightShowBuildingData = _staticData.ForHeightShowBuilding(buildingType);
 
-            return Object.Instantiate(heightShowBuildingData.Prefab);
+            return Object.Instantiate(heightShowBuildingData.Prefab, parent);
         }
 
         public void CreateSpawners()
@@ -32,7 +32,9 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory.HeightShowBuilding
             foreach (HeightShowBuildingSpawnerData heightShowBuildingData in levelStaticData.HeightShowBuildings)
             {
                 GameObject gameObject = _assets.Instantiate(AssetPath.HeightShowBuildingSpawnerPath);
-                gameObject.GetComponent<HeightShowBuildingSpawner>().Construct(this);
+                HeightShowBuildingSpawner spawner = gameObject.GetComponent<HeightShowBuildingSpawner>();
+                spawner.Construct(this);
+                spawner.BuildingType = heightShowBuildingData.BuildingType;
             }
         }
     }

@@ -504,3 +504,28 @@ MonoBehaviour:
   - Position: {x: 95.96417, y: -0.9510164, z: -70.522545}
   - Position: {x: 95.96417, y: -0.9510164, z: -66.522545}
   - Position: {x: 95.96417, y: -0.9510164, z: -62.522545}
+  HeightShowBuildings:
+  - BuildingType: 11
+    Position: {x: -65.4, y: -1, z: -43.2}
+  - BuildingType: 10
+    Position: {x: -14.35, y: -1, z: -47.2}
+  - BuildingType: 9
+    Position: {x: 15.64, y: -1, z: -52.4}
+  - BuildingType: 8
+    Position: {x: 38.51, y: -1, z: -50.18}
+  - BuildingType: 7
+    Position: {x: 54.13, y: -1, z: -54.15}
+  - BuildingType: 6
+    Position: {x: 64.55, y: -1, z: -54.77}
+  - BuildingType: 5
+    Position: {x: 71.98, y: -1, z: -54.15}
+  - BuildingType: 4
+    Position: {x: 81.75, y: -1, z: -54.15}
+  - BuildingType: 3
+    Position: {x: 87.98, y: -1, z: -56.32}
+  - BuildingType: 2
+    Position: {x: 92.5, y: -1, z: -57.15}
+  - BuildingType: 1
+    Position: {x: 95.74, y: -1, z: -57.45}
+  - BuildingType: 0
+    Position: {x: 98.72, y: -1, z: -57.98}

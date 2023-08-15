@@ -19,12 +19,12 @@ namespace Assets.CodeBase.Editor
             if (GUILayout.Button("Collect Data"))
             {
                 CoinSpawnArea coinSpawnArea = FindObjectOfType<CoinSpawnArea>();
-                HeightShowBuildingSpawner[] heightShowBuildingSpawners = FindObjectsOfType<HeightShowBuildingSpawner>();
+                HeightShowBuildingSpawnMarker[] heightShowBuildingMarkers = FindObjectsOfType<HeightShowBuildingSpawnMarker>();
 
                 CoinSpawnPointsGenerator coinSpawnPointsGenerator = new CoinSpawnPointsGenerator();
 
                 levelStaticData.CoinSpawners = coinSpawnPointsGenerator.GenerateProbeStaticData(coinSpawnArea);
-                levelStaticData.HeightShowBuildings = heightShowBuildingSpawners
+                levelStaticData.HeightShowBuildings = heightShowBuildingMarkers
                     .Select(x => new HeightShowBuildingSpawnerData(x.BuildingType, x.transform.position))
                     .ToList();
             }
