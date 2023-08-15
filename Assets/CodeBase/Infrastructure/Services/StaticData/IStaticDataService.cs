@@ -1,4 +1,5 @@
 ﻿using Assets.CodeBase.Infrastructure.StaticData;
+using System.Collections.Generic;
 
 namespace Assets.CodeBase.Infrastructure.Services.StaticData
 {
@@ -6,6 +7,7 @@ namespace Assets.CodeBase.Infrastructure.Services.StaticData
     {
         ShopItemStaticData ForShopItem(ShopItemType shopItemType);
         LevelStaticData ForLevel(string level);
+        List<BackgroundSoundStaticData> ForAllBackgroundSounds();
         void Load();
     }
 }

@@ -7,6 +7,7 @@ namespace Assets.CodeBase.Logic.Hero
     public class HeroEat : MonoBehaviour
     {
         [SerializeField] private HeroAnimator _animator;
+        [SerializeField] private AudioSource _eatSound;
 
         public event Action Eated;
 
@@ -50,7 +51,10 @@ namespace Assets.CodeBase.Logic.Hero
                 _animator.PlayEat();
         }
 
-        private void FoodEated() =>
+        private void FoodEated()
+        {
+            _eatSound.Play();
             Eated?.Invoke();
+        }
     }
 }

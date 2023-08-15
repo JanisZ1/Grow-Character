@@ -26,7 +26,7 @@ public class HeroAnimator : MonoBehaviour, IAnimationStateReader
         _animator.SetFloat("Vertical", verticalInput);
     }
 
-    public void InvokeEatEvent() =>
+    public void InvokeEatEvent() => 
         Eated?.Invoke();
 
     public void ExitedState(int stateHash)

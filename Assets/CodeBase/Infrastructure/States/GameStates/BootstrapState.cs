@@ -1,7 +1,9 @@
 ﻿using Assets.CodeBase.Infrastructure.Services;
 using Assets.CodeBase.Infrastructure.Services.AssetProvider;
+using Assets.CodeBase.Infrastructure.Services.BackgroundSoundObserver;
 using Assets.CodeBase.Infrastructure.Services.CoinSpawnerHandler;
 using Assets.CodeBase.Infrastructure.Services.CoinSpawnService;
+using Assets.CodeBase.Infrastructure.Services.Factory;
 using Assets.CodeBase.Infrastructure.Services.Factory.CinemachineFactory;
 using Assets.CodeBase.Infrastructure.Services.Factory.CoinFactory;
 using Assets.CodeBase.Infrastructure.Services.Factory.HeroFactory;
@@ -51,6 +53,8 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
             _services.Register<IPlayerProgressService>(new PlayerProgressService());
             _services.Register<IInputService>(new InputService(_coroutineRunner));
             _services.Register<IHeroHandler>(new HeroHandler());
+            _services.Register<IBackgroundSoundObserver>(new BackgroundSoundObserver());
+            _services.Register<ISoundFactory>(new SoundFactory(_services.Single<IAssets>(), _services.Single<IStaticDataService>(), _services.Single<IBackgroundSoundObserver>()));
             _services.Register<IHeroFactory>(new HeroFactory(_services.Single<IAssets>(), _services.Single<IInputService>(), _services.Single<IPlayerProgressService>(), _services.Single<IShopItemObserver>()));
             _services.Register<IUiFactory>(new UiFactory(_services.Single<IAssets>(), _services.Single<IStaticDataService>(), _services.Single<IPlayerProgressService>(), _services.Single<IShopItemObserver>()));
             _services.Register<ISaveLoadService>(new SaveLoadService(_services.Single<IPlayerProgressService>(), _services.Single<IHeroFactory>(), _services.Single<IUiFactory>()));

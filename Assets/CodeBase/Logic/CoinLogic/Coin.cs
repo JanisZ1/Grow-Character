@@ -14,7 +14,7 @@ namespace Assets.CodeBase.Logic.CoinLogic
         [SerializeField] private Vector3 _rotation;
         [SerializeField] private float _collectEffectTime = 2f;
         [SerializeField] private float _destroyAfterCollectedTime = 2f;
-
+        [SerializeField] private GameObject _pickupSoundPrefab;
         [SerializeField] private CoinRaycastToGround _coinRaycastToGround;
 
         private IPlayerProgressService _playerProgress;
@@ -47,9 +47,14 @@ namespace Assets.CodeBase.Logic.CoinLogic
             MarkSpawnerNotSpawned();
 
             _coinRaycastToGround.enabled = false;
-
-            StartCoroutine(PlayCollectEffect(_collectEffectTime));
+            PlayEffects();
             Destroy(gameObject, _destroyAfterCollectedTime);
+        }
+
+        private void PlayEffects()
+        {
+            Instantiate(_pickupSoundPrefab, transform);
+            StartCoroutine(PlayCollectEffect(_collectEffectTime));
         }
 
         private IEnumerator PlayCollectEffect(float effectTime)
