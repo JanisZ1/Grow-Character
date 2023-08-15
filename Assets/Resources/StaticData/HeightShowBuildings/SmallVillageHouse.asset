@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SmallVillageHouse
   m_EditorClassIdentifier: 
   BuildingType: 7
-  Prefab: {fileID: 0}
+  Prefab: {fileID: 2620944635927137756, guid: 918a3916aea8fa840938a693378b35c7, type: 3}

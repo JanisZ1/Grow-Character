@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SmallRock
   m_EditorClassIdentifier: 
   BuildingType: 1
-  Prefab: {fileID: 0}
+  Prefab: {fileID: 8095630572284115198, guid: acc15688d86d32641806fbfbde2ad456, type: 3}
