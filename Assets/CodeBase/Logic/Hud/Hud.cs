@@ -15,6 +15,7 @@ namespace Assets.CodeBase.Logic.Hud
         [SerializeField] private TextMeshProUGUI _money;
         [SerializeField] private TextMeshProUGUI _mass;
         [SerializeField] private TextMeshProUGUI _maxMass;
+        [SerializeField] private MoneyChangeMovingHud _moneyChangeUiPrefab;
 
         private string _massText;
         private string _maxMassText;
@@ -35,6 +36,8 @@ namespace Assets.CodeBase.Logic.Hud
             UpdateTexts();
 
             _playerProgress.Progress.MoneyData.Changed += UpdateMoneyInHud;
+            _playerProgress.Progress.MoneyData.MoneyEarned += ShowMoneyEarnedChange;
+            _playerProgress.Progress.MoneyData.MoneySpended += ShowMoneySpendedChange;
             _playerProgress.Progress.MassData.Mass.Changed += UpdateMassInHud;
             _playerProgress.Progress.MassData.MaxMass.Changed += UpdateMaxMassInHud;
 
@@ -44,11 +47,19 @@ namespace Assets.CodeBase.Logic.Hud
         private void OnDestroy()
         {
             _playerProgress.Progress.MoneyData.Changed -= UpdateMoneyInHud;
+            _playerProgress.Progress.MoneyData.MoneyEarned -= ShowMoneyEarnedChange;
+            _playerProgress.Progress.MoneyData.MoneySpended -= ShowMoneySpendedChange;
             _playerProgress.Progress.MassData.Mass.Changed -= UpdateMassInHud;
             _playerProgress.Progress.MassData.MaxMass.Changed -= UpdateMaxMassInHud;
 
             _inputService.EKeyDown -= OpenOrCloseShop;
         }
+
+        private void ShowMoneySpendedChange(float moneySpended) =>
+            ShowMoneyChange(-moneySpended);
+
+        private void ShowMoneyEarnedChange(float moneyEarned) =>
+            ShowMoneyChange(moneyEarned);
 
         private void UpdateTexts()
         {
@@ -79,5 +90,14 @@ namespace Assets.CodeBase.Logic.Hud
 
         private void UpdateMoneyInHud() =>
             _money.text = _playerProgress.Progress.MoneyData.Count.ToString("0.0");
+
+        private void ShowMoneyChange(float money)
+        {
+            MoneyChangeMovingHud moneyChangeMovingUi = Instantiate(_moneyChangeUiPrefab, transform);
+
+            moneyChangeMovingUi.MoneyText.text = $"{money}";
+            moneyChangeMovingUi.SetRandomScreenPosition();
+            moneyChangeMovingUi.PlayAnimation();
+        }
     }
 }
