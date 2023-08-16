@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: SmallTower
   m_EditorClassIdentifier: 
   BuildingType: 4
+  Height: 1.8
   Prefab: {fileID: 8638848536243822010, guid: 562111400434a494d9d967eb8b48e09c, type: 3}

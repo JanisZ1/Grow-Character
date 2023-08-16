@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: MediumTower
   m_EditorClassIdentifier: 
   BuildingType: 5
+  Height: 2.5
   Prefab: {fileID: 1611027472656318450, guid: b98ea07b6af82b845943a032473422db, type: 3}

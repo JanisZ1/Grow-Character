@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: MediumOffice
   m_EditorClassIdentifier: 
   BuildingType: 10
+  Height: 20
   Prefab: {fileID: 5300085293462412885, guid: 9bca9fce691e5da4bbcd00e1c95f71be, type: 3}

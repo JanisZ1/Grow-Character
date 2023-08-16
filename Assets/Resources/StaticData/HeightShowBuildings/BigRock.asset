@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: BigRock
   m_EditorClassIdentifier: 
   BuildingType: 3
+  Height: 1.5
   Prefab: {fileID: 6215303209206725571, guid: 74fa073a73cc2ac488343b8b499f15db, type: 3}

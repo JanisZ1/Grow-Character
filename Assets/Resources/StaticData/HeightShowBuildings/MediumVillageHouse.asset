@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: MediumVillageHouse
   m_EditorClassIdentifier: 
   BuildingType: 8
+  Height: 11
   Prefab: {fileID: 1352959181385095201, guid: 70048aee0be1cbf48bd7cd3c0c094d6d, type: 3}

@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: MediumRock
   m_EditorClassIdentifier: 
   BuildingType: 2
+  Height: 0.7
   Prefab: {fileID: 375436406529393053, guid: 286b3dab3b78d1d46948238b50a253b4, type: 3}
