@@ -3,13 +3,15 @@ using UnityEngine;
 
 namespace Assets.CodeBase.Logic.Hud
 {
-    public class MoneyChangeMovingUi : MonoBehaviour
+    public class MoneyChangeMovingHud : MonoBehaviour
     {
+        public TextMeshProUGUI MoneyText;
+
         private const string Move = "Move";
 
         [SerializeField] private RectTransform _rectTransform;
-        public TextMeshProUGUI MoneyText;
         [SerializeField] private Animator _animator;
+
         [SerializeField] private Vector2 _spawnAreaMin;
         [SerializeField] private Vector2 _spawnAreaMax;
 

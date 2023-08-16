@@ -1,7 +1,6 @@
 ﻿using Assets.CodeBase.Infrastructure.Services.InputService;
 using Assets.CodeBase.Infrastructure.Services.PlayerProgressService;
 using Assets.CodeBase.Infrastructure.Services.WindowService;
-using System;
 using TMPro;
 using UnityEngine;
 
@@ -16,7 +15,7 @@ namespace Assets.CodeBase.Logic.Hud
         [SerializeField] private TextMeshProUGUI _money;
         [SerializeField] private TextMeshProUGUI _mass;
         [SerializeField] private TextMeshProUGUI _maxMass;
-        [SerializeField] private MoneyChangeMovingUi _moneyChangeUiPrefab;
+        [SerializeField] private MoneyChangeMovingHud _moneyChangeUiPrefab;
 
         private string _massText;
         private string _maxMassText;
@@ -45,12 +44,6 @@ namespace Assets.CodeBase.Logic.Hud
             _inputService.EKeyDown += OpenOrCloseShop;
         }
 
-        private void ShowMoneySpendedChange(float moneySpended) =>
-            ShowMoneyChange(-moneySpended);
-
-        private void ShowMoneyEarnedChange(float moneyEarned) =>
-            ShowMoneyChange(moneyEarned);
-
         private void OnDestroy()
         {
             _playerProgress.Progress.MoneyData.Changed -= UpdateMoneyInHud;
@@ -61,6 +54,12 @@ namespace Assets.CodeBase.Logic.Hud
 
             _inputService.EKeyDown -= OpenOrCloseShop;
         }
+
+        private void ShowMoneySpendedChange(float moneySpended) =>
+            ShowMoneyChange(-moneySpended);
+
+        private void ShowMoneyEarnedChange(float moneyEarned) =>
+            ShowMoneyChange(moneyEarned);
 
         private void UpdateTexts()
         {
@@ -94,7 +93,7 @@ namespace Assets.CodeBase.Logic.Hud
 
         private void ShowMoneyChange(float money)
         {
-            MoneyChangeMovingUi moneyChangeMovingUi = Instantiate(_moneyChangeUiPrefab, transform);
+            MoneyChangeMovingHud moneyChangeMovingUi = Instantiate(_moneyChangeUiPrefab, transform);
 
             moneyChangeMovingUi.MoneyText.text = $"{money}";
             moneyChangeMovingUi.SetRandomScreenPosition();
