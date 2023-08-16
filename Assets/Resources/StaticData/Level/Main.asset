@@ -505,27 +505,27 @@ MonoBehaviour:
   - Position: {x: 95.96417, y: -0.9510164, z: -66.522545}
   - Position: {x: 95.96417, y: -0.9510164, z: -62.522545}
   HeightShowBuildings:
+  - BuildingType: 7
+    Position: {x: 57.94, y: -1.06, z: -54.24}
+  - BuildingType: 3
+    Position: {x: 87.98001, y: 0.38399994, z: -57.65}
+  - BuildingType: 8
+    Position: {x: 38.509995, y: -1.02, z: -48.81}
+  - BuildingType: 5
+    Position: {x: 71.98001, y: -0.73, z: -55.38}
+  - BuildingType: 4
+    Position: {x: 81.75, y: -5.48, z: -55.25}
   - BuildingType: 11
-    Position: {x: -65.4, y: -1, z: -43.2}
+    Position: {x: -65.4, y: -1, z: -41.6}
   - BuildingType: 10
     Position: {x: -14.349998, y: -1, z: -47.2}
-  - BuildingType: 9
-    Position: {x: 15.639999, y: -1, z: -52.4}
-  - BuildingType: 8
-    Position: {x: 38.509995, y: -1, z: -50.18}
-  - BuildingType: 7
-    Position: {x: 54.130005, y: -1, z: -54.15}
-  - BuildingType: 6
-    Position: {x: 64.55, y: -1, z: -54.77}
-  - BuildingType: 5
-    Position: {x: 71.98001, y: -1, z: -54.15}
-  - BuildingType: 4
-    Position: {x: 81.75, y: -1, z: -54.15}
-  - BuildingType: 3
-    Position: {x: 87.98001, y: -1, z: -56.32}
-  - BuildingType: 2
-    Position: {x: 92.5, y: -1, z: -57.15}
-  - BuildingType: 1
-    Position: {x: 95.73999, y: -1, z: -57.45}
   - BuildingType: 0
     Position: {x: 98.72, y: -1, z: -57.98}
+  - BuildingType: 9
+    Position: {x: 15.639999, y: -0.37, z: -50.92}
+  - BuildingType: 1
+    Position: {x: 95.73999, y: -0.06400001, z: -58.11}
+  - BuildingType: 6
+    Position: {x: 64.55, y: -1.91, z: -56.22}
+  - BuildingType: 2
+    Position: {x: 92.5, y: -0.468, z: -57.98}

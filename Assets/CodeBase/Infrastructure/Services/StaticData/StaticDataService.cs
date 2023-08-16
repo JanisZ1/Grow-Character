@@ -13,7 +13,7 @@ namespace Assets.CodeBase.Infrastructure.Services.StaticData
         private List<BackgroundSoundStaticData> _backgroundSounds;
 
         private const string ShopItemsStaticDataPath = "StaticData/ShopItems";
-        private const string HeightShowBuildingsStaticDataPath = "";
+        private const string HeightShowBuildingsStaticDataPath = "StaticData/HeightShowBuildings";
         private const string LevelsStaticDataPath = "StaticData/Level";
         private const string BackgroundSoundsStaticDataPath = "StaticData/Sounds";
 
