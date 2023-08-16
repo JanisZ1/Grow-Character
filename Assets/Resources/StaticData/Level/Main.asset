@@ -518,7 +518,7 @@ MonoBehaviour:
   - BuildingType: 11
     Position: {x: -65.4, y: -1, z: -41.6}
   - BuildingType: 10
-    Position: {x: -14.349998, y: -1, z: -47.2}
+    Position: {x: -14.349998, y: 13.74, z: -46.38}
   - BuildingType: 0
     Position: {x: 98.72, y: -1, z: -57.98}
   - BuildingType: 9

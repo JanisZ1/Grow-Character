@@ -2,6 +2,7 @@
 using Assets.CodeBase.Infrastructure.Services.StaticData;
 using Assets.CodeBase.Infrastructure.StaticData;
 using Assets.CodeBase.Logic.Spawners.HeightShowBuilding;
+using Assets.CodeBase.Logic.Ui;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -22,7 +23,10 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory.HeightShowBuilding
         {
             HeightShowBuildingData heightShowBuildingData = _staticData.ForHeightShowBuilding(buildingType);
 
-            return Object.Instantiate(heightShowBuildingData.Prefab, at, parent.rotation, parent);
+            GameObject gameObject = Object.Instantiate(heightShowBuildingData.Prefab, at, parent.rotation, parent);
+            gameObject.GetComponentInChildren<HeightShowBuildingUi>().InitializeTextWith(heightShowBuildingData);
+
+            return gameObject;
         }
 
         public void CreateSpawners()

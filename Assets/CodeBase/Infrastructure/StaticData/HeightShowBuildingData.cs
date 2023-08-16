@@ -6,6 +6,7 @@ namespace Assets.CodeBase.Infrastructure.StaticData
     public class HeightShowBuildingData : ScriptableObject
     {
         public HeightShowBuildingType BuildingType;
+        public float Height;
         public GameObject Prefab;
     }
 }
