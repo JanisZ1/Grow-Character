@@ -1,6 +1,7 @@
 ﻿using Assets.CodeBase.Infrastructure.Services.InputService;
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Assets.CodeBase.Logic.Hero
 {
@@ -47,7 +48,7 @@ namespace Assets.CodeBase.Logic.Hero
 
         private void MouseButtonDown()
         {
-            if (!_animationIsPlaying)
+            if (!_animationIsPlaying && !EventSystem.current.IsPointerOverGameObject())
                 _animator.PlayEat();
         }
 
