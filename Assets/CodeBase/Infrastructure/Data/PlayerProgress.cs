@@ -9,6 +9,7 @@ namespace Assets.CodeBase.Infrastructure.Data
         public MoneyData MoneyData;
         public MassData MassData;
         public ShopBuyData ShopBuyData;
+        public ShopUiData ShopUiData;
 
         public PlayerProgress(string bootstrapLevel)
         {
@@ -16,6 +17,7 @@ namespace Assets.CodeBase.Infrastructure.Data
             MoneyData = new MoneyData();
             MassData = new MassData();
             ShopBuyData = new ShopBuyData();
+            ShopUiData = new ShopUiData();
         }
     }
 }

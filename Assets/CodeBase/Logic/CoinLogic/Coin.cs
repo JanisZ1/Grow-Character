@@ -20,6 +20,8 @@ namespace Assets.CodeBase.Logic.CoinLogic
         private IPlayerProgressService _playerProgress;
         private IShopItemObserver _shopItemObserver;
 
+        private bool _collected;
+
         public float Value { get; set; }
 
         public void Construct(IPlayerProgressService playerProgress, IShopItemObserver shopItemObserver)
@@ -42,13 +44,17 @@ namespace Assets.CodeBase.Logic.CoinLogic
 
         public void Collect()
         {
-            _playerProgress.Progress.MoneyData.Earn(Value);
+            if (!_collected)
+            {
+                _collected = true;
+                _playerProgress.Progress.MoneyData.Earn(Value);
 
-            MarkSpawnerNotSpawned();
+                MarkSpawnerNotSpawned();
 
-            _coinRaycastToGround.enabled = false;
-            PlayEffects();
-            Destroy(gameObject, _destroyAfterCollectedTime);
+                _coinRaycastToGround.enabled = false;
+                PlayEffects();
+                Destroy(gameObject, _destroyAfterCollectedTime);
+            }
         }
 
         private void PlayEffects()
