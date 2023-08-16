@@ -121,6 +121,8 @@ MonoBehaviour:
   _money: {fileID: 965443893198442279}
   _mass: {fileID: 8441756652147452424}
   _maxMass: {fileID: 3049678470291904332}
+  _moneyChangeUiPrefab: {fileID: 1085923856806223630, guid: e0fc8fe6d2c99214e9cd83c95418d563,
+    type: 3}
 --- !u!1 &1180103634773370647
 GameObject:
   m_ObjectHideFlags: 0
