@@ -4,6 +4,7 @@ using Assets.CodeBase.Infrastructure.Services.CoinSpawnService;
 using Assets.CodeBase.Infrastructure.Services.Factory;
 using Assets.CodeBase.Infrastructure.Services.Factory.CinemachineFactory;
 using Assets.CodeBase.Infrastructure.Services.Factory.CoinFactory;
+using Assets.CodeBase.Infrastructure.Services.Factory.HeightShowBuilding;
 using Assets.CodeBase.Infrastructure.Services.Factory.HeroFactory;
 using Assets.CodeBase.Infrastructure.Services.Factory.HudFactory;
 using Assets.CodeBase.Infrastructure.Services.Factory.UiFactoryService;
@@ -29,7 +30,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
             {
                 [typeof(BootstrapState)] = new BootstrapState(this, coroutineRunner, sceneLoader, services),
                 [typeof(LoadProgressState)] = new LoadProgressState(this, services.Single<ISaveLoadService>(), services.Single<IPlayerProgressService>()),
-                [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, services.Single<ISoundFactory>(), coroutineRunner, services.Single<IPlayerProgressService>(),
+                [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, services.Single<IHeightShowBuildingFactory>(), services.Single<ISoundFactory>(), coroutineRunner, services.Single<IPlayerProgressService>(),
                 services.Single<ISaveLoadService>(), services.Single<ICoinSpawnService>(), services.Single<ICoinSpawnerHandler>(),
                 services.Single<ICoinFactory>(), services.Single<IStaticDataService>(), services.Single<IHudFactory>(), services.Single<IHeroFactory>(),
                 services.Single<IHeroHandler>(), services.Single<ICinemachineFactory>(),
