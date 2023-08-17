@@ -61,7 +61,7 @@ namespace Assets.CodeBase.Logic.Ui
             ShopItem.Buyed = true;
 
         private void UnlockNextItem() =>
-            ShopItem.UnlockNextItem();
+            ShopItem.UnlockNextItem(_shopItemStaticData);
 
         private void ChangeBuyedText() =>
             ShopItem.ChangeTextToBuyed();
