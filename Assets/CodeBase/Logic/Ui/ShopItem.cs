@@ -10,7 +10,7 @@ namespace Assets.CodeBase.Logic.Ui
 {
     public class ShopItem : MonoBehaviour, ISavedProgress
     {
-        [SerializeField] private ShopItem _nextShopItem;
+        public ShopItem NextShopItem;
 
         [SerializeField] private Image _icon;
         [SerializeField] private TextMeshProUGUI _priceText;
@@ -45,9 +45,9 @@ namespace Assets.CodeBase.Logic.Ui
 
         public void UnlockNextItem(ShopItemStaticData shopItemStaticData)
         {
-            if (_nextShopItem != null)
+            if (NextShopItem != null)
             {
-                _nextShopItem.Unlocked = true;
+                NextShopItem.Unlocked = true;
 
                 UpdateTextWith(shopItemStaticData);
             }
@@ -79,10 +79,10 @@ namespace Assets.CodeBase.Logic.Ui
 
         private void UpdateTextWith(ShopItemStaticData shopItemStaticData)
         {
-            _nextShopItem.PriceText.text = $"{shopItemStaticData.Price}";
-            _nextShopItem.ProfitText.text = $"Profit {shopItemStaticData.Profit}";
-            _nextShopItem.MassGiveText.text = $"Calories {shopItemStaticData.Calories}";
-            _nextShopItem.MaximumMassText.text = $"MaximumMass {shopItemStaticData.MaximumMass}";
+            NextShopItem.PriceText.text = $"{shopItemStaticData.Price}";
+            NextShopItem.ProfitText.text = $"Profit {shopItemStaticData.Profit}";
+            NextShopItem.MassGiveText.text = $"Calories {shopItemStaticData.Calories}";
+            NextShopItem.MaximumMassText.text = $"MaximumMass {shopItemStaticData.MaximumMass}";
         }
 
         private void UpdateTextToUnknown()

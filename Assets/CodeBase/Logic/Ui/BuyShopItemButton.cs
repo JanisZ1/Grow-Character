@@ -60,8 +60,16 @@ namespace Assets.CodeBase.Logic.Ui
         private void MarkShopItemBuyed() =>
             ShopItem.Buyed = true;
 
-        private void UnlockNextItem() =>
-            ShopItem.UnlockNextItem(_shopItemStaticData);
+        private void UnlockNextItem()
+        {
+            if (ShopItem.NextShopItem)
+            {
+                ShopItemType shopItemType = ShopItem.NextShopItem.GetComponentInChildren<BuyShopItemButton>().ShopItemType;
+                ShopItemStaticData shopItemStaticData = _staticData.ForShopItem(shopItemType);
+
+                ShopItem.UnlockNextItem(shopItemStaticData);
+            }
+        }
 
         private void ChangeBuyedText() =>
             ShopItem.ChangeTextToBuyed();
