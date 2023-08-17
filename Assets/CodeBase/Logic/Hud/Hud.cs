@@ -2,7 +2,6 @@
 using Assets.CodeBase.Infrastructure.Services.Observer.HeroEat;
 using Assets.CodeBase.Infrastructure.Services.PlayerProgressService;
 using Assets.CodeBase.Infrastructure.Services.WindowService;
-using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -58,31 +57,6 @@ namespace Assets.CodeBase.Logic.Hud
             _inputService.EKeyDown += OpenOrCloseShop;
         }
 
-        private void EatStarted()
-        {
-            _eatTimerImage.fillAmount = 0;
-            _eatTimerText.text = $"{_eatTime}";
-
-            StartCoroutine(EatTimerUpdate());
-        }
-
-        private IEnumerator EatTimerUpdate()
-        {
-            float value = 0;
-
-            while (value < _eatTime)
-            {
-                yield return new WaitForEndOfFrame();
-
-                _eatTimerImage.fillAmount = value / _eatTime;
-                _eatTimerText.text = (_eatTime - value).ToString("0.0");
-
-                value += Time.deltaTime;
-            }
-            _eatTimerImage.fillAmount = 1;
-            _eatTimerText.text = "0";
-        }
-
         private void OnDestroy()
         {
             _playerProgress.Progress.MoneyData.Changed -= UpdateMoneyInHud;
@@ -92,6 +66,35 @@ namespace Assets.CodeBase.Logic.Hud
             _playerProgress.Progress.MassData.MaxMass.Changed -= UpdateMaxMassInHud;
 
             _inputService.EKeyDown -= OpenOrCloseShop;
+        }
+
+        private void EatStarted() =>
+            StartCoroutine(EatTimerUpdate());
+
+        private IEnumerator EatTimerUpdate()
+        {
+            float value = 0;
+
+            while (value < _eatTime)
+            {
+                yield return new WaitForEndOfFrame();
+                UpdateEatTimer(value);
+
+                value += Time.deltaTime;
+            }
+            SetDefaultEatTimerValues();
+        }
+
+        private void UpdateEatTimer(float value)
+        {
+            _eatTimerImage.fillAmount = value / _eatTime;
+            _eatTimerText.text = (_eatTime - value).ToString("0.0");
+        }
+
+        private void SetDefaultEatTimerValues()
+        {
+            _eatTimerImage.fillAmount = 1;
+            _eatTimerText.text = "0";
         }
 
         private void ShowMoneySpendedChange(float moneySpended) =>
