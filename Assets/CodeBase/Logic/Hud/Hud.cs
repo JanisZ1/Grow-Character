@@ -3,6 +3,7 @@ using Assets.CodeBase.Infrastructure.Services.PlayerProgressService;
 using Assets.CodeBase.Infrastructure.Services.WindowService;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.CodeBase.Logic.Hud
 {
@@ -12,9 +13,13 @@ namespace Assets.CodeBase.Logic.Hud
         private IWindowService _windowService;
         private IPlayerProgressService _playerProgress;
 
+        [SerializeField] private Image _eatTimerImage;
+        [SerializeField] private TextMeshProUGUI _eatTimerText;
+
         [SerializeField] private TextMeshProUGUI _money;
         [SerializeField] private TextMeshProUGUI _mass;
         [SerializeField] private TextMeshProUGUI _maxMass;
+
         [SerializeField] private MoneyChangeMovingHud _moneyChangeUiPrefab;
 
         private string _massText;
