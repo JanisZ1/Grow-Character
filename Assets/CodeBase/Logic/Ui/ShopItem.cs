@@ -1,5 +1,6 @@
 ﻿using Assets.CodeBase.Infrastructure.Data;
 using Assets.CodeBase.Infrastructure.Services.SaveLoad;
+using Assets.CodeBase.Infrastructure.StaticData;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -9,7 +10,7 @@ namespace Assets.CodeBase.Logic.Ui
 {
     public class ShopItem : MonoBehaviour, ISavedProgress
     {
-        [SerializeField] private ShopItem _nextShopItem;
+        public ShopItem NextShopItem;
 
         [SerializeField] private Image _icon;
         [SerializeField] private TextMeshProUGUI _priceText;
@@ -42,10 +43,14 @@ namespace Assets.CodeBase.Logic.Ui
         public void ChangeTextToBuyed() =>
             _priceText.text = "Buyed";
 
-        public void UnlockNextItem()
+        public void UnlockNextItem(ShopItemStaticData shopItemStaticData)
         {
-            if (_nextShopItem != null)
-                _nextShopItem.Unlocked = true;
+            if (NextShopItem != null)
+            {
+                NextShopItem.Unlocked = true;
+
+                UpdateTextWith(shopItemStaticData);
+            }
         }
 
         public void SaveProgress(PlayerProgress progress)
@@ -68,6 +73,24 @@ namespace Assets.CodeBase.Logic.Ui
 
             if (buyedItems.Contains(Id - 1) || Id == 0)
                 Unlocked = true;
+            else
+                UpdateTextToUnknown();
+        }
+
+        private void UpdateTextWith(ShopItemStaticData shopItemStaticData)
+        {
+            NextShopItem.PriceText.text = $"{shopItemStaticData.Price}";
+            NextShopItem.ProfitText.text = $"Profit {shopItemStaticData.Profit}";
+            NextShopItem.MassGiveText.text = $"Calories {shopItemStaticData.Calories}";
+            NextShopItem.MaximumMassText.text = $"MaximumMass {shopItemStaticData.MaximumMass}";
+        }
+
+        private void UpdateTextToUnknown()
+        {
+            _priceText.text = "???";
+            _profitText.text = "Profit ???";
+            _massGiveText.text = "Calories ???";
+            _maximumMassText.text = "MaximumMass ???";
         }
     }
 }
