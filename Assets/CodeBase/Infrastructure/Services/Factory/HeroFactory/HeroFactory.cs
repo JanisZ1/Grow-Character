@@ -1,6 +1,7 @@
 ﻿using Assets.CodeBase.Infrastructure.Services.AssetProvider;
 using Assets.CodeBase.Infrastructure.Services.InputService;
 using Assets.CodeBase.Infrastructure.Services.Observer;
+using Assets.CodeBase.Infrastructure.Services.Observer.HeroEat;
 using Assets.CodeBase.Infrastructure.Services.PlayerProgressService;
 using Assets.CodeBase.Infrastructure.Services.SaveLoad;
 using Assets.CodeBase.Logic;
@@ -14,6 +15,7 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory.HeroFactory
     {
         private readonly IAssets _assets;
         private readonly IInputService _inputService;
+        private readonly IHeroEatObserver _heroEatObserver;
         private readonly IPlayerProgressService _playerProgressService;
         private readonly IShopItemObserver _shopItemObserver;
 
@@ -21,10 +23,11 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory.HeroFactory
 
         public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
 
-        public HeroFactory(IAssets assets, IInputService inputService, IPlayerProgressService playerProgressService, IShopItemObserver shopItemObserver)
+        public HeroFactory(IAssets assets, IInputService inputService, IHeroEatObserver heroEatObserver, IPlayerProgressService playerProgressService, IShopItemObserver shopItemObserver)
         {
             _assets = assets;
             _inputService = inputService;
+            _heroEatObserver = heroEatObserver;
             _playerProgressService = playerProgressService;
             _shopItemObserver = shopItemObserver;
         }
@@ -34,7 +37,7 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory.HeroFactory
             GameObject gameObject = InstantiateRegistered(AssetPath.HeroPath);
 
             gameObject.GetComponent<HeroMove>().Construct(_inputService);
-            gameObject.GetComponent<HeroEat>().Construct(_inputService);
+            gameObject.GetComponent<HeroEat>().Construct(_inputService, _heroEatObserver);
             gameObject.GetComponent<HeroScale>().Construct(_playerProgressService, _shopItemObserver);
             MoneyEarn moneyEarn = gameObject.GetComponent<MoneyEarn>();
             moneyEarn.Construct(_playerProgressService, _shopItemObserver);

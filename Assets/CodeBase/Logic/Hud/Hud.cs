@@ -1,4 +1,5 @@
 ﻿using Assets.CodeBase.Infrastructure.Services.InputService;
+using Assets.CodeBase.Infrastructure.Services.Observer.HeroEat;
 using Assets.CodeBase.Infrastructure.Services.PlayerProgressService;
 using Assets.CodeBase.Infrastructure.Services.WindowService;
 using TMPro;
@@ -12,6 +13,7 @@ namespace Assets.CodeBase.Logic.Hud
         private IInputService _inputService;
         private IWindowService _windowService;
         private IPlayerProgressService _playerProgress;
+        private IHeroEatObserver _heroEatObserver;
 
         [SerializeField] private Image _eatTimerImage;
         [SerializeField] private TextMeshProUGUI _eatTimerText;
@@ -27,11 +29,12 @@ namespace Assets.CodeBase.Logic.Hud
 
         private bool _shopOpened;
 
-        public void Construct(IInputService inputService, IWindowService windowService, IPlayerProgressService playerProgress)
+        public void Construct(IInputService inputService, IWindowService windowService, IHeroEatObserver heroEatObserver, IPlayerProgressService playerProgress)
         {
             _inputService = inputService;
             _windowService = windowService;
             _playerProgress = playerProgress;
+            _heroEatObserver = heroEatObserver;
         }
 
         private void Start()

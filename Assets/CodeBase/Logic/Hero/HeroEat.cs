@@ -1,4 +1,5 @@
 ﻿using Assets.CodeBase.Infrastructure.Services.InputService;
+using Assets.CodeBase.Infrastructure.Services.Observer.HeroEat;
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -13,10 +14,14 @@ namespace Assets.CodeBase.Logic.Hero
         public event Action Eated;
 
         private IInputService _inputService;
+        private IHeroEatObserver _heroEatObserver;
         private bool _animationIsPlaying;
 
-        public void Construct(IInputService inputService) =>
+        public void Construct(IInputService inputService, IHeroEatObserver heroEatObserver)
+        {
             _inputService = inputService;
+            _heroEatObserver = heroEatObserver;
+        }
 
         private void Start()
         {
@@ -37,7 +42,10 @@ namespace Assets.CodeBase.Logic.Hero
         private void StateEntered(AnimatorState state)
         {
             if (state == AnimatorState.Eat)
+            {
+                _heroEatObserver.OnEatStarted();
                 _animationIsPlaying = true;
+            }
         }
 
         private void StateExited(AnimatorState state)
@@ -58,4 +66,5 @@ namespace Assets.CodeBase.Logic.Hero
             Eated?.Invoke();
         }
     }
+
 }
