@@ -1,8 +1,11 @@
 ﻿using Assets.CodeBase.Infrastructure.Services.InputService;
+using Assets.CodeBase.Infrastructure.Services.Observer.HeroEat;
 using Assets.CodeBase.Infrastructure.Services.PlayerProgressService;
 using Assets.CodeBase.Infrastructure.Services.WindowService;
+using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.CodeBase.Logic.Hud
 {
@@ -11,10 +14,17 @@ namespace Assets.CodeBase.Logic.Hud
         private IInputService _inputService;
         private IWindowService _windowService;
         private IPlayerProgressService _playerProgress;
+        private IHeroEatObserver _heroEatObserver;
+
+        [SerializeField] private float _eatTime;
+
+        [SerializeField] private Image _eatTimerImage;
+        [SerializeField] private TextMeshProUGUI _eatTimerText;
 
         [SerializeField] private TextMeshProUGUI _money;
         [SerializeField] private TextMeshProUGUI _mass;
         [SerializeField] private TextMeshProUGUI _maxMass;
+
         [SerializeField] private MoneyChangeMovingHud _moneyChangeUiPrefab;
 
         private string _massText;
@@ -22,11 +32,12 @@ namespace Assets.CodeBase.Logic.Hud
 
         private bool _shopOpened;
 
-        public void Construct(IInputService inputService, IWindowService windowService, IPlayerProgressService playerProgress)
+        public void Construct(IInputService inputService, IWindowService windowService, IHeroEatObserver heroEatObserver, IPlayerProgressService playerProgress)
         {
             _inputService = inputService;
             _windowService = windowService;
             _playerProgress = playerProgress;
+            _heroEatObserver = heroEatObserver;
         }
 
         private void Start()
@@ -41,6 +52,8 @@ namespace Assets.CodeBase.Logic.Hud
             _playerProgress.Progress.MassData.Mass.Changed += UpdateMassInHud;
             _playerProgress.Progress.MassData.MaxMass.Changed += UpdateMaxMassInHud;
 
+            _heroEatObserver.EatStarted += EatStarted;
+
             _inputService.EKeyDown += OpenOrCloseShop;
         }
 
@@ -53,6 +66,35 @@ namespace Assets.CodeBase.Logic.Hud
             _playerProgress.Progress.MassData.MaxMass.Changed -= UpdateMaxMassInHud;
 
             _inputService.EKeyDown -= OpenOrCloseShop;
+        }
+
+        private void EatStarted() =>
+            StartCoroutine(EatTimerUpdate());
+
+        private IEnumerator EatTimerUpdate()
+        {
+            float value = 0;
+
+            while (value < _eatTime)
+            {
+                yield return new WaitForEndOfFrame();
+                UpdateEatTimer(value);
+
+                value += Time.deltaTime;
+            }
+            SetDefaultEatTimerValues();
+        }
+
+        private void UpdateEatTimer(float value)
+        {
+            _eatTimerImage.fillAmount = value / _eatTime;
+            _eatTimerText.text = (_eatTime - value).ToString("0.0");
+        }
+
+        private void SetDefaultEatTimerValues()
+        {
+            _eatTimerImage.fillAmount = 1;
+            _eatTimerText.text = "0";
         }
 
         private void ShowMoneySpendedChange(float moneySpended) =>
