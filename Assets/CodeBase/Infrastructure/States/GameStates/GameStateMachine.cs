@@ -10,6 +10,7 @@ using Assets.CodeBase.Infrastructure.Services.Factory.HudFactory;
 using Assets.CodeBase.Infrastructure.Services.Factory.UiFactoryService;
 using Assets.CodeBase.Infrastructure.Services.HeroHandler;
 using Assets.CodeBase.Infrastructure.Services.InputService;
+using Assets.CodeBase.Infrastructure.Services.PlayerLearn;
 using Assets.CodeBase.Infrastructure.Services.PlayerProgressService;
 using Assets.CodeBase.Infrastructure.Services.SaveLoad;
 using Assets.CodeBase.Infrastructure.Services.StaticData;
@@ -29,13 +30,13 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
             _states = new Dictionary<Type, IExitableState>()
             {
                 [typeof(BootstrapState)] = new BootstrapState(this, coroutineRunner, sceneLoader, services),
-                [typeof(LoadProgressState)] = new LoadProgressState(this, services.Single<ISaveLoadService>(), services.Single<IPlayerProgressService>()),
+                [typeof(LoadProgressState)] = new LoadProgressState(this, services.Single<IPlayerLearnService>(), services.Single<ISaveLoadService>(), services.Single<IPlayerProgressService>()),
                 [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, services.Single<IHeightShowBuildingFactory>(), services.Single<ISoundFactory>(), coroutineRunner, services.Single<IPlayerProgressService>(),
                 services.Single<ISaveLoadService>(), services.Single<ICoinSpawnService>(), services.Single<ICoinSpawnerHandler>(),
                 services.Single<ICoinFactory>(), services.Single<IStaticDataService>(), services.Single<IHudFactory>(), services.Single<IHeroFactory>(),
                 services.Single<IHeroHandler>(), services.Single<ICinemachineFactory>(),
                 services.Single<IUiFactory>(), services.Single<IInputService>()),
-                [typeof(GameLoopState)] = new GameLoopState(this),
+                [typeof(GameLoopState)] = new GameLoopState(this, services.Single<IPlayerLearnService>()),
             };
         }
 

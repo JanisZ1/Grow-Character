@@ -41,7 +41,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
         private readonly IInputService _inputService;
         private ProgressSaver _progressSaver;
 
-        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader,IHeightShowBuildingFactory heightShowBuildingFactory, ISoundFactory soundFactory, ICoroutineRunner coroutineRunner, IPlayerProgressService playerProgress, ISaveLoadService saveLoadService, ICoinSpawnService coinSpawnService, ICoinSpawnerHandler coinSpawnerHandler, ICoinFactory coinFactory, IStaticDataService staticData, IHudFactory hudFactory, IHeroFactory heroFactory, IHeroHandler heroHandler, ICinemachineFactory cinemachineFactory, IUiFactory uiFactory, IInputService inputService)
+        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, IHeightShowBuildingFactory heightShowBuildingFactory, ISoundFactory soundFactory, ICoroutineRunner coroutineRunner, IPlayerProgressService playerProgress, ISaveLoadService saveLoadService, ICoinSpawnService coinSpawnService, ICoinSpawnerHandler coinSpawnerHandler, ICoinFactory coinFactory, IStaticDataService staticData, IHudFactory hudFactory, IHeroFactory heroFactory, IHeroHandler heroHandler, ICinemachineFactory cinemachineFactory, IUiFactory uiFactory, IInputService inputService)
         {
             _stateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;

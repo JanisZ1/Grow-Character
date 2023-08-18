@@ -12,5 +12,6 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory.UiFactoryService
         List<ISavedProgress> ProgressWriters { get; }
         List<ISavedProgressReader> ProgressReaders { get; }
         void Cleanup();
+        GameObject CreateClickLearnObject();
     }
 }
