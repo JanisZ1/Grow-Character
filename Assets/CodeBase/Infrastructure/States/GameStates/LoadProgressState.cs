@@ -1,4 +1,5 @@
 ﻿using Assets.CodeBase.Infrastructure.Data;
+using Assets.CodeBase.Infrastructure.Services.PlayerLearn;
 using Assets.CodeBase.Infrastructure.Services.PlayerProgressService;
 using Assets.CodeBase.Infrastructure.Services.SaveLoad;
 
@@ -7,12 +8,14 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
     public class LoadProgressState : IState
     {
         private readonly GameStateMachine _gameStateMachine;
+        private readonly IPlayerLearnService _playerLearnService;
         private readonly ISaveLoadService _saveLoadService;
         private readonly IPlayerProgressService _playerProgressService;
 
-        public LoadProgressState(GameStateMachine gameStateMachine, ISaveLoadService saveLoadService, IPlayerProgressService playerProgressService)
+        public LoadProgressState(GameStateMachine gameStateMachine, IPlayerLearnService playerLearnService, ISaveLoadService saveLoadService, IPlayerProgressService playerProgressService)
         {
             _gameStateMachine = gameStateMachine;
+            _playerLearnService = playerLearnService;
             _saveLoadService = saveLoadService;
             _playerProgressService = playerProgressService;
         }
@@ -38,6 +41,8 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
             playerProgress.MassData.MaxMass.Current = 0.07f;
             playerProgress.MassData.Mass.ScaleFactor = 0.0002f;
             playerProgress.MoneyData.ByClickEarnAmount = 0.1f;
+
+            _playerLearnService.StartLearn();
 
             return playerProgress;
         }

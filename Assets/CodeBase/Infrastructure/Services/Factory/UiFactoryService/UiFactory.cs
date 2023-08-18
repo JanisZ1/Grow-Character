@@ -76,6 +76,11 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory.UiFactoryService
             ProgressWriters.Clear();
             ProgressReaders.Clear();
         }
+
+        public void CreateClickLearnObject(Vector3 at)
+        {
+
+        }
     }
 }
 

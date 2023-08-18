@@ -14,6 +14,7 @@ using Assets.CodeBase.Infrastructure.Services.HeroHandler;
 using Assets.CodeBase.Infrastructure.Services.InputService;
 using Assets.CodeBase.Infrastructure.Services.Observer;
 using Assets.CodeBase.Infrastructure.Services.Observer.HeroEat;
+using Assets.CodeBase.Infrastructure.Services.PlayerLearn;
 using Assets.CodeBase.Infrastructure.Services.PlayerProgressService;
 using Assets.CodeBase.Infrastructure.Services.SaveLoad;
 using Assets.CodeBase.Infrastructure.Services.StaticData;
@@ -61,6 +62,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
             _services.Register<ISoundFactory>(new SoundFactory(_services.Single<IAssets>(), _services.Single<IStaticDataService>(), _services.Single<IBackgroundSoundObserver>()));
             _services.Register<IHeroFactory>(new HeroFactory(_services.Single<IAssets>(), _services.Single<IInputService>(), _services.Single<IHeroEatObserver>(), _services.Single<IPlayerProgressService>(), _services.Single<IShopItemObserver>()));
             _services.Register<IUiFactory>(new UiFactory(_services.Single<IAssets>(), _services.Single<IStaticDataService>(), _services.Single<IPlayerProgressService>(), _services.Single<IShopItemObserver>()));
+            _services.Register<IPlayerLearnService>(new PlayerLearnService(_services.Single<IUiFactory>()));
             _services.Register<ISaveLoadService>(new SaveLoadService(_services.Single<IPlayerProgressService>(), _services.Single<IHeroFactory>(), _services.Single<IUiFactory>()));
             _services.Register<ICoinSpawnerHandler>(new CoinSpawnerHandler());
             _services.Register<ICoinSpawnService>(new CoinSpawnService(_coroutineRunner, _services.Single<ICoinSpawnerHandler>()));
