@@ -17,7 +17,7 @@ namespace Assets.CodeBase.Infrastructure.Services.PlayerLearn
         {
             GameObject gameObject = _uiFactory.CreateClickLearnObject();
 
-            gameObject.GetComponent<ClickLearnUi>().PlayAnimation();
+            gameObject.GetComponentInChildren<ClickLearnUi>().PlayAnimation();
         }
     }
 }
