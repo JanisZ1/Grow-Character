@@ -42,7 +42,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
             playerProgress.MassData.Mass.ScaleFactor = 0.0002f;
             playerProgress.MoneyData.ByClickEarnAmount = 0.1f;
 
-            _playerLearnService.StartLearn();
+            _playerLearnService.NewPlayerLoaded = true;
 
             return playerProgress;
         }

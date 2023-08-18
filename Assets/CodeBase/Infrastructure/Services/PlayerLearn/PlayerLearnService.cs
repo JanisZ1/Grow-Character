@@ -1,4 +1,5 @@
 ﻿using Assets.CodeBase.Infrastructure.Services.Factory.UiFactoryService;
+using Assets.CodeBase.Logic;
 using UnityEngine;
 
 namespace Assets.CodeBase.Infrastructure.Services.PlayerLearn
@@ -10,11 +11,11 @@ namespace Assets.CodeBase.Infrastructure.Services.PlayerLearn
         public PlayerLearnService(IUiFactory uiFactory) =>
             _uiFactory = uiFactory;
 
+        public bool NewPlayerLoaded { get; set; }
+
         public void StartLearn()
         {
-            Vector3 position = Camera.main.ScreenToViewportPoint(new Vector2(Screen.width / 2, Screen.height / 2));
-
-            GameObject gameObject = _uiFactory.CreateClickLearnObject(at: position);
+            GameObject gameObject = _uiFactory.CreateClickLearnObject();
 
             gameObject.GetComponent<ClickLearnUi>().PlayAnimation();
         }

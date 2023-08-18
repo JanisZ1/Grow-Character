@@ -2,6 +2,7 @@
 {
     public interface IPlayerLearnService : IService
     {
+        public bool NewPlayerLoaded { get; set; }
         void StartLearn();
     }
 }
