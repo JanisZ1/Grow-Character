@@ -39,14 +39,16 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory.UiFactoryService
             foreach (BuyShopItemButton buyShopItemButton in gameObject.GetComponentsInChildren<BuyShopItemButton>())
             {
                 buyShopItemButton.Construct(_staticDataService, _playerProgress, _shopItemObserver);
-                ShopItemStaticData shopItemStaticData = _staticDataService.ForShopItem(buyShopItemButton.ShopItemType);
 
-                buyShopItemButton.ShopItem.Id = shopItemStaticData.Id;
-                buyShopItemButton.ShopItem.Icon.sprite = shopItemStaticData.IconSprite;
-                buyShopItemButton.ShopItem.PriceText.text = $"{shopItemStaticData.Price}";
-                buyShopItemButton.ShopItem.ProfitText.text = $"Profit {shopItemStaticData.Profit}";
-                buyShopItemButton.ShopItem.MassGiveText.text = $"Calories {shopItemStaticData.Calories}";
-                buyShopItemButton.ShopItem.MaximumMassText.text = $"MaximumMass {shopItemStaticData.MaximumMass}";
+                ShopItemStaticData shopItemStaticData = buyShopItemButton.ShopItemStaticData;
+                ShopItem shopItem = buyShopItemButton.ShopItem;
+
+                shopItem.Id = shopItemStaticData.Id;
+                shopItem.Icon.sprite = shopItemStaticData.IconSprite;
+                shopItem.PriceText.text = $"{shopItemStaticData.Price}";
+                shopItem.ProfitText.text = $"Profit {shopItemStaticData.Profit}";
+                shopItem.MassGiveText.text = $"Calories {shopItemStaticData.Calories}";
+                shopItem.MaximumMassText.text = $"MaximumMass {shopItemStaticData.MaximumMass}";
             }
 
             return gameObject;
@@ -54,7 +56,7 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory.UiFactoryService
 
         private GameObject InstantiateRegistered(string path, Transform parent)
         {
-            GameObject gameObject = _assets.Instantiate(AssetPath.ShopPath, _uiRootTransform);
+            GameObject gameObject = _assets.Instantiate(path, parent);
 
             RegisterProgressWatchers(gameObject);
             return gameObject;
