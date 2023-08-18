@@ -14,7 +14,9 @@ namespace Assets.CodeBase.Infrastructure.Services.PlayerLearn
         {
             Vector3 position = Camera.main.ScreenToViewportPoint(new Vector2(Screen.width / 2, Screen.height / 2));
 
-            _uiFactory.CreateClickLearnObject(at: position);
+            GameObject gameObject = _uiFactory.CreateClickLearnObject(at: position);
+
+            gameObject.GetComponent<ClickLearnUi>().PlayAnimation();
         }
     }
 }

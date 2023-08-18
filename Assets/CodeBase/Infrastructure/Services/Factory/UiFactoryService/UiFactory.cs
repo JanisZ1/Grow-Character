@@ -77,10 +77,8 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory.UiFactoryService
             ProgressReaders.Clear();
         }
 
-        public void CreateClickLearnObject(Vector3 at)
-        {
-
-        }
+        public GameObject CreateClickLearnObject(Vector3 at) =>
+            _assets.Instantiate(AssetPath.ClickLearnUiPath, at);
     }
 }
 
