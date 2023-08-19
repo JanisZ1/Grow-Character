@@ -2,6 +2,7 @@
 using Assets.CodeBase.Infrastructure.Services.Observer;
 using Assets.CodeBase.Infrastructure.Services.PlayerProgressService;
 using Assets.CodeBase.Infrastructure.Services.SaveLoad;
+using Assets.CodeBase.Infrastructure.Services.ShopCache;
 using Assets.CodeBase.Infrastructure.Services.StaticData;
 using Assets.CodeBase.Infrastructure.StaticData;
 using Assets.CodeBase.Logic.Ui;
@@ -14,17 +15,20 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory.UiFactoryService
     {
         private readonly IAssets _assets;
         private readonly IStaticDataService _staticDataService;
+        private readonly IShopCachedObjectService _shopCachedObjectService;
         private readonly IPlayerProgressService _playerProgress;
         private readonly IShopItemObserver _shopItemObserver;
         private Transform _uiRootTransform;
 
         public List<ISavedProgress> ProgressWriters { get; } = new List<ISavedProgress>();
+
         public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
 
-        public UiFactory(IAssets assets, IStaticDataService staticDataService, IPlayerProgressService playerProgress, IShopItemObserver shopItemObserver)
+        public UiFactory(IAssets assets, IStaticDataService staticDataService, IShopCachedObjectService shopCachedObjectService, IPlayerProgressService playerProgress, IShopItemObserver shopItemObserver)
         {
             _assets = assets;
             _staticDataService = staticDataService;
+            _shopCachedObjectService = shopCachedObjectService;
             _playerProgress = playerProgress;
             _shopItemObserver = shopItemObserver;
         }
@@ -35,9 +39,11 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory.UiFactoryService
         public GameObject CreateShop()
         {
             GameObject gameObject = InstantiateRegistered(AssetPath.ShopPath, _uiRootTransform);
+            gameObject.GetComponent<ShopWindow>().Construct(_shopCachedObjectService);
 
             foreach (BuyShopItemButton buyShopItemButton in gameObject.GetComponentsInChildren<BuyShopItemButton>())
             {
+
                 buyShopItemButton.Construct(_staticDataService, _playerProgress, _shopItemObserver);
 
                 ShopItemStaticData shopItemStaticData = buyShopItemButton.ShopItemStaticData;
@@ -82,5 +88,6 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory.UiFactoryService
         public GameObject CreateClickLearnObject() =>
             _assets.Instantiate(AssetPath.ClickLearnUiPath, _uiRootTransform);
     }
+
 }
 

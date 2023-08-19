@@ -11,6 +11,7 @@ using Assets.CodeBase.Infrastructure.Services.HeroHandler;
 using Assets.CodeBase.Infrastructure.Services.InputService;
 using Assets.CodeBase.Infrastructure.Services.PlayerProgressService;
 using Assets.CodeBase.Infrastructure.Services.SaveLoad;
+using Assets.CodeBase.Infrastructure.Services.ShopCache;
 using Assets.CodeBase.Infrastructure.Services.StaticData;
 using Assets.CodeBase.Infrastructure.StaticData;
 using Assets.CodeBase.Logic.Spawners.Coin;
@@ -24,6 +25,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
     {
         private readonly GameStateMachine _stateMachine;
         private readonly SceneLoader _sceneLoader;
+        private readonly IShopCachedObjectService _shopCachedObjectService;
         private readonly IHeightShowBuildingFactory _heightShowBuildingFactory;
         private readonly ISoundFactory _soundFactory;
         private readonly ICoroutineRunner _coroutineRunner;
@@ -41,10 +43,11 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
         private readonly IInputService _inputService;
         private ProgressSaver _progressSaver;
 
-        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, IHeightShowBuildingFactory heightShowBuildingFactory, ISoundFactory soundFactory, ICoroutineRunner coroutineRunner, IPlayerProgressService playerProgress, ISaveLoadService saveLoadService, ICoinSpawnService coinSpawnService, ICoinSpawnerHandler coinSpawnerHandler, ICoinFactory coinFactory, IStaticDataService staticData, IHudFactory hudFactory, IHeroFactory heroFactory, IHeroHandler heroHandler, ICinemachineFactory cinemachineFactory, IUiFactory uiFactory, IInputService inputService)
+        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, IShopCachedObjectService shopCachedObjectService, IHeightShowBuildingFactory heightShowBuildingFactory, ISoundFactory soundFactory, ICoroutineRunner coroutineRunner, IPlayerProgressService playerProgress, ISaveLoadService saveLoadService, ICoinSpawnService coinSpawnService, ICoinSpawnerHandler coinSpawnerHandler, ICoinFactory coinFactory, IStaticDataService staticData, IHudFactory hudFactory, IHeroFactory heroFactory, IHeroHandler heroHandler, ICinemachineFactory cinemachineFactory, IUiFactory uiFactory, IInputService inputService)
         {
             _stateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
+            _shopCachedObjectService = shopCachedObjectService;
             _heightShowBuildingFactory = heightShowBuildingFactory;
             _soundFactory = soundFactory;
             _coroutineRunner = coroutineRunner;
@@ -85,10 +88,19 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
             HandleCoinSpawners(levelStaticData);
             _coinSpawnService.StartSpawn();
             _uiFactory.CreateUiRoot();
+            CacheShop();
+
             _hudFactory.CreateHud();
             InformProgressReaders();
             StartSaveProcess();
             EnterGameLoop();
+        }
+
+        private void CacheShop()
+        {
+            GameObject shop = _uiFactory.CreateShop();
+            _shopCachedObjectService.Cache(shop);
+            _shopCachedObjectService.Disable();
         }
 
         private void InformProgressReaders()
