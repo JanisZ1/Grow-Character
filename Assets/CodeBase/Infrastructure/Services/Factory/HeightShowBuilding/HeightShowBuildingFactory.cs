@@ -25,6 +25,7 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory.HeightShowBuilding
 
             GameObject gameObject = Object.Instantiate(heightShowBuildingData.Prefab, at, parent.rotation, parent);
             gameObject.GetComponentInChildren<HeightShowBuildingUi>().InitializeTextWith(heightShowBuildingData);
+            StaticBatch(gameObject);
 
             return gameObject;
         }
@@ -41,5 +42,8 @@ namespace Assets.CodeBase.Infrastructure.Services.Factory.HeightShowBuilding
                 spawner.BuildingType = heightShowBuildingData.BuildingType;
             }
         }
+
+        private void StaticBatch(GameObject gameObject) =>
+            StaticBatchingUtility.Combine(gameObject);
     }
 }
