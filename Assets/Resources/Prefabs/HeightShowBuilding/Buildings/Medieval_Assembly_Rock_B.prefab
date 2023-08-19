@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 699112542223214178}
-  - component: {fileID: 3199326730445592457}
   m_Layer: 0
   m_Name: Medieval_Assembly_Rock_B_Collision
   m_TagString: Untagged
@@ -32,28 +31,6 @@ Transform:
   m_Father: {fileID: 1213712767285624592}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &3199326730445592457
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1377845708542639997}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300006, guid: 443654a3631bff54ea7f30557d39b8c9, type: 3}
 --- !u!1 &3153509052867459555
 GameObject:
   m_ObjectHideFlags: 0

@@ -4138,26 +4138,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Medieval_Fences_Fixed_B (53)
       objectReference: {fileID: 0}
-    - target: {fileID: 2994556108636027871, guid: 46bd459707cb67b4284300f902385c6c,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 3595746993164219498, guid: 46bd459707cb67b4284300f902385c6c,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 5092727375775727373, guid: 46bd459707cb67b4284300f902385c6c,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 6804683204630068254, guid: 46bd459707cb67b4284300f902385c6c,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 8602107324436743586, guid: 46bd459707cb67b4284300f902385c6c,
         type: 3}
       propertyPath: m_RootOrder
@@ -4212,16 +4192,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8716913950805359587, guid: 46bd459707cb67b4284300f902385c6c,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 9131811580104221655, guid: 46bd459707cb67b4284300f902385c6c,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
