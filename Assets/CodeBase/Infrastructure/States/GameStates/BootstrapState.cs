@@ -17,6 +17,7 @@ using Assets.CodeBase.Infrastructure.Services.Observer.HeroEat;
 using Assets.CodeBase.Infrastructure.Services.PlayerLearn;
 using Assets.CodeBase.Infrastructure.Services.PlayerProgressService;
 using Assets.CodeBase.Infrastructure.Services.SaveLoad;
+using Assets.CodeBase.Infrastructure.Services.ShopCache;
 using Assets.CodeBase.Infrastructure.Services.StaticData;
 using Assets.CodeBase.Infrastructure.Services.WindowService;
 
@@ -51,6 +52,7 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
         private void RegisterServices()
         {
             _services.Register<IAssets>(new AssetProvider());
+            _services.Register<IShopCachedObjectService>(new ShopCachedObjectService());
             _services.Register<IStaticDataService>(new StaticDataService());
             _services.Register<IShopItemObserver>(new ShopItemObserver());
             _services.Register<IPlayerProgressService>(new PlayerProgressService());
@@ -61,14 +63,14 @@ namespace Assets.CodeBase.Infrastructure.States.GameStates
             _services.Register<IHeightShowBuildingFactory>(new HeightShowBuildingFactory(_services.Single<IAssets>(), _services.Single<IStaticDataService>()));
             _services.Register<ISoundFactory>(new SoundFactory(_services.Single<IAssets>(), _services.Single<IStaticDataService>(), _services.Single<IBackgroundSoundObserver>()));
             _services.Register<IHeroFactory>(new HeroFactory(_services.Single<IAssets>(), _services.Single<IInputService>(), _services.Single<IHeroEatObserver>(), _services.Single<IPlayerProgressService>(), _services.Single<IShopItemObserver>()));
-            _services.Register<IUiFactory>(new UiFactory(_services.Single<IAssets>(), _services.Single<IStaticDataService>(), _services.Single<IPlayerProgressService>(), _services.Single<IShopItemObserver>()));
+            _services.Register<IUiFactory>(new UiFactory(_services.Single<IAssets>(), _services.Single<IStaticDataService>(), _services.Single<IShopCachedObjectService>(), _services.Single<IPlayerProgressService>(), _services.Single<IShopItemObserver>()));
             _services.Register<IPlayerLearnService>(new PlayerLearnService(_services.Single<IUiFactory>()));
             _services.Register<ISaveLoadService>(new SaveLoadService(_services.Single<IPlayerProgressService>(), _services.Single<IHeroFactory>(), _services.Single<IUiFactory>()));
             _services.Register<ICoinSpawnerHandler>(new CoinSpawnerHandler());
             _services.Register<ICoinSpawnService>(new CoinSpawnService(_coroutineRunner, _services.Single<ICoinSpawnerHandler>()));
             _services.Register<ICoinFactory>(new CoinFactory(_services.Single<IAssets>(), _services.Single<IPlayerProgressService>(), _services.Single<IShopItemObserver>()));
             _services.Register<ICinemachineFactory>(new CinemachineFactory(_services.Single<IAssets>(), _services.Single<IHeroHandler>()));
-            _services.Register<IWindowService>(new WindowService(_services.Single<IUiFactory>(), _services.Single<IPlayerProgressService>()));
+            _services.Register<IWindowService>(new WindowService(_services.Single<IUiFactory>(), _services.Single<IShopCachedObjectService>(), _services.Single<IPlayerProgressService>()));
             _services.Register<IHudFactory>(new HudFactory(_services.Single<IAssets>(), _services.Single<IHeroEatObserver>(), _services.Single<IInputService>(), _services.Single<IWindowService>(), _services.Single<IPlayerProgressService>()));
         }
 

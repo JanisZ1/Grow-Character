@@ -19,7 +19,8 @@ namespace Assets.CodeBase.Logic.Ui
         private IStaticDataService _staticData;
         private IPlayerProgressService _playerProgress;
         private IShopItemObserver _shopItemObserver;
-        private ShopItemStaticData _shopItemStaticData;
+
+        public ShopItemStaticData ShopItemStaticData { get; private set; }
 
         public void Construct(IStaticDataService staticData, IPlayerProgressService playerProgress, IShopItemObserver shopItemObserver)
         {
@@ -27,7 +28,7 @@ namespace Assets.CodeBase.Logic.Ui
             _playerProgress = playerProgress;
             _shopItemObserver = shopItemObserver;
 
-            _shopItemStaticData = _staticData.ForShopItem(ShopItemType);
+            ShopItemStaticData = _staticData.ForShopItem(ShopItemType);
         }
 
         private void Start() =>
@@ -40,21 +41,21 @@ namespace Assets.CodeBase.Logic.Ui
         {
             MoneyData moneyData = _playerProgress.Progress.MoneyData;
 
-            if (moneyData.Count >= _shopItemStaticData.Price && !ShopItem.Buyed && ShopItem.Unlocked)
+            if (moneyData.Count >= ShopItemStaticData.Price && !ShopItem.Buyed && ShopItem.Unlocked)
             {
                 SaveData(moneyData);
                 MarkShopItemBuyed();
                 UnlockNextItem();
                 ChangeBuyedText();
                 _buyItemSound.Play();
-                _shopItemObserver.OnBuyed(_shopItemStaticData);
+                _shopItemObserver.OnBuyed(ShopItemStaticData);
             }
         }
 
         private void SaveData(MoneyData moneyData)
         {
-            moneyData.Spend(_shopItemStaticData.Price);
-            moneyData.ByClickEarnAmount = _shopItemStaticData.Profit;
+            moneyData.Spend(ShopItemStaticData.Price);
+            moneyData.ByClickEarnAmount = ShopItemStaticData.Profit;
         }
 
         private void MarkShopItemBuyed() =>
