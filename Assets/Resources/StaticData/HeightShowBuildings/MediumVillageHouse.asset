@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BuildingType: 8
   Height: 11
-  Prefab: {fileID: 1352959181385095201, guid: 70048aee0be1cbf48bd7cd3c0c094d6d, type: 3}
+  Prefab: {fileID: 8243465376502101363, guid: 815766b3b3d7c254eaacc6650e4e2c12, type: 3}
